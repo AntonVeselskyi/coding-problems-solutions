@@ -1,0 +1,21 @@
+{
+  "title": "Codding Problems Solutions 🥑",
+  "root": "./docs",
+  "structure": {
+    "readme": "./README.md",
+    "summary": "./SUMMARY.md"
+  },
+  "styles": {
+    "website": "./styles/website.css"
+  },
+  "plugins": [
+    "-highlight",
+    "sunlight-highlighter"
+  ],
+  "pluginsConfig": {
+    "sunlight-highlighter": {
+      "theme": "gitbook",
+      "lineNumbers": true
+    }
+  }
+}

@@ -1,2 +1,2 @@
 # coding-problems-solutions
-Solution for codding problem on different platforms
+## Solutions for problems from LeetCode and CodeWars
