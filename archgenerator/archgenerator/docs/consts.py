@@ -1,6 +1,8 @@
 LANG_TO_EMOJI = {
     "bash": "💲",
     "shell": "💲",
+    'powershell':"💲",
+    'sql':"🗃️",
     "python": "🐍",
     "javascript": "🙈",
     "java": "️️☕️",
