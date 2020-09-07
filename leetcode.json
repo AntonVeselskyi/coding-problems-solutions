@@ -1077,6 +1077,25 @@
                             "cpp": "349930646"
                         }
                     }
+                },
+                {
+                    "name": "Parsing A Boolean Expression",
+                    "link": "https://leetcode.com/problems/parsing-a-boolean-expression",
+                    "description": "<p>Return the result of evaluating a given boolean <code>expression</code>, represented as a string.</p>\n\n<p>An expression can either be:</p>\n\n<ul>\n\t<li><code>&quot;t&quot;</code>, evaluating to <code>True</code>;</li>\n\t<li><code>&quot;f&quot;</code>, evaluating to <code>False</code>;</li>\n\t<li><code>&quot;!(expr)&quot;</code>, evaluating to the logical NOT of the inner expression <code>expr</code>;</li>\n\t<li><code>&quot;&amp;(expr1,expr2,...)&quot;</code>, evaluating to the logical AND of 2 or more inner expressions <code>expr1, expr2, ...</code>;</li>\n\t<li><code>&quot;|(expr1,expr2,...)&quot;</code>, evaluating to the logical OR of 2 or more inner expressions <code>expr1, expr2, ...</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> expression = &quot;!(f)&quot;\n<strong>Output:</strong> true\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> expression = &quot;|(f,t)&quot;\n<strong>Output:</strong> true\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> expression = &quot;&amp;(t,f)&quot;\n<strong>Output:</strong> false\n</pre>\n\n<p><strong>Example 4:</strong></p>\n\n<pre>\n<strong>Input:</strong> expression = &quot;|(&amp;(t,f,t),!(t))&quot;\n<strong>Output:</strong> false\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= expression.length &lt;= 20000</code></li>\n\t<li><code>expression[i]</code>&nbsp;consists of characters in <code>{&#39;(&#39;, &#39;)&#39;, &#39;&amp;&#39;, &#39;|&#39;, &#39;!&#39;, &#39;t&#39;, &#39;f&#39;, &#39;,&#39;}</code>.</li>\n\t<li><code>expression</code> is a valid expression representing a boolean, as given in the description.</li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\n    // IN: string with coma separated BOOL expressions\n    // OUT: list of corresponding BOOL values\n    list<bool> deduceBoolList(string exprs)\n    {\n        list<bool> res;\n\n        const char *c_exprs = exprs.c_str();\n        do\n        {\n            //if we are on coma. step over it\n            if(*c_exprs == ',')\n                c_exprs++;\n\n            //if we have an operator with argumets\n            if(c_exprs[1] == '(')\n            {\n                //to find the end, we must count every ()\n                const char *exp_end = c_exprs+2;\n                size_t active_parentheses_num = 1;\n                while(active_parentheses_num)\n                {\n                    exp_end++;\n                    if(*exp_end == '(')\n                        active_parentheses_num++;\n                    if(*exp_end == ')')\n                        active_parentheses_num--;\n                }\n                \n                //when end is found form string with whole expression\n                string exp(c_exprs, exp_end-c_exprs+1);\n                res.push_back(parseBoolExpr(exp));\n                c_exprs = exp_end+1;\n            }\n            else\n            {\n                string exp(1,*c_exprs);\n                res.push_back(parseBoolExpr(exp));\n            }\n                \n        }\n        while(c_exprs = strchr(c_exprs, ','));\n        \n        return res;\n    }\n    \n    using fbbb = function<bool(bool,bool)>;\n\npublic:\n\n    bool parseBoolExpr(string expression)\n    {\n        if(expression == \"f\")\n            return false;\n        if(expression == \"t\")\n            return true;\n\n         //3 chars: !()\n        string in_parentheses = expression.substr(2, expression.size() - 3);\n\n        //check for !\n        if(expression.front() == '!')\n            return !parseBoolExpr(in_parentheses); \n\n\n        //else we have & or |        \n        list<bool> values = deduceBoolList(in_parentheses);\n        auto operation = expression.front() == '&' ? \n                         (fbbb)bit_and<bool>() :\n                          bit_or<bool>();\n\n        return std::accumulate(values.begin(), values.end(), values.front(),\n                               operation);\n\n    }\n};\n"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "parsing-a-boolean-expression",
+                        "submissions": {
+                            "cpp": "392461518"
+                        }
+                    }
                 }
             ]
         }
