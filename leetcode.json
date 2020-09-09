@@ -613,6 +613,25 @@
                     }
                 },
                 {
+                    "name": "Sum of Root To Leaf Binary Numbers",
+                    "link": "https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers",
+                    "description": "<p>Given a binary tree, each node has value <code>0</code>&nbsp;or <code>1</code>.&nbsp; Each root-to-leaf path represents a binary number starting with the most significant bit.&nbsp; For example, if the path is <code>0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1</code>, then this could represent <code>01101</code> in binary, which is <code>13</code>.</p>\r\n\r\n<p>For all leaves in the tree, consider the numbers represented by the path&nbsp;from the root to that leaf.</p>\r\n\r\n<p>Return the sum of these numbers.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<p><span id=\"example-output-1\"><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/04/04/sum-of-root-to-leaf-binary-numbers.png\" style=\"width: 304px; height: 200px;\" /></span></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-1-1\">[1,0,1,0,1,0,1]</span>\r\n<strong>Output: </strong><span id=\"example-output-1\">22</span>\r\n<strong>Explanation: </strong>(100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Note:</strong></p>\r\n\r\n<ol>\r\n\t<li>The number of nodes in the tree is between <code>1</code> and <code>1000</code>.</li>\r\n\t<li>node.val is <code>0</code> or <code>1</code>.</li>\r\n\t<li>The answer will not exceed <code>2^31 - 1</code>.</li>\r\n</ol>\r\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode() : val(0), left(nullptr), right(nullptr) {}\n *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}\n *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}\n * };\n */\nclass Solution\n{\n    //list of binary represented\n    static list<list<int>> getAllNumbers(TreeNode* root)\n    {\n        if(!root)\n            return {};\n        //if leaf\n        if(!root->left && !root->right)\n            return list<list<int>>{{root->val}};\n        \n        list<list<int>> res;\n        auto process_leaf = [&](TreeNode* leaf)\n        {\n            if(leaf)\n            for(auto num : getAllNumbers(leaf))\n            {\n                num.push_front(root->val);\n                res.push_back(num);\n            }\n        };\n        \n        process_leaf(root->left);\n        process_leaf(root->right);\n        \n        return res;\n    }\n\npublic:\n    int sumRootToLeaf(TreeNode* root)\n    {\n        int res = 0;\n        for(auto num : getAllNumbers(root))\n        {\n            string binary_string;\n            for(int bit : num)\n                binary_string.push_back(to_string(bit)[0]);\n            res += std::stoi(binary_string, nullptr, 2);\n        }\n        return res;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "sum-of-root-to-leaf-binary-numbers",
+                        "submissions": {
+                            "cpp": "392946463"
+                        }
+                    }
+                },
+                {
                     "name": "Symmetric Tree",
                     "link": "https://leetcode.com/problems/symmetric-tree",
                     "description": "<p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>\n\n<p>For example, this binary tree <code>[1,2,2,3,4,4,3]</code> is symmetric:</p>\n\n<pre>\n    1\n   / \\\n  2   2\n / \\ / \\\n3  4 4  3\n</pre>\n\n<p>&nbsp;</p>\n\n<p>But the following <code>[1,2,2,null,3,null,3]</code> is not:</p>\n\n<pre>\n    1\n   / \\\n  2   2\n   \\   \\\n   3    3\n</pre>\n\n<p>&nbsp;</p>\n\n<p><b>Follow up:</b> Solve it both recursively and iteratively.</p>\n",
@@ -723,6 +742,25 @@
                         "slug": "valid-anagram",
                         "submissions": {
                             "cpp": "303804795"
+                        }
+                    }
+                },
+                {
+                    "name": "Word Pattern",
+                    "link": "https://leetcode.com/problems/word-pattern",
+                    "description": "<p>Given a <code>pattern</code> and a string <code>str</code>, find if <code>str</code> follows the same pattern.</p>\r\n\r\n<p>Here <b>follow</b> means a full match, such that there is a bijection between a letter in <code>pattern</code> and a <b>non-empty</b> word in <code>str</code>.</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> pattern = <code>&quot;abba&quot;</code>, str = <code>&quot;dog cat cat dog&quot;</code>\r\n<strong>Output:</strong> true</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong>pattern = <code>&quot;abba&quot;</code>, str = <code>&quot;dog cat cat fish&quot;</code>\r\n<strong>Output:</strong> false</pre>\r\n\r\n<p><strong>Example 3:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> pattern = <code>&quot;aaaa&quot;</code>, str = <code>&quot;dog cat cat dog&quot;</code>\r\n<strong>Output:</strong> false</pre>\r\n\r\n<p><strong>Example 4:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> pattern = <code>&quot;abba&quot;</code>, str = <code>&quot;dog dog dog dog&quot;</code>\r\n<strong>Output:</strong> false</pre>\r\n\r\n<p><b>Notes:</b><br />\r\nYou may assume <code>pattern</code> contains only lowercase letters, and <code>str</code> contains lowercase letters that may be separated by a single space.</p>\r\n",
+                    "solutions": {
+                        "python": [
+                            {
+                                "language": "python",
+                                "code": "class Solution:\n    def wordPattern(self, pattern: str, words: str) -> bool:\n        d = dict()\n        if len(pattern) != len(words.split()):\n            return False\n        \n        for a, b in zip(pattern, words.split()):\n            if a in d.keys():\n                if d[a] != b:\n                    return False\n            elif b not in d.values():\n                d[a] = b\n            else:\n                return False\n                \n        return True\n        \n        "
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "word-pattern",
+                        "submissions": {
+                            "python": "392715817"
                         }
                     }
                 },

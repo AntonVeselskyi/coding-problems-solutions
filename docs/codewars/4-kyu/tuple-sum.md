@@ -1,16 +1,13 @@
-# Tuple sum
-
 ## [Tuple sum](https://www.codewars.com/kata/58602cd3ef06546bb7000152)
 
 Your task is to implement a function that adds all tuple elements that are numbers.
 
 For this kata chars are not considered numbers.
 
+
 ## Solutions
-
-### 🧠 C++
-
-```cpp
+#### 🧠 C++
+```c++
 #include <tuple>
 #include <type_traits>
 #include <vector>
@@ -20,13 +17,13 @@ using namespace ::std;
 template <typename T, typename std::enable_if<std::is_arithmetic<T>() && !is_same<T, char>()>::type* = nullptr>
 double d_echo(T t)
 {
-    return  static_cast<double>(t);
+	return  static_cast<double>(t);
 }
 
 template <typename T, typename std::enable_if<!std::is_arithmetic<T>() || is_same<T, char>()>::type* = nullptr>
 double d_echo(T t)
 {
-    return 0;
+	return 0;
 }
 
 template <class Tuple, size_t... Is>
@@ -46,8 +43,8 @@ constexpr auto take_front(Tuple t)
 template <typename T>
 double tuple_sum(const tuple<T> &&tpl)
 {
-    auto elmnt = get<0>(tpl);
-    return d_echo(elmnt);
+	auto elmnt = get<0>(tpl);
+	return d_echo(elmnt);
 
 }
 
@@ -56,9 +53,10 @@ double tuple_sum(const tuple<Ts...> &tpl)
 {
 #define tuple_size (tuple_size<tuple<Ts...>>::value)
 
-    auto elmnt = get<tuple_size-1>(tpl);
+	auto elmnt = get<tuple_size-1>(tpl);
 
-    return d_echo(elmnt) + tuple_sum(take_front<tuple_size-1>(tpl));
+	return d_echo(elmnt) + tuple_sum(take_front<tuple_size-1>(tpl));
 }
-```
 
+
+```

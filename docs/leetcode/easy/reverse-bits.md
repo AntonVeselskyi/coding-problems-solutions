@@ -1,44 +1,49 @@
-# Reverse Bits
-
 ## [Reverse Bits](https://leetcode.com/problems/reverse-bits)
 
-Reverse bits of a given 32 bits unsigned integer.
+<p>Reverse bits of a given 32 bits unsigned integer.</p>
 
-**Example 1:**
+<p>&nbsp;</p>
 
-```text
+<p><strong>Example 1:</strong></p>
 
-Input: 00000010100101000001111010011100
-Output: 00111001011110000010100101000000
-Explanation: The input binary string 00000010100101000001111010011100 represents the unsigned integer 43261596, so return 964176192 which its binary representation is 00111001011110000010100101000000.
-```
+<pre>
+<strong>Input:</strong> 00000010100101000001111010011100
+<strong>Output:</strong> 00111001011110000010100101000000
+<strong>Explanation: </strong>The input binary string <b>00000010100101000001111010011100</b> represents the unsigned integer 43261596, so return 964176192 which its binary representation is <b>00111001011110000010100101000000</b>.
+</pre>
 
-**Example 2:**
+<p><strong>Example 2:</strong></p>
 
-```text
+<pre>
+<strong>Input:</strong> 11111111111111111111111111111101
+<strong>Output:</strong> 10111111111111111111111111111111
+<strong>Explanation: </strong>The input binary string <strong>11111111111111111111111111111101</strong> represents the unsigned integer 4294967293, so return 3221225471 which its binary representation is <strong>10111111111111111111111111111111</strong>.</pre>
 
-Input: 11111111111111111111111111111101
-Output: 10111111111111111111111111111111
-Explanation: The input binary string 11111111111111111111111111111101 represents the unsigned integer 4294967293, so return 3221225471 which its binary representation is 10111111111111111111111111111111.
-```
+<p>&nbsp;</p>
 
-**Note:**
+<p><strong>Note:</strong></p>
 
-* Note that in some languages such as Java, there is no unsigned integer type. In this case, both input and output will be given as signed integer type and should not affect your implementation, as the internal binary representation of the integer is the same whether it is signed or unsigned.
-* In Java, the compiler represents the signed integers using [2's complement notation](https://en.wikipedia.org/wiki/Two%27s_complement). Therefore, in **Example 2** above the input represents the signed integer `-3` and the output represents the signed integer `-1073741825`.
+<ul>
+	<li>Note that in some languages such as Java, there is no unsigned integer type. In this case, both input and output will be given as signed integer type and should not affect your implementation, as the internal binary representation of the integer is the same whether it is signed or unsigned.</li>
+	<li>In Java,&nbsp;the compiler represents the signed integers using <a href="https://en.wikipedia.org/wiki/Two%27s_complement" target="_blank">2&#39;s complement notation</a>. Therefore, in <strong>Example 2</strong>&nbsp;above the input represents the signed integer <code>-3</code>&nbsp;and the output represents the signed integer <code>-1073741825</code>.</li>
+</ul>
 
-**Follow up**:
+<p>&nbsp;</p>
 
-If this function is called many times, how would you optimize it?
+<p><b>Follow up</b>:</p>
 
-**Constraints:**
+<p>If this function is called many times, how would you optimize it?</p>
 
-* The input must be a **binary string** of `length = 32`
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li>The input must be a <strong>binary string</strong> of <code>length = 32</code></li>
+</ul>
+
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 class Solution
 {
@@ -46,7 +51,7 @@ class Solution
     {
         bool i_value = n & (1 << i),
              k_value = n & (1 << k);
-
+        
         n = (n & ~(1<<k)) | (i_value << k);
         n = (n & ~(1<<i)) | (k_value << i);
     }
@@ -59,4 +64,3 @@ public:
     }
 };
 ```
-

@@ -1,33 +1,28 @@
-# Single Number
-
 ## [Single Number](https://leetcode.com/problems/single-number)
 
-Given a **non-empty** array of integers, every element appears _twice_ except for one. Find that single one.
+<p>Given a <strong>non-empty</strong>&nbsp;array of integers, every element appears <em>twice</em> except for one. Find that single one.</p>
 
-**Note:**
+<p><strong>Note:</strong></p>
 
-Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+<p>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
 
-**Example 1:**
+<p><strong>Example 1:</strong></p>
 
-```text
+<pre>
+<strong>Input:</strong> [2,2,1]
+<strong>Output:</strong> 1
+</pre>
 
-Input: [2,2,1]
-Output: 1
-```
+<p><strong>Example 2:</strong></p>
 
-**Example 2:**
+<pre>
+<strong>Input:</strong> [4,1,2,1,2]
+<strong>Output:</strong> 4
+</pre>
 
-```text
-
-Input: [4,1,2,1,2]
-Output: 4
-```
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 class Solution {
 public:
@@ -46,4 +41,3 @@ public:
     }
 };
 ```
-

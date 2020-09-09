@@ -1,36 +1,34 @@
-# Top K Frequent Elements
-
 ## [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements)
 
-Given a non-empty array of integers, return the **k** most frequent elements.
+<p>Given a non-empty array of integers, return the <b><i>k</i></b> most frequent elements.</p>
 
-**Example 1:**
+<p><strong>Example 1:</strong></p>
 
-```text
+<pre>
+<strong>Input: </strong>nums = <span id="example-input-1-1">[1,1,1,2,2,3]</span>, k = <span id="example-input-1-2">2</span>
+<strong>Output: </strong><span id="example-output-1">[1,2]</span>
+</pre>
 
-Input: nums = [1,1,1,2,2,3], k = 2
-Output: [1,2]
-```
+<div>
+<p><strong>Example 2:</strong></p>
 
-**Example 2:**
+<pre>
+<strong>Input: </strong>nums = <span id="example-input-2-1">[1]</span>, k = <span id="example-input-2-2">1</span>
+<strong>Output: </strong><span id="example-output-2">[1]</span></pre>
+</div>
 
-```text
+<p><b>Note: </b></p>
 
-Input: nums = [1], k = 1
-Output: [1]
-```
+<ul>
+	<li>You may assume <i>k</i> is always valid, 1 &le; <i>k</i> &le; number of unique elements.</li>
+	<li>Your algorithm&#39;s time complexity <b>must be</b> better than O(<i>n</i> log <i>n</i>), where <i>n</i> is the array&#39;s size.</li>
+	<li>It&#39;s guaranteed that the answer is unique, in other words the set of the top k frequent elements is unique.</li>
+	<li>You can return the answer in any order.</li>
+</ul>
 
-**Note:**
-
-* You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
-* Your algorithm's time complexity **must be** better than O\(n log n\), where n is the array's size.
-* It's guaranteed that the answer is unique, in other words the set of the top k frequent elements is unique.
-* You can return the answer in any order.
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 #include <map>
 
@@ -42,12 +40,12 @@ public:
         std::map<int, int> input_map;
         for(int i : nums)
             input_map[i]++;
-
+        
         //sort by values(freqency)
         std::multimap<int, int> sorted_input_map;
         for(auto p : input_map)
             sorted_input_map.insert({p.second, p.first});
-
+        
         vector<int> res;
         for(auto iter = --sorted_input_map.end(); k--; --iter)
             res.push_back(iter->second);
@@ -56,4 +54,3 @@ public:
     }
 };
 ```
-

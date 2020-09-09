@@ -1,60 +1,56 @@
-# Binary Tree Postorder Traversal
-
 ## [Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal)
 
-Given the `root` of a binary tree, return the _postorder_ traversal of its nodes' values.
+<p>Given the <code>root</code> of a&nbsp;binary tree, return the <em>postorder</em> traversal of its nodes&#39; values.</p>
 
-**Follow up:** Recursive solution is trivial, could you do it iteratively?
+<p><strong>Follow up:</strong> Recursive solution is trivial, could you do it iteratively?</p>
 
-**Example 1:** ![](https://assets.leetcode.com/uploads/2020/08/28/pre1.jpg)
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/08/28/pre1.jpg" style="width: 202px; height: 317px;" />
+<pre>
+<strong>Input:</strong> root = [1,null,2,3]
+<strong>Output:</strong> [3,2,1]
+</pre>
 
-```text
+<p><strong>Example 2:</strong></p>
 
-Input: root = [1,null,2,3]
-Output: [3,2,1]
-```
+<pre>
+<strong>Input:</strong> root = []
+<strong>Output:</strong> []
+</pre>
 
-**Example 2:**
+<p><strong>Example 3:</strong></p>
 
-```text
+<pre>
+<strong>Input:</strong> root = [1]
+<strong>Output:</strong> [1]
+</pre>
 
-Input: root = []
-Output: []
-```
+<p><strong>Example 4:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/08/28/pre3.jpg" style="width: 202px; height: 197px;" />
+<pre>
+<strong>Input:</strong> root = [1,2]
+<strong>Output:</strong> [2,1]
+</pre>
 
-**Example 3:**
+<p><strong>Example 5:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/08/28/pre2.jpg" style="width: 202px; height: 197px;" />
+<pre>
+<strong>Input:</strong> root = [1,null,2]
+<strong>Output:</strong> [2,1]
+</pre>
 
-```text
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-Input: root = [1]
-Output: [1]
-```
+<ul>
+	<li>The number of the nodes in the tree is in the range <code>[0, 100]</code>.</li>
+	<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+</ul>
 
-**Example 4:** ![](https://assets.leetcode.com/uploads/2020/08/28/pre3.jpg)
-
-```text
-
-Input: root = [1,2]
-Output: [2,1]
-```
-
-**Example 5:** ![](https://assets.leetcode.com/uploads/2020/08/28/pre2.jpg)
-
-```text
-
-Input: root = [1,null,2]
-Output: [2,1]
-```
-
-**Constraints:**
-
-* The number of the nodes in the tree is in the range `[0, 100]`.
-* `-100 <= Node.val <= 100`
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -70,7 +66,7 @@ public:
     vector<int> postorderTraversal(TreeNode* root)
     {
         vector<int> res;
-
+        
         if(!root)
             return res;
         if(root->left)
@@ -78,18 +74,17 @@ public:
             vector<int> &&tres = postorderTraversal(root->left);
             res.insert(res.end(), tres.begin(), tres.end());
         }
-
+        
         if(root->right)
         {
             vector<int> &&tres = postorderTraversal(root->right);
             res.insert(res.end(), tres.begin(), tres.end());
         }
-
+        
         res.emplace_back(root->val);
-
+        
 
         return res;
     }
 };
 ```
-

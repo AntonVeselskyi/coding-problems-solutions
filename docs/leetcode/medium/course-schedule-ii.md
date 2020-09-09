@@ -1,55 +1,53 @@
-# Course Schedule II
-
 ## [Course Schedule II](https://leetcode.com/problems/course-schedule-ii)
 
-There are a total of `n` courses you have to take labelled from `0` to `n - 1`.
+<p>There are a total of <code>n</code> courses you have to take labelled from <code>0</code> to <code>n - 1</code>.</p>
 
-Some courses may have `prerequisites`, for example, if `prerequisites[i] = [ai, bi]` this means you must take the course `bi` before the course `ai`.
+<p>Some courses may have <code>prerequisites</code>, for example, if&nbsp;<code>prerequisites[i] = [a<sub>i</sub>, b<sub>i</sub>]</code>&nbsp;this means you must take the course <code>b<sub>i</sub></code> before the course <code>a<sub>i</sub></code>.</p>
 
-Given the total number of courses `numCourses` and a list of the `prerequisite` pairs, return the ordering of courses you should take to finish all courses.
+<p>Given the total number of courses&nbsp;<code>numCourses</code> and a list of the <code>prerequisite</code> pairs, return the ordering of courses you should take to finish all courses.</p>
 
-If there are many valid answers, return **any** of them. If it is impossible to finish all courses, return **an empty array**.
+<p>If there are many valid answers, return <strong>any</strong> of them.&nbsp;If it is impossible to finish all courses, return <strong>an empty array</strong>.</p>
 
-**Example 1:**
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
-```text
+<pre>
+<strong>Input:</strong> numCourses = 2, prerequisites = [[1,0]]
+<strong>Output:</strong> [0,1]
+<strong>Explanation:</strong> There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1].
+</pre>
 
-Input: numCourses = 2, prerequisites = [[1,0]]
-Output: [0,1]
-Explanation: There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1].
-```
+<p><strong>Example 2:</strong></p>
 
-**Example 2:**
-
-```text
-
-Input: numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
-Output: [0,2,1,3]
-Explanation: There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0.
+<pre>
+<strong>Input:</strong> numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
+<strong>Output:</strong> [0,2,1,3]
+<strong>Explanation:</strong> There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0.
 So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3].
-```
+</pre>
 
-**Example 3:**
+<p><strong>Example 3:</strong></p>
 
-```text
+<pre>
+<strong>Input:</strong> numCourses = 1, prerequisites = []
+<strong>Output:</strong> [0]
+</pre>
 
-Input: numCourses = 1, prerequisites = []
-Output: [0]
-```
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-**Constraints:**
+<ul>
+	<li><code>1 &lt;= numCourses &lt;= 2000</code></li>
+	<li><code>0 &lt;=&nbsp;prerequisites.length &lt;= numCourses * (numCourses - 1)</code></li>
+	<li><code>prerequisites[i].length == 2</code></li>
+	<li><code>0 &lt;= a<sub>i</sub>, b<sub>i</sub> &lt;&nbsp;numCourses</code></li>
+	<li><code>a<sub>i</sub>&nbsp;!=&nbsp;b<sub>i</sub></code></li>
+	<li>All the pairs <code>[a<sub>i</sub>, b<sub>i</sub>]</code> are <strong>distinct</strong>.</li>
+</ul>
 
-* `1 <= numCourses <= 2000`
-* `0 <= prerequisites.length <= numCourses * (numCourses - 1)`
-* `prerequisites[i].length == 2`
-* `0 <= ai, bi < numCourses`
-* `ai != bi`
-* All the pairs `[ai, bi]` are **distinct**.
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 #include <memory>
 #include <functional>
@@ -59,7 +57,7 @@ struct Course
     int id;
     bool learned = false;
     vector<Course*> depends_on;
-
+    
     Course(int i):id(i), learned(false){}
 };
 
@@ -67,7 +65,7 @@ class Solution
 {
     bool found_loop(Course *start, Course *course_to_check, int len, int current_len)
     {
-
+        
         if(current_len > len)
             return true;
         for(auto* course : start->depends_on)
@@ -84,7 +82,7 @@ public:
         vector<Course*> courses;
         for(int i = 0; i < numCourses; ++i)
             courses.push_back(new Course(i));
-
+        
         //copy graph from input
         Course *dependancy_tree = nullptr; 
         for(auto p : prerequisites)
@@ -96,14 +94,14 @@ public:
         {
             if(courses[id]->learned)
                 return;
-
+            
             for(auto* course : courses[id]->depends_on)
                 learn_course(course->id);
-
+            
             courses[id]->learned = true;
             res.push_back(id);
         };
-
+        
         //check for loops
         for(auto* c : courses)
         if(found_loop(c, c, courses.size(), 1))
@@ -112,11 +110,10 @@ public:
             learn_course(c->id);
         for(auto* c : courses)
             delete c;
-
+        
         return res.size() == courses.size() ? res : vector<int>{}; 
 
-
+        
     }
 };
 ```
-

@@ -1,57 +1,48 @@
-# Remove Duplicates from Sorted Array
-
 ## [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array)
 
-Given a sorted array _nums_, remove the duplicates [**in-place**](https://en.wikipedia.org/wiki/In-place_algorithm) such that each element appear only _once_ and return the new length.
+<p>Given a sorted array <em>nums</em>, remove the duplicates <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank"><strong>in-place</strong></a> such that each element appear only <em>once</em> and return the new length.</p>
 
-Do not allocate extra space for another array, you must do this by **modifying the input array** [**in-place**](https://en.wikipedia.org/wiki/In-place_algorithm) with O\(1\) extra memory.
+<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank">in-place</a></strong> with O(1) extra memory.</p>
 
-**Example 1:**
+<p><strong>Example 1:</strong></p>
 
-```text
+<pre>
+Given <em>nums</em> = <strong>[1,1,2]</strong>,
 
-Given nums = [1,1,2],
+Your function should return length = <strong><code>2</code></strong>, with the first two elements of <em><code>nums</code></em> being <strong><code>1</code></strong> and <strong><code>2</code></strong> respectively.
 
-Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.
+It doesn&#39;t matter what you leave beyond the returned length.</pre>
 
-It doesn't matter what you leave beyond the returned length.
-```
+<p><strong>Example 2:</strong></p>
 
-**Example 2:**
+<pre>
+Given <em>nums</em> = <strong>[0,0,1,1,1,2,2,3,3,4]</strong>,
 
-```text
+Your function should return length = <strong><code>5</code></strong>, with the first five elements of <em><code>nums</code></em> being modified to&nbsp;<strong><code>0</code></strong>, <strong><code>1</code></strong>, <strong><code>2</code></strong>, <strong><code>3</code></strong>, and&nbsp;<strong><code>4</code></strong> respectively.
 
-Given nums = [0,0,1,1,1,2,2,3,3,4],
+It doesn&#39;t matter what values are set beyond&nbsp;the returned length.
+</pre>
 
-Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.
+<p><strong>Clarification:</strong></p>
 
-It doesn't matter what values are set beyond the returned length.
-```
+<p>Confused why the returned value is an integer but your answer is an array?</p>
 
-**Clarification:**
+<p>Note that the input array is passed in by <strong>reference</strong>, which means modification to the input array will be known to the caller as well.</p>
 
-Confused why the returned value is an integer but your answer is an array?
+<p>Internally you can think of this:</p>
 
-Note that the input array is passed in by **reference**, which means modification to the input array will be known to the caller as well.
-
-Internally you can think of this:
-
-```text
-
-// nums is passed in by reference. (i.e., without making a copy)
+<pre>
+// <strong>nums</strong> is passed in by reference. (i.e., without making a copy)
 int len = removeDuplicates(nums);
 
-// any modification to nums in your function would be known by the caller.
-// using the length returned by your function, it prints the first len elements.
-for (int i = 0; i < len; i++) {
-    print(nums[i]);
-}
-```
+// any modification to <strong>nums</strong> in your function would be known by the caller.
+// using the length returned by your function, it prints the first <strong>len</strong> elements.
+for (int i = 0; i &lt; len; i++) {
+&nbsp; &nbsp; print(nums[i]);
+}</pre>
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 #include <algorithm>
 class Solution {
@@ -76,4 +67,3 @@ public:
     }
 };
 ```
-

@@ -1,5 +1,3 @@
-# Using Window Functions To Get Top N per Group
-
 ## [Using Window Functions To Get Top N per Group](https://www.codewars.com/kata/582001237a3a630ce8000a41)
 
 ### Description
@@ -12,16 +10,17 @@ Order the result set by:
 2. number of post views largest to lowest
 3. post id lowest to largest    
 
-**Note:**
+    
+##### Note:
 
 * Some categories may have less than two or no posts at all.
-* Two or more posts within the category can be tied by \(have the same\) the number of views. Use post id as a tie breaker - a post with a lower id gets a higher rank.
+* Two or more posts within the category can be tied by (have the same) the number of views. Use post id as a tie breaker - a post with a lower id gets a higher rank.
 
 ### Schema
 
 #### categories
 
-```text
+```
  Column     | Type                        | Modifiers
 ------------+-----------------------------+----------
 id          | integer                     | not null
@@ -30,7 +29,7 @@ category    | character varying(255)      | not null
 
 #### posts
 
-```text
+```
  Column     | Type                        | Modifiers
 ------------+-----------------------------+----------
 id          | integer                     | not null
@@ -43,7 +42,7 @@ views       | integer                     | not null
 
 The desired output should look like this:
 
-```text
+```
 category_id | category | title                             | views | post_id
 ------------+----------+-----------------------------------+-------+--------
 5           | art      | Most viewed post about Art        | 9234  | 234
@@ -51,6 +50,7 @@ category_id | category | title                             | views | post_id
 2           | business | NULL                              | NULL  | NULL
 7           | sport    | Most viewed post about Sport      | 10    | 126
 ...
+
 ```
 
 * `category_id` - category id
@@ -59,10 +59,9 @@ category_id | category | title                             | views | post_id
 * `views` - the number of post views
 * `post_id` - post id
 
+
 ## Solutions
-
 #### 🗃️ Sql
-
 ```sql
 with res as
 (
@@ -74,5 +73,6 @@ select c.id as category_id, category, title, views, r.id as post_id
 from categories c
 left outer join res r on r.category_id=c.id and rn < 3
 order by category, rn, views;
-```
 
+
+```

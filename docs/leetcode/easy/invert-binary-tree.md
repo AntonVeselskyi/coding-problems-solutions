@@ -1,42 +1,35 @@
-# Invert Binary Tree
-
 ## [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree)
 
-Invert a binary tree.
+<p>Invert a binary tree.</p>
 
-**Example:**
+<p><strong>Example:</strong></p>
 
-Input:
+<p>Input:</p>
 
-```text
-
+<pre>
      4
    /   \
   2     7
  / \   / \
-1   3 6   9
-```
+1   3 6   9</pre>
 
-Output:
+<p>Output:</p>
 
-```text
-
+<pre>
      4
    /   \
   7     2
  / \   / \
-9   6 3   1
-```
+9   6 3   1</pre>
 
-**Trivia:**  
- This problem was inspired by [this original tweet](https://twitter.com/mxcl/status/608682016205344768) by [Max Howell](https://twitter.com/mxcl):
+<p><strong>Trivia:</strong><br />
+This problem was inspired by <a href="https://twitter.com/mxcl/status/608682016205344768" target="_blank">this original tweet</a> by <a href="https://twitter.com/mxcl" target="_blank">Max Howell</a>:</p>
 
-> Google: 90% of our engineers use the software you wrote \(Homebrew\), but you can’t invert a binary tree on a whiteboard so f\*\*\* off.
+<blockquote>Google: 90% of our engineers use the software you wrote (Homebrew), but you can&rsquo;t invert a binary tree on a whiteboard so f*** off.</blockquote>
+
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -61,4 +54,3 @@ public:
     }
 };
 ```
-

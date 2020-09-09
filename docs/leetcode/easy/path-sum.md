@@ -1,32 +1,28 @@
-# Path Sum
-
 ## [Path Sum](https://leetcode.com/problems/path-sum)
 
-Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
+<p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
 
-**Note:** A leaf is a node with no children.
+<p><strong>Note:</strong>&nbsp;A leaf is a node with no children.</p>
 
-**Example:**
+<p><strong>Example:</strong></p>
 
-Given the below binary tree and `sum = 22`,
+<p>Given the below binary tree and <code>sum = 22</code>,</p>
 
-```text
+<pre>
+      <strong>5</strong>
+     <strong>/</strong> \
+    <strong>4</strong>   8
+   <strong>/</strong>   / \
+  <strong>11</strong>  13  4
+ /  <strong>\</strong>      \
+7    <strong>2</strong>      1
+</pre>
 
-      5
-     / \
-    4   8
-   /   / \
-  11  13  4
- /  \      \
-7    2      1
-```
+<p>return true, as there exist a root-to-leaf path <code>5-&gt;4-&gt;11-&gt;2</code> which sum is 22.</p>
 
-return true, as there exist a root-to-leaf path `5->4->11->2` which sum is 22.
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -57,4 +53,3 @@ public:
     }
 };
 ```
-

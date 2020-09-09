@@ -1,26 +1,21 @@
-# Sum of Left Leaves
-
 ## [Sum of Left Leaves](https://leetcode.com/problems/sum-of-left-leaves)
 
-Find the sum of all left leaves in a given binary tree.
+<p>Find the sum of all left leaves in a given binary tree.</p>
 
-**Example:**
-
-```text
-
+<p><b>Example:</b>
+<pre>
     3
    / \
   9  20
     /  \
    15   7
 
-There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
-```
+There are two left leaves in the binary tree, with values <b>9</b> and <b>15</b> respectively. Return <b>24</b>.
+</pre>
+</p>
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -41,12 +36,11 @@ public:
     {
         if(!node)
             return 0;
-
+        
         if(pos == L && !node->right && !node->left)
             return node->val;
-
+        
         return sumOfLeftLeaves(node->right, R) + sumOfLeftLeaves(node->left, L);
     }
 };
 ```
-

@@ -1,10 +1,12 @@
-# Growth of a Population
-
 ## [Growth of a Population](https://www.codewars.com/kata/563b662a59afc2b5120000c6)
 
-In a small town the population is `p0 = 1000` at the beginning of a year. The population regularly increases by `2 percent` per year and moreover `50` new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to `p = 1200` inhabitants?
+In a small town the population is `p0 = 1000` at the beginning of a year. The population
+regularly increases by `2 percent` per year and moreover `50` new inhabitants per year
+come to live in the town. 
+How many years does the town need to see its population
+greater or equal to `p = 1200` inhabitants?
 
-```text
+```
 At the end of the first year there will be: 
 1000 + 1000 * 0.02 + 50 => 1070 inhabitants
 
@@ -16,16 +18,15 @@ At the end of the 3rd year there will be:
 
 It will need 3 entire years.
 ```
-
 More generally given parameters:
 
 `p0, percent, aug (inhabitants coming or leaving each year), p (population to surpass)`
 
-the function `nb_year` should return `n` number of entire years needed to get a population greater or equal to `p`.
+the function `nb_year` should return `n` number of entire years needed to
+get a population greater or equal to `p`.
 
-aug is an integer, percent a positive or null number, p0 and p are positive integers \(&gt; 0\)
-
-```text
+aug is an integer, percent a positive or null number, p0 and p are positive integers (> 0)
+```
 Examples:
 nb_year(1500, 5, 100, 5000) -> 15
 nb_year(1500000, 2.5, 10000, 2000000) -> 10
@@ -34,10 +35,8 @@ nb_year(1500000, 2.5, 10000, 2000000) -> 10
 Note: Don't forget to convert the percent parameter as a percentage in the body of your function: if the parameter percent is 2 you have to convert it to 0.02.
 
 ## Solutions
-
-### 💲 Shell
-
-```text
+#### 💲 Shell
+```shell
 #!/bin/bash
 nbYear()
 {
@@ -45,16 +44,15 @@ nbYear()
     percent="$2"
     arg=$3
     years=0
-
+    
     while  [ $population -lt $4 ]
     do
       population=$(bc <<< "scale=0; $population + $population * $percent /100 + $arg " )
       (( years++ ))
     done
-
+    
     echo $years
 }
 
 nbYear $1 $2 $3 $4
 ```
-

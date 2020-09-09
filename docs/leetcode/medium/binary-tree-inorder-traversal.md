@@ -1,29 +1,24 @@
-# Binary Tree Inorder Traversal
-
 ## [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal)
 
-Given a binary tree, return the _inorder_ traversal of its nodes' values.
+<p>Given a binary tree, return the <em>inorder</em> traversal of its nodes&#39; values.</p>
 
-**Example:**
+<p><strong>Example:</strong></p>
 
-```text
-
-Input: [1,null,2,3]
+<pre>
+<strong>Input:</strong> [1,null,2,3]
    1
     \
      2
     /
    3
 
-Output: [1,3,2]
-```
+<strong>Output:</strong> [1,3,2]</pre>
 
-**Follow up:** Recursive solution is trivial, could you do it iteratively?
+<p><strong>Follow up:</strong> Recursive solution is trivial, could you do it iteratively?</p>
+
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -41,7 +36,7 @@ public:
     vector<int> inorderTraversal(TreeNode* root)
     {
         vector<int> res;
-
+        
         if(!root)
             return res;
         if(root->left)
@@ -49,17 +44,16 @@ public:
             vector<int> &&tres = inorderTraversal(root->left);
             res.insert(res.end(), tres.begin(), tres.end());
         }
-
+        
         res.emplace_back(root->val);
-
+        
         if(root->right)
         {
             vector<int> &&tres = inorderTraversal(root->right);
             res.insert(res.end(), tres.begin(), tres.end());
         }
-
+        
         return res;
     }
 };
 ```
-

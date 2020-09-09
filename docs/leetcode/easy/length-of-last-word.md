@@ -1,25 +1,23 @@
-# Length of Last Word
-
 ## [Length of Last Word](https://leetcode.com/problems/length-of-last-word)
 
-Given a string s consists of upper/lower-case alphabets and empty space characters `' '`, return the length of last word \(last word means the last appearing word if we loop from left to right\) in the string.
+<p>Given a string <i>s</i> consists of upper/lower-case alphabets and empty space characters <code>&#39; &#39;</code>, return the length of last word (last word means the last appearing word if we loop from left to right) in the string.</p>
 
-If the last word does not exist, return 0.
+<p>If the last word does not exist, return 0.</p>
 
-**Note:** A word is defined as a **maximal substring** consisting of non-space characters only.
+<p><b>Note:</b> A word is defined as a <strong>maximal substring</strong> consisting&nbsp;of non-space characters only.</p>
 
-**Example:**
+<p><b>Example:</b></p>
 
-```text
+<pre>
+<b>Input:</b> &quot;Hello World&quot;
+<b>Output:</b> 5
+</pre>
 
-Input: "Hello World"
-Output: 5
-```
+<p>&nbsp;</p>
+
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 class Solution {
 public:
@@ -33,4 +31,3 @@ public:
     }
 };
 ```
-

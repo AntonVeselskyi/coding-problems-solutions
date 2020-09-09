@@ -1,15 +1,11 @@
-# Fizz Buzz
-
 ## [Fizz Buzz](https://leetcode.com/problems/fizz-buzz)
 
-Write a program that outputs the string representation of numbers from 1 to n.
+<p>Write a program that outputs the string representation of numbers from 1 to <i>n</i>.</p>
 
-But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.
+<p>But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.</p>
 
-**Example:**
-
-```text
-
+<p><b>Example:</b>
+<pre>
 n = 15,
 
 Return:
@@ -30,12 +26,11 @@ Return:
     "14",
     "FizzBuzz"
 ]
-```
+</pre>
+</p>
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 class Solution {
 public:
@@ -51,12 +46,11 @@ public:
                 fb+="Buzz";
             if(fb.empty())
                 fb = std::to_string(i);
-
+            
             res.push_back(fb);
         }
-
+        
         return res;
     }
 };
 ```
-

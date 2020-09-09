@@ -1,32 +1,27 @@
-# Maximum Depth of Binary Tree
-
 ## [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree)
 
-Given a binary tree, find its maximum depth.
+<p>Given a binary tree, find its maximum depth.</p>
 
-The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
 
-**Note:** A leaf is a node with no children.
+<p><strong>Note:</strong>&nbsp;A leaf is a node with no children.</p>
 
-**Example:**
+<p><strong>Example:</strong></p>
 
-Given binary tree `[3,9,20,null,null,15,7]`,
+<p>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
 
-```text
-
+<pre>
     3
    / \
   9  20
     /  \
-   15   7
-```
+   15   7</pre>
 
-return its depth = 3.
+<p>return its depth = 3.</p>
+
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -55,9 +50,8 @@ public:
         int 
          l_depth = maxDepth(root->left),
          r_depth = maxDepth(root->right);
-
+        
         return max(l_depth+1,r_depth+1);
     }
 };
 ```
-

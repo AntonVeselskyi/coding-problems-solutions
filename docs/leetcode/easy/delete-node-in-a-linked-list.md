@@ -1,64 +1,60 @@
-# Delete Node in a Linked List
-
 ## [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list)
 
-Write a function to **delete a node** in a singly-linked list. You will **not** be given access to the `head` of the list, instead you will be given access to **the node to be deleted** directly.
+<p>Write a function to <strong>delete a node</strong> in a singly-linked list. You will <strong>not</strong> be given access to the <code>head</code> of the list, instead you will be given access to <strong>the node to be deleted</strong> directly.</p>
 
-It is **guaranteed** that the node to be deleted is **not a tail node** in the list.
+<p>It is <strong>guaranteed</strong> that the node to be deleted is <strong>not a tail node</strong> in the list.</p>
 
-**Example 1:** ![](https://assets.leetcode.com/uploads/2020/09/01/node1.jpg)
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/09/01/node1.jpg" style="width: 450px; height: 322px;" />
+<pre>
+<strong>Input:</strong> head = [4,5,1,9], node = 5
+<strong>Output:</strong> [4,1,9]
+<strong>Explanation: </strong>You are given the second node with value 5, the linked list should become 4 -&gt; 1 -&gt; 9 after calling your function.
+</pre>
 
-```text
+<p><strong>Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/09/01/node2.jpg" style="width: 450px; height: 354px;" />
+<pre>
+<strong>Input:</strong> head = [4,5,1,9], node = 1
+<strong>Output:</strong> [4,5,9]
+<strong>Explanation: </strong>You are given the third node with value 1, the linked list should become 4 -&gt; 5 -&gt; 9 after calling your function.
+</pre>
 
-Input: head = [4,5,1,9], node = 5
-Output: [4,1,9]
-Explanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.
-```
+<p><strong>Example 3:</strong></p>
 
-**Example 2:** ![](https://assets.leetcode.com/uploads/2020/09/01/node2.jpg)
+<pre>
+<strong>Input:</strong> head = [1,2,3,4], node = 3
+<strong>Output:</strong> [1,2,4]
+</pre>
 
-```text
+<p><strong>Example 4:</strong></p>
 
-Input: head = [4,5,1,9], node = 1
-Output: [4,5,9]
-Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
-```
+<pre>
+<strong>Input:</strong> head = [0,1], node = 0
+<strong>Output:</strong> [1]
+</pre>
 
-**Example 3:**
+<p><strong>Example 5:</strong></p>
 
-```text
+<pre>
+<strong>Input:</strong> head = [-3,5,-99], node = -3
+<strong>Output:</strong> [5,-99]
+</pre>
 
-Input: head = [1,2,3,4], node = 3
-Output: [1,2,4]
-```
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
 
-**Example 4:**
+<ul>
+	<li>The number of the nodes in the given list is in the range <code>[2, 1000]</code>.</li>
+	<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>
+	<li>The value of each node in the list is <strong>unique</strong>.</li>
+	<li>The <code>node</code> to be deleted is <strong>in the list</strong> and is <strong>not a tail</strong> node</li>
+</ul>
 
-```text
-
-Input: head = [0,1], node = 0
-Output: [1]
-```
-
-**Example 5:**
-
-```text
-
-Input: head = [-3,5,-99], node = -3
-Output: [5,-99]
-```
-
-**Constraints:**
-
-* The number of the nodes in the given list is in the range `[2, 1000]`.
-* `-1000 <= Node.val <= 1000`
-* The value of each node in the list is **unique**.
-* The `node` to be deleted is **in the list** and is **not a tail** node
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 /**
  * Definition for singly-linked list.
@@ -79,4 +75,3 @@ public:
     }
 };
 ```
-

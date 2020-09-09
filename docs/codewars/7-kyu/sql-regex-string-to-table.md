@@ -1,19 +1,15 @@
-# SQL: Regex String to Table
-
 ## [SQL: Regex String to Table](https://www.codewars.com/kata/59413d53f5c3947364000016)
 
 You are given a table 'random\_string' that has the following format:
 
- **random\_string schema** 
-
+** random\_string schema **
 * text
 
 The text field holds a single row which contains a random string.
 
-Your task is to take the random string and split it on each vowel \(a, e, i, o, u\) then the resultant substrings will be contained in the output table, formatted as:
+Your task is to take the random string and split it on each vowel (a, e, i, o, u) then the resultant substrings will be contained in the output table, formatted as:
 
- **output table schema** 
-
+** output table schema **
 * results
 
 Note that the vowels should be removed.
@@ -23,12 +19,11 @@ If there are no vowels, there will only be one row returned. Where there are mul
 Regex is advised but not mandatory.
 
 ## Solutions
-
-### 🗃️ Sql
-
+#### 🗃️ Sql
 ```sql
 SELECT * FROM 
 unnest( regexp_split_to_array( (select text from random_string), '[aeiou]' ) )
 as results;
-```
 
+
+```

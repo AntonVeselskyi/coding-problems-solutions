@@ -1,47 +1,55 @@
-# Goat Latin
-
 ## [Goat Latin](https://leetcode.com/problems/goat-latin)
 
-A sentence `S` is given, composed of words separated by spaces. Each word consists of lowercase and uppercase letters only.
+<p>A sentence <code>S</code> is given, composed of words separated by spaces. Each word consists of lowercase and uppercase letters only.</p>
 
-We would like to convert the sentence to "_Goat Latin"_ \(a made-up language similar to Pig Latin.\)
+<p>We would like to convert the sentence to &quot;<em>Goat Latin&quot;</em>&nbsp;(a made-up language similar to Pig Latin.)</p>
 
-The rules of Goat Latin are as follows:
+<p>The rules of Goat Latin are as follows:</p>
 
-* If a word begins with a vowel \(a, e, i, o, or u\), append `"ma"` to the end of the word.  For example, the word 'apple' becomes 'applema'.   
-* If a word begins with a consonant \(i.e. not a vowel\), remove the first letter and append it to the end, then add `"ma"`.  For example, the word `"goat"` becomes `"oatgma"`.   
-* Add one letter `'a'` to the end of each word per its word index in the sentence, starting with 1.  For example, the first word gets `"a"` added to the end, the second word gets `"aa"` added to the end and so on.
+<ul>
+	<li>If a word begins with a vowel (a, e, i, o, or u), append <code>&quot;ma&quot;</code>&nbsp;to the end of the word.<br />
+	For example, the word &#39;apple&#39; becomes &#39;applema&#39;.<br />
+	&nbsp;</li>
+	<li>If a word begins with a consonant (i.e. not a vowel), remove the first letter and append it to the end, then add <code>&quot;ma&quot;</code>.<br />
+	For example, the word <code>&quot;goat&quot;</code>&nbsp;becomes <code>&quot;oatgma&quot;</code>.<br />
+	&nbsp;</li>
+	<li>Add one letter <code>&#39;a&#39;</code>&nbsp;to the end of each word per its word index in the sentence, starting with 1.<br />
+	For example,&nbsp;the first word gets <code>&quot;a&quot;</code> added to the end, the second word gets <code>&quot;aa&quot;</code> added to the end and so on.</li>
+</ul>
 
-Return the final sentence representing the conversion from `S` to Goat Latin. 
+<p>Return the&nbsp;final sentence representing the conversion from <code>S</code>&nbsp;to Goat&nbsp;Latin.&nbsp;</p>
 
-**Example 1:**
+<p>&nbsp;</p>
 
-```text
+<p><strong>Example 1:</strong></p>
 
-Input: "I speak Goat Latin"
-Output: "Imaa peaksmaaa oatGmaaaa atinLmaaaaa"
-```
+<pre>
+<strong>Input: </strong>&quot;I speak Goat Latin&quot;
+<strong>Output: </strong>&quot;Imaa peaksmaaa oatGmaaaa atinLmaaaaa&quot;
+</pre>
 
-**Example 2:**
+<p><strong>Example 2:</strong></p>
 
-```text
+<pre>
+<strong>Input: </strong>&quot;The quick brown fox jumped over the lazy dog&quot;
+<strong>Output: </strong>&quot;heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa&quot;
+</pre>
 
-Input: "The quick brown fox jumped over the lazy dog"
-Output: "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa"
-```
+<p>&nbsp;</p>
 
-Notes:
+<p>Notes:</p>
 
-* `S` contains only uppercase, lowercase and spaces. Exactly one space between each word.
-* `1 <= S.length <= 150`.
+<ul>
+	<li><code>S</code> contains only uppercase, lowercase and spaces.&nbsp;Exactly one space between each word.</li>
+	<li><code>1 &lt;= S.length &lt;= 150</code>.</li>
+</ul>
+
 
 ## Solutions
-
-### 🐍 Python
-
+#### 🐍 Python
 ```python
 class Solution:
     def toGoatLatin(self, S: str) -> str:
         return " ".join([ (s if s[0] in "aeiouAEIOU" else s[1:]+s[0])+'ma'+'a'*(i+1)  for i,s in enumerate(S.split(' ')) ])
+        
 ```
-

@@ -1,50 +1,40 @@
-# Third Maximum Number
-
 ## [Third Maximum Number](https://leetcode.com/problems/third-maximum-number)
 
-Given a **non-empty** array of integers, return the **third** maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O\(n\).
+<p>Given a <b>non-empty</b> array of integers, return the <b>third</b> maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n).</p>
 
-**Example 1:**  
+<p><b>Example 1:</b><br />
+<pre>
+<b>Input:</b> [3, 2, 1]
 
+<b>Output:</b> 1
 
-```text
+<b>Explanation:</b> The third maximum is 1.
+</pre>
+</p>
 
-Input: [3, 2, 1]
+<p><b>Example 2:</b><br />
+<pre>
+<b>Input:</b> [1, 2]
 
-Output: 1
+<b>Output:</b> 2
 
-Explanation: The third maximum is 1.
-```
+<b>Explanation:</b> The third maximum does not exist, so the maximum (2) is returned instead.
+</pre>
+</p>
 
-**Example 2:**  
+<p><b>Example 3:</b><br />
+<pre>
+<b>Input:</b> [2, 2, 3, 1]
 
+<b>Output:</b> 1
 
-```text
-
-Input: [1, 2]
-
-Output: 2
-
-Explanation: The third maximum does not exist, so the maximum (2) is returned instead.
-```
-
-**Example 3:**  
-
-
-```text
-
-Input: [2, 2, 3, 1]
-
-Output: 1
-
-Explanation: Note that the third maximum here means the third maximum distinct number.
+<b>Explanation:</b> Note that the third maximum here means the third maximum distinct number.
 Both numbers with value 2 are both considered as second maximum.
-```
+</pre>
+</p>
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 class Solution
 {
@@ -64,4 +54,3 @@ public:
     }
 };
 ```
-

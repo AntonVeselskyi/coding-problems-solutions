@@ -1,36 +1,31 @@
-# Longest Common Prefix
-
 ## [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix)
 
-Write a function to find the longest common prefix string amongst an array of strings.
+<p>Write a function to find the longest common prefix string amongst an array of strings.</p>
 
-If there is no common prefix, return an empty string `""`.
+<p>If there is no common prefix, return an empty string <code>&quot;&quot;</code>.</p>
 
-**Example 1:**
+<p><strong>Example 1:</strong></p>
 
-```text
+<pre>
+<strong>Input: </strong>[&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
+<strong>Output:</strong> &quot;fl&quot;
+</pre>
 
-Input: ["flower","flow","flight"]
-Output: "fl"
-```
+<p><strong>Example 2:</strong></p>
 
-**Example 2:**
+<pre>
+<strong>Input: </strong>[&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]
+<strong>Output:</strong> &quot;&quot;
+<strong>Explanation:</strong> There is no common prefix among the input strings.
+</pre>
 
-```text
+<p><strong>Note:</strong></p>
 
-Input: ["dog","racecar","car"]
-Output: ""
-Explanation: There is no common prefix among the input strings.
-```
+<p>All given inputs are in lowercase letters <code>a-z</code>.</p>
 
-**Note:**
-
-All given inputs are in lowercase letters `a-z`.
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 class Solution
 {
@@ -39,24 +34,23 @@ public:
     {
         if(strs.empty())
             return "";
-
+        
         string res = "";  
         bool keep_going = true;
         size_t first_str_size = strs[0].size(); 
         for(size_t i = 0; keep_going && i < first_str_size; i++)
         {
             char ch = strs[0][i];
-
+            
             for(auto &str : strs)
                 if(str.size() <= i || str[i] != ch)
                     keep_going = false;
-
+            
             if(keep_going)
                 res+=ch;      
         }
-
+        
         return res;
     }
 };
 ```
-

@@ -1,39 +1,30 @@
-# Contains Duplicate
-
 ## [Contains Duplicate](https://leetcode.com/problems/contains-duplicate)
 
-Given an array of integers, find if the array contains any duplicates.
+<p>Given an array of integers, find if the array contains any duplicates.</p>
 
-Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
+<p>Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
 
-**Example 1:**
+<p><strong>Example 1:</strong></p>
 
-```text
+<pre>
+<strong>Input:</strong> [1,2,3,1]
+<strong>Output:</strong> true</pre>
 
-Input: [1,2,3,1]
-Output: true
-```
+<p><strong>Example 2:</strong></p>
 
-**Example 2:**
+<pre>
+<strong>Input: </strong>[1,2,3,4]
+<strong>Output:</strong> false</pre>
 
-```text
+<p><strong>Example 3:</strong></p>
 
-Input: [1,2,3,4]
-Output: false
-```
+<pre>
+<strong>Input: </strong>[1,1,1,3,3,4,3,2,4,2]
+<strong>Output:</strong> true</pre>
 
-**Example 3:**
-
-```text
-
-Input: [1,1,1,3,3,4,3,2,4,2]
-Output: true
-```
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 #include <algorithm>
 
@@ -54,4 +45,3 @@ public:
     }
 };
 ```
-

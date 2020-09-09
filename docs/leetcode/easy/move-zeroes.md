@@ -1,26 +1,22 @@
-# Move Zeroes
-
 ## [Move Zeroes](https://leetcode.com/problems/move-zeroes)
 
-Given an array `nums`, write a function to move all `0`'s to the end of it while maintaining the relative order of the non-zero elements.
+<p>Given an array <code>nums</code>, write a function to move all <code>0</code>&#39;s to the end of it while maintaining the relative order of the non-zero elements.</p>
 
-**Example:**
+<p><b>Example:</b></p>
 
-```text
+<pre>
+<b>Input:</b> <code>[0,1,0,3,12]</code>
+<b>Output:</b> <code>[1,3,12,0,0]</code></pre>
 
-Input: [0,1,0,3,12]
-Output: [1,3,12,0,0]
-```
+<p><b>Note</b>:</p>
 
-**Note**:
-
-1. You must do this **in-place** without making a copy of the array.
-2. Minimize the total number of operations.
+<ol>
+	<li>You must do this <b>in-place</b> without making a copy of the array.</li>
+	<li>Minimize the total number of operations.</li>
+</ol>
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 #include <algorithm>
 
@@ -34,4 +30,3 @@ public:
     }
 };
 ```
-

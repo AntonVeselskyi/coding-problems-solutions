@@ -1,35 +1,30 @@
-# Valid Anagram
-
 ## [Valid Anagram](https://leetcode.com/problems/valid-anagram)
 
-Given two strings _s_ and _t_ , write a function to determine if _t_ is an anagram of _s_.
+<p>Given two strings <em>s</em> and <em>t&nbsp;</em>, write a function to determine if <em>t</em> is an anagram of <em>s</em>.</p>
 
-**Example 1:**
+<p><b>Example 1:</b></p>
 
-```text
+<pre>
+<b>Input:</b> <em>s</em> = &quot;anagram&quot;, <em>t</em> = &quot;nagaram&quot;
+<b>Output:</b> true
+</pre>
 
-Input: s = "anagram", t = "nagaram"
-Output: true
-```
+<p><b>Example 2:</b></p>
 
-**Example 2:**
+<pre>
+<b>Input:</b> <em>s</em> = &quot;rat&quot;, <em>t</em> = &quot;car&quot;
+<b>Output: </b>false
+</pre>
 
-```text
+<p><strong>Note:</strong><br />
+You may assume the string contains only lowercase alphabets.</p>
 
-Input: s = "rat", t = "car"
-Output: false
-```
+<p><strong>Follow up:</strong><br />
+What if the inputs contain unicode characters? How would you adapt your solution to such case?</p>
 
-**Note:**  
- You may assume the string contains only lowercase alphabets.
-
-**Follow up:**  
- What if the inputs contain unicode characters? How would you adapt your solution to such case?
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 #include <algorithm>
 class Solution
@@ -43,4 +38,3 @@ public:
     }
 };
 ```
-

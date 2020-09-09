@@ -1,8 +1,6 @@
-# GROCERY STORE: Inventory
-
 ## [GROCERY STORE: Inventory](https://www.codewars.com/kata/5a8eb3fb57c562110f0000a1)
 
-You are the owner of the Grocery Store. All your products are in the database, that you have created after CodeWars SQL excercises!:\)
+You are the owner of the Grocery Store. All your products are in the database, that you have created after CodeWars SQL excercises!:)
 
 Today you are going to CompanyA warehouse
 
@@ -13,27 +11,23 @@ Use SELECT to show id, name, stock from products which are only 2 or less item i
 Order the results by product id
 
 ### products table schema
+- id
+- name
+- price
+- stock
+- producent
 
-* id
-* name
-* price
-* stock
-* producent
 
 ### results table schema
-
-* id
-* name
-* stock
+- id
+- name
+- stock
 
 ## Solutions
-
 #### 🗃️ Sql
-
 ```sql
 select id, name, stock
 from products
 where stock < 3 and producent like 'CompanyA'
 order by id;
 ```
-

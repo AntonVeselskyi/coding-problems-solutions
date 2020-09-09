@@ -1,16 +1,14 @@
-# The Hunger Games - Zoo Disaster!
+## [The Hunger Games - Zoo Disaster!](https://www.codewars.com/kata/5902bc7aba39542b4a00003d)
 
-### [The Hunger Games - Zoo Disaster!](https://www.codewars.com/kata/5902bc7aba39542b4a00003d)
+<img src="https://i.imgur.com/ta6gv1i.png?1" title="source: imgur.com" />
 
-![](https://i.imgur.com/ta6gv1i.png?1)
-
-## Story
+# Story
 
 A freak power outage at the zoo has caused all of the electric cage doors to malfunction and swing open...
 
 All the animals are out and some of them are eating each other!
 
-## It's a Zoo Disaster!
+# <span style='color:red'>It's a Zoo Disaster!</span>
 
 Here is a list of zoo animals, and what they can eat
 
@@ -33,36 +31,39 @@ Here is a list of zoo animals, and what they can eat
 * panda eats leaves
 * sheep eats grass
 
-## Kata Task
+# Kata Task
 
-#### INPUT
-
+### INPUT
 A comma-separated string representing all the things at the zoo
 
-#### TASK
-
+### TASK
 Figure out who eats whom until no more eating is possible.
 
-#### OUTPUT
+### OUTPUT 
 
-A list of strings \(refer to the example below\) where:
-
-* The first element is the initial zoo \(same as INPUT\)
+A list of strings (refer to the example below) where:
+* The first element is the initial zoo (same as INPUT)
 * The last element is a comma-separated string of what the zoo looks like when all the eating has finished
-* All other elements \(2nd to last-1\) are of the form `X eats Y` describing what happened
+* All other elements (2nd to last-1) are of the form ```X eats Y``` describing what happened
 
-## Notes
+
+# Notes
 
 * Animals can only eat things beside them
+
 * Animals always eat to their **LEFT** before eating to their **RIGHT**
+
 * Always the **LEFTMOST** animal capable of eating will eat before any others
-* Any other things you may find at the zoo \(which are not listed above\) do not eat anything and are not edible
 
-## Example
+* Any other things you may find at the zoo (which are not listed above) do not eat anything and are not edible
 
-_Input_
 
-```text
+# Example
+
+*Input*
+
+```"fox,bug,chicken,grass,sheep"```
+
 *Working*
 <table>
 <tr><td>1<td>fox can't eat bug<td><pre>"fox,bug,chicken,grass,sheep"</pre></tr>
@@ -77,13 +78,15 @@ _Input_
 
 *Output*
 
-```["fox,bug,chicken,grass,sheep", "chicken eats bug", "fox eats chicken", "sheep eats grass", "fox eats sheep", "fox"]
-```
+```["fox,bug,chicken,grass,sheep", "chicken eats bug", "fox eats chicken", "sheep eats grass", "fox eats sheep", "fox"]```
 
-### Solutions
 
-**🐍 Python**
 
+
+
+
+## Solutions
+#### 🐍 Python
 ```python
 def who_eats_who(zoo):
     rules = dict(
@@ -99,14 +102,14 @@ def who_eats_who(zoo):
     lion=['cow','antelope']
     )
     rules['big-fish']=['little-fish']
-
+    
     res_seq = [zoo]
     new_zoo = zoo.split(',')
     someone_died = True
-
+    
     while someone_died:
         someone_died = False
-
+        
         for i, anim in enumerate(new_zoo):
             if anim not in rules.keys():
                 continue
@@ -123,10 +126,9 @@ def who_eats_who(zoo):
                 del new_zoo[animal_to_eat_indx]
                 someone_died = True
                 break      
-
-
-
+                
+                
+            
     res_seq.append(",".join(new_zoo))
     return res_seq
 ```
-

@@ -1,61 +1,66 @@
-# Backspace String Compare
-
 ## [Backspace String Compare](https://leetcode.com/problems/backspace-string-compare)
 
-Given two strings `S` and `T`, return if they are equal when both are typed into empty text editors. `#` means a backspace character.
+<p>Given two&nbsp;strings&nbsp;<code>S</code>&nbsp;and <code>T</code>,&nbsp;return if they are equal when both are typed into empty text editors. <code>#</code> means a backspace character.</p>
 
-Note that after backspacing an empty text, the text will continue empty.
+<p>Note that after&nbsp;backspacing an empty text, the text will continue empty.</p>
 
-**Example 1:**
+<div>
+<p><strong>Example 1:</strong></p>
 
-```text
+<pre>
+<strong>Input: </strong>S = <span id="example-input-1-1">&quot;ab#c&quot;</span>, T = <span id="example-input-1-2">&quot;ad#c&quot;</span>
+<strong>Output: </strong><span id="example-output-1">true
+</span><span><strong>Explanation</strong>: Both S and T become &quot;ac&quot;.</span>
+</pre>
 
-Input: S = "ab#c", T = "ad#c"
-Output: true
-Explanation: Both S and T become "ac".
-```
+<div>
+<p><strong>Example 2:</strong></p>
 
-**Example 2:**
+<pre>
+<strong>Input: </strong>S = <span id="example-input-2-1">&quot;ab##&quot;</span>, T = <span id="example-input-2-2">&quot;c#d#&quot;</span>
+<strong>Output: </strong><span id="example-output-2">true
+</span><span><strong>Explanation</strong>: Both S and T become &quot;&quot;.</span>
+</pre>
 
-```text
+<div>
+<p><strong>Example 3:</strong></p>
 
-Input: S = "ab##", T = "c#d#"
-Output: true
-Explanation: Both S and T become "".
-```
+<pre>
+<strong>Input: </strong>S = <span id="example-input-3-1">&quot;a##c&quot;</span>, T = <span id="example-input-3-2">&quot;#a#c&quot;</span>
+<strong>Output: </strong><span id="example-output-3">true
+</span><span><strong>Explanation</strong>: Both S and T become &quot;c&quot;.</span>
+</pre>
 
-**Example 3:**
+<div>
+<p><strong>Example 4:</strong></p>
 
-```text
+<pre>
+<strong>Input: </strong>S = <span id="example-input-4-1">&quot;a#c&quot;</span>, T = <span id="example-input-4-2">&quot;b&quot;</span>
+<strong>Output: </strong><span id="example-output-4">false
+</span><span><strong>Explanation</strong>: S becomes &quot;c&quot; while T becomes &quot;b&quot;.</span>
+</pre>
 
-Input: S = "a##c", T = "#a#c"
-Output: true
-Explanation: Both S and T become "c".
-```
+<p><span><strong>Note</strong>:</span></p>
 
-**Example 4:**
+<ul>
+	<li><code><span>1 &lt;= S.length &lt;= 200</span></code></li>
+	<li><code><span>1 &lt;= T.length &lt;= 200</span></code></li>
+	<li><span><code>S</code>&nbsp;and <code>T</code> only contain&nbsp;lowercase letters and <code>&#39;#&#39;</code> characters.</span></li>
+</ul>
 
-```text
+<p><strong>Follow up:</strong></p>
 
-Input: S = "a#c", T = "b"
-Output: false
-Explanation: S becomes "c" while T becomes "b".
-```
+<ul>
+	<li>Can you solve it in <code>O(N)</code> time and <code>O(1)</code> space?</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 
-**Note**:
-
-* `1 <= S.length <= 200`
-* `1 <= T.length <= 200`
-* `S` and `T` only contain lowercase letters and `'#'` characters.
-
-**Follow up:**
-
-* Can you solve it in `O(N)` time and `O(1)` space?
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 class Solution
 {
@@ -77,10 +82,10 @@ public:
                     S.erase(i-1,2);
                     i-=2;
                 }
-
+                                 
             }
         }
-
+        
         return S;
     }
     bool backspaceCompare(string S, string T)
@@ -89,4 +94,3 @@ public:
     }
 };
 ```
-

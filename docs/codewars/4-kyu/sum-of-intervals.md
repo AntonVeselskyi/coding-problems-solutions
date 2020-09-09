@@ -1,5 +1,3 @@
-# Sum of Intervals
-
 ## [Sum of Intervals](https://www.codewars.com/kata/52b7ed099cdc285c300001cd)
 
 Write a function called `sumIntervals`/`sum_intervals()` that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.
@@ -12,7 +10,7 @@ Intervals are represented by a pair of integers in the form of an array. The fir
 
 List containing overlapping intervals:
 
-```text
+```
 [
    [1,4],
    [7, 10],
@@ -20,7 +18,7 @@ List containing overlapping intervals:
 ]
 ```
 
-The sum of the lengths of these intervals is 7. Since \[1, 4\] and \[3, 5\] overlap, we can treat the interval as \[1, 5\], which has a length of 4.
+The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.
 
 ### Examples:
 
@@ -44,8 +42,8 @@ sumIntervals( [
    [16, 19],
    [5, 11]
 ] ); // => 19
-```
 
+```
 ```java
 // null argument
 Interval.sumIntervals(null);  // => 0
@@ -64,8 +62,7 @@ Interval.sumIntervals(new int[][]{
   {1,4},{3,6},{2,8}
 });  // [1,8] => 7
 ```
-
-```text
+```C#
 // empty intervals
 Intervals.SumIntervals(new (int, int)[]{ });  // => 0
 Intervals.SumIntervals(new (int, int)[]{ (2, 2), (5, 5)});  // => 0
@@ -80,7 +77,6 @@ Intervals.SumIntervals(new (int, int)[]{
   (1, 4), (3, 6), (2, 8)
 });  // (1,8) => 7
 ```
-
 ```cpp
 sum_intervals( {
    {1,2},
@@ -102,7 +98,6 @@ sum_intervals( {
    {5, 11}
 } ); // => 19
 ```
-
 ```c
 sum_intervals((const struct interval[]){
    {1,2},
@@ -124,8 +119,7 @@ sum_intervals((const struct interval[]){
    {5, 11}
 }, 5); /* => 19 */
 ```
-
-```text
+```nasm
 v1:
     dd    1,2, \
           6,10, \
@@ -136,72 +130,62 @@ v2:
     dd    3,5
 v3:
     dd    1,5, 10,20, 1,6, 16,19, 5,11
-
+      
     mov rdi, v1
     mov rsi, 3
     call sumintvls    ; EAX <- 9
-
+    
     mov rdi, v2
     mov rsi, 3
     call sumintvls    ; EAX <- 7
-
+    
     mov rdi, v3
     mov rsi, 5
     call sumintvls    ; EAX <- 19
 ```
-
-```text
+```clojure
 (sum-intervals [ [1 5] [10 15] [-1 3] ]) ; => 11
 
-(sum-intervals [ [1 5] ]) ; => 4
+(sum-intervals [ [1 5] ]) ; => 4 
 ```
-
 ```typescript
 sumOfIntervals([[1, 5], [10, 15], [-1, 3]]) // => 11
 
-sumOfIntervals([[1, 5]]) // => 4
+sumOfIntervals([[1, 5]]) // => 4 
 ```
-
-```text
+```crystal
 sum_of_intervals([{1, 5}, {10, 15}, {-1, 3}]) # => 11
 
-sum_of_intervals([{1, 5}]) # => 4
+sum_of_intervals([{1, 5}]) # => 4 
 ```
-
 ```elixir
 sum_of_intervals([{1, 5}, {10, 15}, {-1, 3}]) # => 11
 
-sum_of_intervals([{1, 5}]) # => 4
+sum_of_intervals([{1, 5}]) # => 4 
 ```
-
 ```haskell
 sumOfIntervals([(1, 5}, (10, 15}, (-1, 3)]) -- => 11
 
-sumOfIntervals([(1, 5)]) -- => 4
+sumOfIntervals([(1, 5)]) -- => 4 
 ```
-
 ```julia
 sumofintervals([(1, 5}, (10, 15}, (-1, 3)]) # => 11
 
-sumofintervals([(1, 5)]) # => 4
+sumofintervals([(1, 5)]) # => 4 
 ```
-
 ```dart
 sumOfIntervals([[1, 5], [10, 15], [-1, 3]]) // => 11
 
-sumOfIntervals([[1, 5]]) // => 4
+sumOfIntervals([[1, 5]]) // => 4 
 ```
-
-```text
+```racket
 (sum-intervals (list (list -1 21) (list -59 -45))) ;; 36
 (sum-intervals (list (list 1 5) (list 10 15) (list -1 3))) ;; 11
 (sum-intervals (list (list 1 2) (list 6 10) (list 11 15))) ;; 36
 ```
 
 ## Solutions
-
 #### 🐍 Python
-
 ```python
 def sum_of_intervals(intervals):
     for _ in range(3):
@@ -220,12 +204,13 @@ def sum_of_intervals(intervals):
                     is_sub_interval = True
                     if  itrl[0] < v_itrl[0]:
                         valid_intervals[k][0] = itrl[0]
-
+                        
             if not is_sub_interval:
                 valid_intervals.append(list(itrl))
 
             intervals=list(reversed(valid_intervals))    
-
+        
     return sum(x[1]-x[0] for x in valid_intervals)
+                
+                
 ```
-

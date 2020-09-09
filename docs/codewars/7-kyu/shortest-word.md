@@ -1,15 +1,12 @@
-# Shortest Word
-
 ## [Shortest Word](https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9)
 
-Simple, given a string of words, return the length of the shortest word\(s\).
+Simple, given a string of words, return the length of the shortest word(s).
 
 String will never be empty and you do not need to account for different data types.
 
+
 ## Solutions
-
-### 👴 C
-
+#### 👴 C
 ```c
 #include <sys/types.h>
 #include <string.h>
@@ -31,4 +28,3 @@ ssize_t find_short(const char *s)
   return min;
 }
 ```
-

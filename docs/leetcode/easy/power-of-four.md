@@ -1,31 +1,26 @@
-# Power of Four
-
 ## [Power of Four](https://leetcode.com/problems/power-of-four)
 
-Given an integer \(signed 32 bits\), write a function to check whether it is a power of 4.
+<p>Given an integer (signed 32 bits), write a function to check whether it is a power of 4.</p>
 
-**Example 1:**
+<p><strong>Example 1:</strong></p>
 
-```text
+<pre>
+<strong>Input: </strong><span id="example-input-1-1">16</span>
+<strong>Output: </strong><span id="example-output-1">true</span>
+</pre>
 
-Input: 16
-Output: true
-```
+<div>
+<p><strong>Example 2:</strong></p>
 
-**Example 2:**
+<pre>
+<strong>Input: </strong><span id="example-input-2-1">5</span>
+<strong>Output: </strong><span id="example-output-2">false</span></pre>
+</div>
 
-```text
-
-Input: 5
-Output: false
-```
-
-**Follow up**: Could you solve it without loops/recursion?
+<p><b>Follow up</b>: Could you solve it without loops/recursion?</p>
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 #include <stdint.h>
 
@@ -46,4 +41,3 @@ public:
     }
 };
 ```
-

@@ -1,73 +1,65 @@
-# String to Integer \(atoi\)
+## [String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi)
 
-## [String to Integer \(atoi\)](https://leetcode.com/problems/string-to-integer-atoi)
+<p>Implement <code><span>atoi</span></code> which&nbsp;converts a string to an integer.</p>
 
-Implement `atoi` which converts a string to an integer.
+<p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
 
-The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.
+<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
 
-The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
+<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
 
-If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
+<p>If no valid conversion could be performed, a zero value is returned.</p>
 
-If no valid conversion could be performed, a zero value is returned.
+<p><strong>Note:</strong></p>
 
-**Note:**
+<ul>
+	<li>Only the space character <code>&#39; &#39;</code> is considered as whitespace character.</li>
+	<li>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [&minus;2<sup>31</sup>,&nbsp; 2<sup>31&nbsp;</sup>&minus; 1]. If the numerical value is out of the range of representable values, INT_MAX (2<sup>31&nbsp;</sup>&minus; 1) or INT_MIN (&minus;2<sup>31</sup>) is returned.</li>
+</ul>
 
-* Only the space character `' '` is considered as whitespace character.
-* Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: \[−231,  231 − 1\]. If the numerical value is out of the range of representable values, INT\_MAX \(231 − 1\) or INT\_MIN \(−231\) is returned.
+<p><strong>Example 1:</strong></p>
 
-**Example 1:**
+<pre>
+<strong>Input:</strong> &quot;42&quot;
+<strong>Output:</strong> 42
+</pre>
 
-```text
+<p><strong>Example 2:</strong></p>
 
-Input: "42"
-Output: 42
-```
+<pre>
+<strong>Input:</strong> &quot;   -42&quot;
+<strong>Output:</strong> -42
+<strong>Explanation:</strong> The first non-whitespace character is &#39;-&#39;, which is the minus sign.
+&nbsp;            Then take as many numerical digits as possible, which gets 42.
+</pre>
 
-**Example 2:**
+<p><strong>Example 3:</strong></p>
 
-```text
+<pre>
+<strong>Input:</strong> &quot;4193 with words&quot;
+<strong>Output:</strong> 4193
+<strong>Explanation:</strong> Conversion stops at digit &#39;3&#39; as the next character is not a numerical digit.
+</pre>
 
-Input: "   -42"
-Output: -42
-Explanation: The first non-whitespace character is '-', which is the minus sign.
-             Then take as many numerical digits as possible, which gets 42.
-```
+<p><strong>Example 4:</strong></p>
 
-**Example 3:**
+<pre>
+<strong>Input:</strong> &quot;words and 987&quot;
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> The first non-whitespace character is &#39;w&#39;, which is not a numerical 
+&nbsp;            digit or a +/- sign. Therefore no valid conversion could be performed.</pre>
 
-```text
+<p><strong>Example 5:</strong></p>
 
-Input: "4193 with words"
-Output: 4193
-Explanation: Conversion stops at digit '3' as the next character is not a numerical digit.
-```
+<pre>
+<strong>Input:</strong> &quot;-91283472332&quot;
+<strong>Output:</strong> -2147483648
+<strong>Explanation:</strong> The number &quot;-91283472332&quot; is out of the range of a 32-bit signed integer.
+&nbsp;            Thefore INT_MIN (&minus;2<sup>31</sup>) is returned.</pre>
 
-**Example 4:**
-
-```text
-
-Input: "words and 987"
-Output: 0
-Explanation: The first non-whitespace character is 'w', which is not a numerical 
-             digit or a +/- sign. Therefore no valid conversion could be performed.
-```
-
-**Example 5:**
-
-```text
-
-Input: "-91283472332"
-Output: -2147483648
-Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
-             Thefore INT_MIN (−231) is returned.
-```
 
 ## Solutions
-
-### 🧠 Cpp
-
+#### 🧠 Cpp
 ```cpp
 #include <cmath>
 #include <climits>
@@ -86,9 +78,9 @@ public:
         bool number_started = false;
         for(;str[start_pos] == ' ' && !number_started || str[start_pos] == '0' ; start_pos++)
             if(str[start_pos] == '0') number_started = true;
-
-
-
+        
+        
+        
         //validate it
         bool is_negative = false, is_signed = false;
         if(str[start_pos] == '-')
@@ -100,7 +92,7 @@ public:
         {
             is_signed = true;
         }
-
+        
         //no zeroes before sign
         if(is_signed)
         {   
@@ -109,22 +101,22 @@ public:
             //skip sign for compounting
             start_pos++;
         }   
-
+        
         //remove potential zeros after sign
         for(;str[start_pos] == '0' ; start_pos++);
 
         if(str[start_pos] < '0' || str[start_pos] > '9')
            return 0;
-
-
+        
+        
         //find end
         int delim_position=start_pos;
         while(str[++delim_position] >= '0' && str[delim_position] <= '9');
-
+        
         //check for limits
         if( (delim_position - start_pos) > 10)
             return is_negative ? INT_MIN : INT_MAX;
-
+        
         //case for near limit numbers
         if( (delim_position - start_pos) == 10)
         {
@@ -134,19 +126,18 @@ public:
                 || (shorter_input_value == 214748364 && str[delim_position-1] > '7') )
                 return is_negative ? INT_MIN : INT_MAX;
         }
-
+        
         //compound the result
         int result = 0;
         for(; start_pos < delim_position; ++start_pos)
             result += std::pow(10, delim_position - start_pos - 1) 
                       * (str[start_pos] - '0');
-
+        
         if(is_negative)
             result*=-1;
-
+        
         return result;
-
+            
     }
 };
 ```
-
