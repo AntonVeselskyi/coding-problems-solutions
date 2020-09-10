@@ -1,4 +1,4 @@
-# Codding Challenges ⭐
+# 🍀 Codding Problems Solutions 🍀
 
 ## CodeWars ✨
 * [🌝 Beta](/CodeWars/Beta)
