@@ -46,7 +46,7 @@ public:
 
         const size_t uniq_size = nums.size();
         if(uniq_size < 3)
-            return *std::max_element(nums.begin(), nums.end());
+            return nums[uniq_size-1];
         else
         {
             return nums[uniq_size-3];

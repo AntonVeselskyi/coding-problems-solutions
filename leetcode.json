@@ -1,5 +1,5 @@
 {
-    "name": "LeetCode \ud83d\udcab",
+    "name": "LeetCode \ud83c\udf43",
     "sections": [
         {
             "name": "\ud83d\udc4c Easy",
@@ -20,6 +20,25 @@
                         "slug": "backspace-string-compare",
                         "submissions": {
                             "cpp": "322075660"
+                        }
+                    }
+                },
+                {
+                    "name": "Check If N and Its Double Exist",
+                    "link": "https://leetcode.com/problems/check-if-n-and-its-double-exist",
+                    "description": "<p>Given an array <code>arr</code> of integers, check if there exists two integers <code>N</code> and <code>M</code> such that <code>N</code> is the double of <code>M</code> ( i.e. <code>N = 2 * M</code>).</p>\n\n<p>More formally check if there exists&nbsp;two indices <code>i</code> and <code>j</code> such that :</p>\n\n<ul>\n\t<li><code>i != j</code></li>\n\t<li><code>0 &lt;= i, j &lt; arr.length</code></li>\n\t<li><code>arr[i] == 2 * arr[j]</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [10,2,5,3]\n<strong>Output:</strong> true\n<strong>Explanation:</strong> N<code> = 10</code> is the double of M<code> = 5</code>,that is, <code>10 = 2 * 5</code>.\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [7,1,14,11]\n<strong>Output:</strong> true\n<strong>Explanation:</strong> N<code> = 14</code> is the double of M<code> = 7</code>,that is, <code>14 = 2 * 7</code>.\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [3,1,7,11]\n<strong>Output:</strong> false\n<strong>Explanation:</strong> In this case does not exist N and M, such that N = 2 * M.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= arr.length &lt;= 500</code></li>\n\t<li><code>-10^3 &lt;= arr[i] &lt;= 10^3</code></li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "#define all(x) (x).begin(), (x).end()\n\nclass Solution\n{\npublic:\n    bool checkIfExist(vector<int>& arr)\n    {\n        //O(n^2) solution\n        for(auto iter = begin(arr); iter < end(arr); ++iter)\n        {\n            auto found = find(all(arr), *iter*2);\n            if( found != arr.end() && found != iter)\n                return true;\n        }\n\n        return false;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "check-if-n-and-its-double-exist",
+                        "submissions": {
+                            "cpp": "399691070"
                         }
                     }
                 },
@@ -81,6 +100,25 @@
                     }
                 },
                 {
+                    "name": "Duplicate Zeros",
+                    "link": "https://leetcode.com/problems/duplicate-zeros",
+                    "description": "<p>Given a fixed length&nbsp;array <code>arr</code> of integers, duplicate each occurrence of zero, shifting the remaining elements to the right.</p>\r\n\r\n<p>Note that elements beyond the length of the original array are not written.</p>\r\n\r\n<p>Do the above modifications to the input array <strong>in place</strong>, do not return anything from your function.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-1-1\">[1,0,2,3,0,4,5,0]</span>\r\n<strong>Output: </strong>null\r\n<strong>Explanation: </strong>After calling your function, the <strong>input</strong> array is modified to: <span id=\"example-output-1\">[1,0,0,2,3,0,0,4]</span>\r\n</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-2-1\">[1,2,3]</span>\r\n<strong>Output: </strong>null\r\n<strong>Explanation: </strong>After calling your function, the <strong>input</strong> array is modified to: <span id=\"example-output-2\">[1,2,3]</span>\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Note:</strong></p>\r\n\r\n<ol>\r\n\t<li><code>1 &lt;= arr.length &lt;= 10000</code></li>\r\n\t<li><code>0 &lt;= arr[i] &lt;= 9</code></li>\r\n</ol>",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\n    template<typename T>\n    void insert_stable_size(size_t pos, T val, vector<T> &arr)\n    {\n        for(size_t i = pos; i < arr.size(); ++i)\n        {\n            std::swap(val, arr[i]);\n        }\n    }\npublic:\n    void duplicateZeros(vector<int>& arr)\n    {\n        //I am not using insert + pop_back\n        //because the goal if the task is to do it manually\n        for(size_t i = 0; i < arr.size()-1; ++i)\n        {\n            if(arr[i] == 0)\n            {\n                insert_stable_size(i+1, 0, arr);\n                //skip inserted 0\n                ++i;\n            }\n        }\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "duplicate-zeros",
+                        "submissions": {
+                            "cpp": "399676730"
+                        }
+                    }
+                },
+                {
                     "name": "Excel Sheet Column Number",
                     "link": "https://leetcode.com/problems/excel-sheet-column-number",
                     "description": "<p>Given a column title as appear in an Excel sheet, return its corresponding column number.</p>\r\n\r\n<p>For example:</p>\r\n\r\n<pre>\r\n    A -&gt; 1\r\n    B -&gt; 2\r\n    C -&gt; 3\r\n    ...\r\n    Z -&gt; 26\r\n    AA -&gt; 27\r\n    AB -&gt; 28 \r\n    ...\r\n</pre>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> &quot;A&quot;\r\n<strong>Output:</strong> 1\r\n</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong>&quot;AB&quot;\r\n<strong>Output:</strong> 28\r\n</pre>\r\n\r\n<p><strong>Example 3:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong>&quot;ZY&quot;\r\n<strong>Output:</strong> 701\r\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 7</code></li>\n\t<li><code>s</code> consists only of uppercase English letters.</li>\n\t<li><code>s</code> is between &quot;A&quot; and &quot;FXSHRXW&quot;.</li>\n</ul>\n",
@@ -96,6 +134,63 @@
                         "slug": "excel-sheet-column-number",
                         "submissions": {
                             "cpp": "378803388"
+                        }
+                    }
+                },
+                {
+                    "name": "Find All Numbers Disappeared in an Array",
+                    "link": "https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array",
+                    "description": "<p>Given an array of integers where 1 &le; a[i] &le; <i>n</i> (<i>n</i> = size of array), some elements appear twice and others appear once.</p>\r\n\r\n<p>Find all the elements of [1, <i>n</i>] inclusive that do not appear in this array.</p>\r\n\r\n<p>Could you do it without extra space and in O(<i>n</i>) runtime? You may assume the returned list does not count as extra space.</p>\r\n\r\n<p><b>Example:</b>\r\n<pre>\r\n<b>Input:</b>\r\n[4,3,2,7,8,2,3,1]\r\n\r\n<b>Output:</b>\r\n[5,6]\r\n</pre>\r\n</p>",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    vector<int> findDisappearedNumbers(vector<int>& nums)\n    {\n        set<int> all_nums;\n        for(int i = 1; i <= nums.size(); ++i)\n            all_nums.insert(i);\n        \n        for(auto num : nums)\n            all_nums.erase(num);\n        \n        return vector<int>(begin(all_nums),end(all_nums));    \n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "find-all-numbers-disappeared-in-an-array",
+                        "submissions": {
+                            "cpp": "400106274"
+                        }
+                    }
+                },
+                {
+                    "name": "Find Numbers with Even Number of Digits",
+                    "link": "https://leetcode.com/problems/find-numbers-with-even-number-of-digits",
+                    "description": "Given an array <code>nums</code> of integers, return how many of them contain an <strong>even number</strong> of digits.\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [12,345,2,6,7896]\n<strong>Output:</strong> 2\n<strong>Explanation: \n</strong>12 contains 2 digits (even number of digits).&nbsp;\n345 contains 3 digits (odd number of digits).&nbsp;\n2 contains 1 digit (odd number of digits).&nbsp;\n6 contains 1 digit (odd number of digits).&nbsp;\n7896 contains 4 digits (even number of digits).&nbsp;\nTherefore only 12 and 7896 contain an even number of digits.\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [555,901,482,1771]\n<strong>Output:</strong> 1 \n<strong>Explanation: </strong>\nOnly 1771 contains an even number of digits.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 500</code></li>\n\t<li><code>1 &lt;= nums[i] &lt;= 10^5</code></li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "#include <limits>\n\nclass Solution\n{\npublic:\n    int findNumbers(vector<int>& nums)\n    {\n        int res = 0;\n        for(int num : nums)\n        for(int i = 1, is_even = 1;\n            i < std::numeric_limits<int>::max();\n            i*=10, is_even=!is_even)\n        {\n            if(num/i == 0)\n            {\n                if(is_even)\n                    res++;\n                break;\n            }\n                \n        }\n        \n        return res;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "find-numbers-with-even-number-of-digits",
+                        "submissions": {
+                            "cpp": "397966980"
+                        }
+                    }
+                },
+                {
+                    "name": "Find the Difference",
+                    "link": "https://leetcode.com/problems/find-the-difference",
+                    "description": "<p>\r\nGiven two strings <b><i>s</i></b> and <b><i>t</i></b> which consist of only lowercase letters.</p>\r\n\r\n<p>String <b><i>t</i></b> is generated by random shuffling string <b><i>s</i></b> and then add one more letter at a random position.</p>\r\n\r\n<p>Find the letter that was added in <b><i>t</i></b>.</p>\r\n\r\n<p><b>Example:</b>\r\n<pre>\r\nInput:\r\ns = \"abcd\"\r\nt = \"abcde\"\r\n\r\nOutput:\r\ne\r\n\r\nExplanation:\r\n'e' is the letter that was added.\r\n</pre>",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "#define all(x) (x).begin(), (x).end()\nclass Solution\n{\n\npublic:\n    char findTheDifference(string s, string t)\n    {\n        std::sort(all(s));\n        std::sort(all(t));\n        \n        string diff;\n        std::set_difference(all(t),\n                            all(s),\n                            back_inserter(diff));\n\n        return diff.front();\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "find-the-difference",
+                        "submissions": {
+                            "cpp": "400048665"
                         }
                     }
                 },
@@ -153,6 +248,25 @@
                         "slug": "goat-latin",
                         "submissions": {
                             "python": "383227811"
+                        }
+                    }
+                },
+                {
+                    "name": "Height Checker",
+                    "link": "https://leetcode.com/problems/height-checker",
+                    "description": "<p>Students are asked to stand in non-decreasing order of heights for an annual photo.</p>\n\n<p>Return the minimum number of students that must move in order for all students to be standing in non-decreasing order of height.</p>\n\n<p>Notice that when a group of students is selected they can reorder in any possible way between themselves and the non selected students&nbsp;remain on their seats.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> heights = [1,1,4,2,1,3]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> \nCurrent array : [1,1,4,2,1,3]\nTarget array  : [1,1,1,2,3,4]\nOn index 2 (0-based) we have 4 vs 1 so we have to move this student.\nOn index 4 (0-based) we have 1 vs 3 so we have to move this student.\nOn index 5 (0-based) we have 3 vs 4 so we have to move this student.\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> heights = [5,1,2,3,4]\n<strong>Output:</strong> 5\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> heights = [1,2,3,4,5]\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= heights.length &lt;= 100</code></li>\n\t<li><code>1 &lt;= heights[i] &lt;= 100</code></li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "#define all(x) (x).begin(), (x).end()\nclass Solution\n{\npublic:\n    int heightChecker(vector<int>& heights)\n    {\n        //O(N logN) solution (sorting)\n        vector<int> sorted_h = heights;\n        std::sort(all(sorted_h));\n                \n        unsigned counter = 0;\n        for(int i = 0; i < heights.size(); ++i)\n            if(heights[i] != sorted_h[i])\n                ++counter;    \n        \n        return counter;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "height-checker",
+                        "submissions": {
+                            "cpp": "400099905"
                         }
                     }
                 },
@@ -218,6 +332,12 @@
                     "link": "https://leetcode.com/problems/length-of-last-word",
                     "description": "<p>Given a string <i>s</i> consists of upper/lower-case alphabets and empty space characters <code>&#39; &#39;</code>, return the length of last word (last word means the last appearing word if we loop from left to right) in the string.</p>\n\n<p>If the last word does not exist, return 0.</p>\n\n<p><b>Note:</b> A word is defined as a <strong>maximal substring</strong> consisting&nbsp;of non-space characters only.</p>\n\n<p><b>Example:</b></p>\n\n<pre>\n<b>Input:</b> &quot;Hello World&quot;\n<b>Output:</b> 5\n</pre>\n\n<p>&nbsp;</p>\n",
                     "solutions": {
+                        "python": [
+                            {
+                                "language": "python",
+                                "code": "class Solution:\n    def lengthOfLastWord(self, s: str) -> int:\n        return len(s.rsplit(maxsplit=1)[-1]) if len(s.strip()) else 0\n        "
+                            }
+                        ],
                         "cpp": [
                             {
                                 "language": "cpp",
@@ -228,6 +348,7 @@
                     "metadata": {
                         "slug": "length-of-last-word",
                         "submissions": {
+                            "python": "397369817",
                             "cpp": "378523512"
                         }
                     }
@@ -286,6 +407,25 @@
                         "slug": "maximum-depth-of-binary-tree",
                         "submissions": {
                             "cpp": "296206624"
+                        }
+                    }
+                },
+                {
+                    "name": "Merge Sorted Array",
+                    "link": "https://leetcode.com/problems/merge-sorted-array",
+                    "description": "<p>Given two sorted integer arrays <em>nums1</em> and <em>nums2</em>, merge <em>nums2</em> into <em>nums1</em> as one sorted array.</p>\n\n<p><strong>Note:</strong></p>\n\n<ul>\n\t<li>The number of elements initialized in <em>nums1</em> and <em>nums2</em> are <em>m</em> and <em>n</em> respectively.</li>\n\t<li>You may assume that <em>nums1</em> has enough space (size that is&nbsp;<strong>equal</strong> to <em>m</em> + <em>n</em>) to hold additional elements from <em>nums2</em>.</li>\n</ul>\n\n<p><strong>Example:</strong></p>\n\n<pre>\n<strong>Input:</strong>\nnums1 = [1,2,3,0,0,0], m = 3\nnums2 = [2,5,6],       n = 3\n\n<strong>Output:</strong>&nbsp;[1,2,2,3,5,6]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>-10^9 &lt;= nums1[i], nums2[i] &lt;= 10^9</code></li>\n\t<li><code>nums1.length == m + n</code></li>\n\t<li><code>nums2.length == n</code></li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n)\n    {\n        if(!n)\n            return;\n        if(!m)\n        {\n            nums1 = nums2;\n            return;\n        }\n\n        //merge two sorted arrays in one\n        auto n1_iter = nums1.begin(),\n             n1_end = n1_iter + m,\n             n2_iter = nums2.begin(),\n             n2_end = n2_iter + n;\n        \n        vector<int> res;\n        res.reserve(n+m);\n        \n        while(n1_iter != n1_end && n2_iter != n2_end)\n        if(*n1_iter <  *n2_iter)\n        {\n            res.push_back(*n1_iter);\n            n1_iter++;\n            if(n1_iter == n1_end)\n                res.insert(end(res), n2_iter, n2_end);\n        }\n        else\n        {\n            res.push_back(*n2_iter);\n            n2_iter++;\n            if(n2_iter == n2_end)\n                res.insert(end(res), n1_iter, n1_end);\n        }\n        \n        nums1 = std::move(res);\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "merge-sorted-array",
+                        "submissions": {
+                            "cpp": "399682969"
                         }
                     }
                 },
@@ -442,6 +582,44 @@
                     }
                 },
                 {
+                    "name": "Remove Element",
+                    "link": "https://leetcode.com/problems/remove-element",
+                    "description": "<p>Given an array <em>nums</em> and a value <em>val</em>, remove all instances of that value <a href=\"https://en.wikipedia.org/wiki/In-place_algorithm\" target=\"_blank\"><strong>in-place</strong></a> and return the new length.</p>\r\n\r\n<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href=\"https://en.wikipedia.org/wiki/In-place_algorithm\" target=\"_blank\">in-place</a></strong> with O(1) extra memory.</p>\r\n\r\n<p>The order of elements can be changed. It doesn&#39;t matter what you leave beyond the new length.</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\nGiven <em>nums</em> = <strong>[3,2,2,3]</strong>, <em>val</em> = <strong>3</strong>,\r\n\r\nYour function should return length = <strong>2</strong>, with the first two elements of <em>nums</em> being <strong>2</strong>.\r\n\r\nIt doesn&#39;t matter what you leave beyond the returned length.\r\n</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\nGiven <em>nums</em> = <strong>[0,1,2,2,3,0,4,2]</strong>, <em>val</em> = <strong>2</strong>,\r\n\r\nYour function should return length = <strong><code>5</code></strong>, with the first five elements of <em><code>nums</code></em> containing&nbsp;<strong><code>0</code></strong>, <strong><code>1</code></strong>, <strong><code>3</code></strong>, <strong><code>0</code></strong>, and&nbsp;<strong>4</strong>.\r\n\r\nNote that the order of those five elements can be arbitrary.\r\n\r\nIt doesn&#39;t matter what values are set beyond&nbsp;the returned length.</pre>\r\n\r\n<p><strong>Clarification:</strong></p>\r\n\r\n<p>Confused why the returned value is an integer but your answer is an array?</p>\r\n\r\n<p>Note that the input array is passed in by <strong>reference</strong>, which means modification to the input array will be known to the caller as well.</p>\r\n\r\n<p>Internally you can think of this:</p>\r\n\r\n<pre>\r\n// <strong>nums</strong> is passed in by reference. (i.e., without making a copy)\r\nint len = removeElement(nums, val);\r\n\r\n// any modification to <strong>nums</strong> in your function would be known by the caller.\r\n// using the length returned by your function, it prints the first <strong>len</strong> elements.\r\nfor (int i = 0; i &lt; len; i++) {\r\n&nbsp; &nbsp; print(nums[i]);\r\n}</pre>",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    int removeElement(vector<int>& nums, int val)\n    {\n        size_t len_without_val = nums.size();\n        for(int i = 0; i < len_without_val; )\n            if(nums[i] == val)\n            {\n                std:swap(nums[i], nums[len_without_val-1]);\n                len_without_val--;\n            }\n            else\n                ++i;\n        \n        return len_without_val;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "remove-element",
+                        "submissions": {
+                            "cpp": "399686418"
+                        }
+                    }
+                },
+                {
+                    "name": "Replace Elements with Greatest Element on Right Side",
+                    "link": "https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side",
+                    "description": "<p>Given an array <code>arr</code>,&nbsp;replace every element in that array with the greatest element among the elements to its&nbsp;right, and replace the last element with <code>-1</code>.</p>\r\n\r\n<p>After doing so, return the array.</p>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong>Example 1:</strong></p>\r\n<pre><strong>Input:</strong> arr = [17,18,5,4,6,1]\r\n<strong>Output:</strong> [18,6,6,6,1,-1]\r\n</pre>\r\n<p>&nbsp;</p>\r\n<p><strong>Constraints:</strong></p>\r\n\r\n<ul>\r\n\t<li><code>1 &lt;= arr.length &lt;= 10^4</code></li>\r\n\t<li><code>1 &lt;= arr[i] &lt;= 10^5</code></li>\r\n</ul>",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution {\npublic:\n    vector<int> replaceElements(vector<int> arr)\n    {\n        int right_max = *rbegin(arr);\n        *rbegin(arr) = -1;\n        \n        for(auto iter = ++rbegin(arr); iter < rend(arr); ++iter)\n        {\n            int old_value = *iter;\n            *iter = right_max;\n            right_max = std::max(old_value, right_max);\n        }\n        \n        return arr;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "replace-elements-with-greatest-element-on-right-side",
+                        "submissions": {
+                            "cpp": "399768941"
+                        }
+                    }
+                },
+                {
                     "name": "Reverse Bits",
                     "link": "https://leetcode.com/problems/reverse-bits",
                     "description": "<p>Reverse bits of a given 32 bits unsigned integer.</p>\n\n<p>&nbsp;</p>\n\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> 00000010100101000001111010011100\n<strong>Output:</strong> 00111001011110000010100101000000\n<strong>Explanation: </strong>The input binary string <b>00000010100101000001111010011100</b> represents the unsigned integer 43261596, so return 964176192 which its binary representation is <b>00111001011110000010100101000000</b>.\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> 11111111111111111111111111111101\n<strong>Output:</strong> 10111111111111111111111111111111\n<strong>Explanation: </strong>The input binary string <strong>11111111111111111111111111111101</strong> represents the unsigned integer 4294967293, so return 3221225471 which its binary representation is <strong>10111111111111111111111111111111</strong>.</pre>\n\n<p>&nbsp;</p>\n\n<p><strong>Note:</strong></p>\n\n<ul>\n\t<li>Note that in some languages such as Java, there is no unsigned integer type. In this case, both input and output will be given as signed integer type and should not affect your implementation, as the internal binary representation of the integer is the same whether it is signed or unsigned.</li>\n\t<li>In Java,&nbsp;the compiler represents the signed integers using <a href=\"https://en.wikipedia.org/wiki/Two%27s_complement\" target=\"_blank\">2&#39;s complement notation</a>. Therefore, in <strong>Example 2</strong>&nbsp;above the input represents the signed integer <code>-3</code>&nbsp;and the output represents the signed integer <code>-1073741825</code>.</li>\n</ul>\n\n<p>&nbsp;</p>\n\n<p><b>Follow up</b>:</p>\n\n<p>If this function is called many times, how would you optimize it?</p>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The input must be a <strong>binary string</strong> of <code>length = 32</code></li>\n</ul>\n",
@@ -594,6 +772,44 @@
                     }
                 },
                 {
+                    "name": "Sort Array By Parity",
+                    "link": "https://leetcode.com/problems/sort-array-by-parity",
+                    "description": "<p>Given an array <code>A</code> of non-negative integers, return an array consisting of all the even elements of <code>A</code>, followed by all the odd elements of <code>A</code>.</p>\r\n\r\n<p>You may return any answer array that satisfies this condition.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<div>\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-1-1\">[3,1,2,4]</span>\r\n<strong>Output: </strong><span id=\"example-output-1\">[2,4,3,1]</span>\r\nThe outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Note:</strong></p>\r\n\r\n<ol>\r\n\t<li><code>1 &lt;= A.length &lt;= 5000</code></li>\r\n\t<li><code>0 &lt;= A[i] &lt;= 5000</code></li>\r\n</ol>\r\n</div>\r\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    vector<int> sortArrayByParity(vector<int>& A)\n    {\n        if(A.empty())\n            return A;\n        \n        auto iter0 = begin(A),\n             iter1 = --end(A);\n        \n        //O(N) two-pointers in-place solution\n        while(iter0 < iter1)\n        {\n            if(*iter0 % 2 == 1 && *iter1 % 2 == 0)\n                std::swap(*iter0, *iter1);\n            if(*iter0 % 2 == 0)\n                ++iter0;\n            if(*iter1 % 2 == 1)\n                --iter1;\n        }\n        \n        return A;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "sort-array-by-parity",
+                        "submissions": {
+                            "cpp": "400085372"
+                        }
+                    }
+                },
+                {
+                    "name": "Squares of a Sorted Array",
+                    "link": "https://leetcode.com/problems/squares-of-a-sorted-array",
+                    "description": "<p>Given an array of integers <code>A</code>&nbsp;sorted in non-decreasing order,&nbsp;return an array of the squares of each number,&nbsp;also in sorted non-decreasing order.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<div>\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-1-1\">[-4,-1,0,3,10]</span>\r\n<strong>Output: </strong><span id=\"example-output-1\">[0,1,9,16,100]</span>\r\n</pre>\r\n\r\n<div>\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-2-1\">[-7,-3,2,3,11]</span>\r\n<strong>Output: </strong><span id=\"example-output-2\">[4,9,9,49,121]</span>\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong><span>Note:</span></strong></p>\r\n\r\n<ol>\r\n\t<li><code><span>1 &lt;= A.length &lt;= 10000</span></code></li>\r\n\t<li><code>-10000 &lt;= A[i] &lt;= 10000</code></li>\r\n\t<li><code>A</code>&nbsp;is sorted in non-decreasing order.</li>\r\n</ol>\r\n</div>\r\n</div>",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    vector<int> sortedSquares(vector<int>& A)\n    {        \n        multiset<int> sorted_squares;\n        for(int num : A)\n            sorted_squares.insert(num*num);\n        \n        return vector<int>(begin(sorted_squares), end(sorted_squares));\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "squares-of-a-sorted-array",
+                        "submissions": {
+                            "cpp": "400085586"
+                        }
+                    }
+                },
+                {
                     "name": "Sum of Left Leaves",
                     "link": "https://leetcode.com/problems/sum-of-left-leaves",
                     "description": "<p>Find the sum of all left leaves in a given binary tree.</p>\r\n\r\n<p><b>Example:</b>\r\n<pre>\r\n    3\r\n   / \\\r\n  9  20\r\n    /  \\\r\n   15   7\r\n\r\nThere are two left leaves in the binary tree, with values <b>9</b> and <b>15</b> respectively. Return <b>24</b>.\r\n</pre>\r\n</p>",
@@ -615,7 +831,7 @@
                 {
                     "name": "Sum of Root To Leaf Binary Numbers",
                     "link": "https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers",
-                    "description": "<p>Given a binary tree, each node has value <code>0</code>&nbsp;or <code>1</code>.&nbsp; Each root-to-leaf path represents a binary number starting with the most significant bit.&nbsp; For example, if the path is <code>0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1</code>, then this could represent <code>01101</code> in binary, which is <code>13</code>.</p>\r\n\r\n<p>For all leaves in the tree, consider the numbers represented by the path&nbsp;from the root to that leaf.</p>\r\n\r\n<p>Return the sum of these numbers.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<p><span id=\"example-output-1\"><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/04/04/sum-of-root-to-leaf-binary-numbers.png\" style=\"width: 304px; height: 200px;\" /></span></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-1-1\">[1,0,1,0,1,0,1]</span>\r\n<strong>Output: </strong><span id=\"example-output-1\">22</span>\r\n<strong>Explanation: </strong>(100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Note:</strong></p>\r\n\r\n<ol>\r\n\t<li>The number of nodes in the tree is between <code>1</code> and <code>1000</code>.</li>\r\n\t<li>node.val is <code>0</code> or <code>1</code>.</li>\r\n\t<li>The answer will not exceed <code>2^31 - 1</code>.</li>\r\n</ol>\r\n",
+                    "description": "<p>You are given the <code>root</code> of a binary tree where each node has a value <code>0</code>&nbsp;or <code>1</code>.&nbsp; Each root-to-leaf path represents a binary number starting with the most significant bit.&nbsp; For example, if the path is <code>0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1</code>, then this could represent <code>01101</code> in binary, which is <code>13</code>.</p>\n\n<p>For all leaves in the tree, consider the numbers represented by the path&nbsp;from the root to that leaf.</p>\n\n<p>Return <em>the sum of these numbers</em>. The answer is <strong>guaranteed</strong> to fit in a <strong>32-bits</strong> integer.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/04/04/sum-of-root-to-leaf-binary-numbers.png\" style=\"width: 450px; height: 296px;\" />\n<pre>\n<strong>Input:</strong> root = [1,0,1,0,1,0,1]\n<strong>Output:</strong> 22\n<strong>Explanation: </strong>(100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [0]\n<strong>Output:</strong> 0\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1]\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong>Example 4:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1,1]\n<strong>Output:</strong> 3\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 1000]</code>.</li>\n\t<li><code>Node.val</code> is <code>0</code> or <code>1</code>.</li>\n</ul>\n",
                     "solutions": {
                         "cpp": [
                             {
@@ -677,14 +893,14 @@
                         "cpp": [
                             {
                                 "language": "cpp",
-                                "code": "class Solution\n{\npublic:\n    int thirdMax(vector<int> nums)\n    {\n        std::sort(nums.begin(), nums.end());\n        nums.erase(std::unique(nums.begin(), nums.end()), nums.end());\n\n        const size_t uniq_size = nums.size();\n        if(uniq_size < 3)\n            return *std::max_element(nums.begin(), nums.end());\n        else\n        {\n            return nums[uniq_size-3];\n        }\n    }\n};"
+                                "code": "class Solution\n{\npublic:\n    int thirdMax(vector<int> nums)\n    {\n        std::sort(nums.begin(), nums.end());\n        nums.erase(std::unique(nums.begin(), nums.end()), nums.end());\n\n        const size_t uniq_size = nums.size();\n        if(uniq_size < 3)\n            return nums[uniq_size-1];\n        else\n        {\n            return nums[uniq_size-3];\n        }\n    }\n};"
                             }
                         ]
                     },
                     "metadata": {
                         "slug": "third-maximum-number",
                         "submissions": {
-                            "cpp": "380349254"
+                            "cpp": "400100342"
                         }
                     }
                 },
@@ -746,9 +962,28 @@
                     }
                 },
                 {
+                    "name": "Valid Mountain Array",
+                    "link": "https://leetcode.com/problems/valid-mountain-array",
+                    "description": "<p>Given an array <code>A</code> of integers, return <code>true</code> if and only if it is a <em>valid mountain array</em>.</p>\r\n\r\n<p>Recall that A is a mountain array if and only if:</p>\r\n\r\n<ul>\r\n\t<li><code>A.length &gt;= 3</code></li>\r\n\t<li>There exists some <code>i</code> with&nbsp;<code>0 &lt; i&nbsp;&lt; A.length - 1</code>&nbsp;such that:\r\n\t<ul>\r\n\t\t<li><code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] </code></li>\r\n\t\t<li><code>A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code></li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<br>\r\n<img src=\"https://assets.leetcode.com/uploads/2019/10/20/hint_valid_mountain_array.png\" width=\"500\" />\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-1-1\">[2,1]</span>\r\n<strong>Output: </strong><span id=\"example-output-1\">false</span>\r\n</pre>\r\n\r\n<div>\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-2-1\">[3,5,5]</span>\r\n<strong>Output: </strong><span id=\"example-output-2\">false</span>\r\n</pre>\r\n\r\n<div>\r\n<p><strong>Example 3:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-3-1\">[0,3,2,1]</span>\r\n<strong>Output: </strong><span id=\"example-output-3\">true</span></pre>\r\n</div>\r\n</div>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Note:</strong></p>\r\n\r\n<ol>\r\n\t<li><code>0 &lt;= A.length &lt;= 10000</code></li>\r\n\t<li><code>0 &lt;= A[i] &lt;= 10000&nbsp;</code></li>\r\n</ol>\r\n\r\n<div>\r\n<p>&nbsp;</p>\r\n\r\n<div>\r\n<div>&nbsp;</div>\r\n</div>\r\n</div>",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    //O(n) solution\n    bool validMountainArray(vector<int>& A)\n    {\n        //empty is no mountain\n        if(A.empty())\n            return false;\n\n        bool going_up = true;\n        for(auto iter = ++begin(A); iter < end(A); ++iter)\n        {\n            //no flat\n            if(*iter == *prev(iter))\n               return false;\n            \n            //go up\n            if(*prev(iter) < *iter)\n            {\n                //if we went up after we went down\n                if(!going_up)\n                    return false;\n            }\n            //go down\n            else if(*prev(iter) > *iter )\n            {\n                //if we going down from the start\n                if(prev(iter) == begin(A))\n                    return false;\n                //started to gow down\n                if(going_up)\n                    going_up = false;\n            }           \n        }\n        \n        //if we were going up all the time, return false\n        return !going_up;\n\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "valid-mountain-array",
+                        "submissions": {
+                            "cpp": "399765332"
+                        }
+                    }
+                },
+                {
                     "name": "Word Pattern",
                     "link": "https://leetcode.com/problems/word-pattern",
-                    "description": "<p>Given a <code>pattern</code> and a string <code>str</code>, find if <code>str</code> follows the same pattern.</p>\r\n\r\n<p>Here <b>follow</b> means a full match, such that there is a bijection between a letter in <code>pattern</code> and a <b>non-empty</b> word in <code>str</code>.</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> pattern = <code>&quot;abba&quot;</code>, str = <code>&quot;dog cat cat dog&quot;</code>\r\n<strong>Output:</strong> true</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong>pattern = <code>&quot;abba&quot;</code>, str = <code>&quot;dog cat cat fish&quot;</code>\r\n<strong>Output:</strong> false</pre>\r\n\r\n<p><strong>Example 3:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> pattern = <code>&quot;aaaa&quot;</code>, str = <code>&quot;dog cat cat dog&quot;</code>\r\n<strong>Output:</strong> false</pre>\r\n\r\n<p><strong>Example 4:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> pattern = <code>&quot;abba&quot;</code>, str = <code>&quot;dog dog dog dog&quot;</code>\r\n<strong>Output:</strong> false</pre>\r\n\r\n<p><b>Notes:</b><br />\r\nYou may assume <code>pattern</code> contains only lowercase letters, and <code>str</code> contains lowercase letters that may be separated by a single space.</p>\r\n",
+                    "description": "<p>Given a <code>pattern</code> and a string <code>s</code>, find if <code>s</code>&nbsp;follows the same pattern.</p>\n\n<p>Here <b>follow</b> means a full match, such that there is a bijection between a letter in <code>pattern</code> and a <b>non-empty</b> word in <code>s</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> pattern = &quot;abba&quot;, s = &quot;dog cat cat dog&quot;\n<strong>Output:</strong> true\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> pattern = &quot;abba&quot;, s = &quot;dog cat cat fish&quot;\n<strong>Output:</strong> false\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> pattern = &quot;aaaa&quot;, s = &quot;dog cat cat dog&quot;\n<strong>Output:</strong> false\n</pre>\n\n<p><strong>Example 4:</strong></p>\n\n<pre>\n<strong>Input:</strong> pattern = &quot;abba&quot;, s = &quot;dog dog dog dog&quot;\n<strong>Output:</strong> false\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= pattern.length &lt;= 300</code></li>\n\t<li><code>pattern</code> contains only lower-case English letters.</li>\n\t<li><code>1 &lt;= s.length &lt;= 3000</code></li>\n\t<li><code>s</code> contains only lower-case English letters and spaces <code>&#39; &#39;</code>.</li>\n\t<li><code>s</code> <strong>does not contain</strong> any leading or trailing spaces.</li>\n\t<li>All the words in <code>s</code> are separated by a <strong>single space</strong>.</li>\n</ul>\n",
                     "solutions": {
                         "python": [
                             {
@@ -810,7 +1045,7 @@
                 {
                     "name": "Binary Tree Inorder Traversal",
                     "link": "https://leetcode.com/problems/binary-tree-inorder-traversal",
-                    "description": "<p>Given a binary tree, return the <em>inorder</em> traversal of its nodes&#39; values.</p>\r\n\r\n<p><strong>Example:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> [1,null,2,3]\r\n   1\r\n    \\\r\n     2\r\n    /\r\n   3\r\n\r\n<strong>Output:</strong> [1,3,2]</pre>\r\n\r\n<p><strong>Follow up:</strong> Recursive solution is trivial, could you do it iteratively?</p>\r\n",
+                    "description": "<p>Given the <code>root</code> of a binary tree, return <em>the inorder traversal of its nodes&#39; values</em>.</p>\n\n<p><strong>Follow up:</strong> Recursive solution is trivial, could you do it iteratively?</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/15/inorder_1.jpg\" style=\"width: 202px; height: 324px;\" />\n<pre>\n<strong>Input:</strong> root = [1,null,2,3]\n<strong>Output:</strong> [1,3,2]\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = []\n<strong>Output:</strong> []\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1]\n<strong>Output:</strong> [1]\n</pre>\n\n<p><strong>Example 4:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/15/inorder_5.jpg\" style=\"width: 202px; height: 202px;\" />\n<pre>\n<strong>Input:</strong> root = [1,2]\n<strong>Output:</strong> [2,1]\n</pre>\n\n<p><strong>Example 5:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/15/inorder_4.jpg\" style=\"width: 202px; height: 202px;\" />\n<pre>\n<strong>Input:</strong> root = [1,null,2]\n<strong>Output:</strong> [1,2]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 100]</code>.</li>\n\t<li><code>-100 &lt;= Node.val &lt;= 100</code></li>\n</ul>\n",
                     "solutions": {
                         "cpp": [
                             {
@@ -884,9 +1119,66 @@
                     }
                 },
                 {
+                    "name": "Bulls and Cows",
+                    "link": "https://leetcode.com/problems/bulls-and-cows",
+                    "description": "<p>You are playing the <strong><a href=\"https://en.wikipedia.org/wiki/Bulls_and_Cows\" target=\"_blank\">Bulls and Cows</a></strong> game with your friend.</p>\n\n<p>You write down a secret number and ask your friend to guess what the number is. When your friend makes a guess, you provide a hint with the following info:</p>\n\n<ul>\n\t<li>The number of &quot;bulls&quot;, which are digits in the guess that are in the correct position.</li>\n\t<li>The number of &quot;cows&quot;, which are digits in the guess that are in your secret number but are located in the wrong position. Specifically, the non-bull digits in the guess that could be rearranged such that they become bulls.</li>\n</ul>\n\n<p>Given the secret number <code>secret</code> and your friend&#39;s guess <code>guess</code>, return <em>the hint for your friend&#39;s guess</em>.</p>\n\n<p>The hint should be formatted as <code>&quot;xAyB&quot;</code>, where <code>x</code> is the number of bulls and <code>y</code> is the number of cows. Note that both <code>secret</code> and <code>guess</code> may contain duplicate digits.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> secret = &quot;1807&quot;, guess = &quot;7810&quot;\n<strong>Output:</strong> &quot;1A3B&quot;\n<strong>Explanation:</strong> Bulls are connected with a &#39;|&#39; and cows are underlined:\n&quot;1807&quot;\n  |\n&quot;<u>7</u>8<u>10</u>&quot;</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> secret = &quot;1123&quot;, guess = &quot;0111&quot;\n<strong>Output:</strong> &quot;1A1B&quot;\n<strong>Explanation:</strong> Bulls are connected with a &#39;|&#39; and cows are underlined:\n&quot;1123&quot;        &quot;1123&quot;\n  |      or     |\n&quot;01<u>1</u>1&quot;        &quot;011<u>1</u>&quot;\nNote that only one of the two unmatched 1s is counted as a cow since the non-bull digits can only be rearranged to allow one 1 to be a bull.\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> secret = &quot;1&quot;, guess = &quot;0&quot;\n<strong>Output:</strong> &quot;0A0B&quot;\n</pre>\n\n<p><strong>Example 4:</strong></p>\n\n<pre>\n<strong>Input:</strong> secret = &quot;1&quot;, guess = &quot;1&quot;\n<strong>Output:</strong> &quot;1A0B&quot;\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= secret.length, guess.length &lt;= 1000</code></li>\n\t<li><code>secret.length == guess.length</code></li>\n\t<li><code>secret</code> and <code>guess</code> consist of digits only.</li>\n</ul>\n",
+                    "solutions": {
+                        "python": [
+                            {
+                                "language": "python",
+                                "code": "class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        a,b = 0, 0\n        inplace_indexs=[]\n        for i, s, g in zip(range(len(secret)), secret, guess):\n            if g == s:\n                inplace_indexs.append(i)\n                a+=1\n                \n        secret_outplace=[el for i,el in enumerate(secret) if i not in inplace_indexs]\n        seen_outplace=[]\n        for i, s, g in zip(range(len(secret)), secret, guess):\n            if  i not in inplace_indexs and g in secret_outplace and seen_outplace.count(g) < secret_outplace.count(g):\n                seen_outplace.append(g)\n                b+=1\n        return f\"{a}A{b}B\"\n    \n        "
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "bulls-and-cows",
+                        "submissions": {
+                            "python": "394090296"
+                        }
+                    }
+                },
+                {
+                    "name": "Car Pooling",
+                    "link": "https://leetcode.com/problems/car-pooling",
+                    "description": "<p>You are driving a vehicle that&nbsp;has <code>capacity</code> empty seats initially available for passengers.&nbsp; The vehicle <strong>only</strong> drives east (ie. it <strong>cannot</strong> turn around and drive west.)</p>\n\n<p>Given a list of <code>trips</code>, <code>trip[i] = [num_passengers, start_location, end_location]</code>&nbsp;contains information about the <code>i</code>-th trip: the number of passengers that must be picked up, and the locations to pick them up and drop them off.&nbsp; The locations are given as the number of kilometers&nbsp;due east from your vehicle&#39;s initial location.</p>\n\n<p>Return <code>true</code> if and only if&nbsp;it is possible to pick up and drop off all passengers for all the given trips.&nbsp;</p>\n\n<p>&nbsp;</p>\n\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input: </strong>trips = <span id=\"example-input-1-1\">[[2,1,5],[3,3,7]]</span>, capacity = <span id=\"example-input-1-2\">4</span>\n<strong>Output: </strong><span id=\"example-output-1\">false</span>\n</pre>\n\n<div>\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input: </strong>trips = <span id=\"example-input-2-1\">[[2,1,5],[3,3,7]]</span>, capacity = <span id=\"example-input-2-2\">5</span>\n<strong>Output: </strong><span id=\"example-output-2\">true</span>\n</pre>\n\n<div>\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input: </strong>trips = <span id=\"example-input-3-1\">[[2,1,5],[3,5,7]]</span>, capacity = <span id=\"example-input-3-2\">3</span>\n<strong>Output: </strong><span id=\"example-output-3\">true</span>\n</pre>\n\n<div>\n<p><strong>Example 4:</strong></p>\n\n<pre>\n<strong>Input: </strong>trips = <span id=\"example-input-4-1\">[[3,2,7],[3,7,9],[8,3,9]]</span>, capacity = <span id=\"example-input-4-2\">11</span>\n<strong>Output: </strong><span id=\"example-output-4\">true</span>\n</pre>\n</div>\n</div>\n</div>\n\n<div>\n<div>\n<div>\n<div>&nbsp;</div>\n</div>\n</div>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ol>\n\t<li><code>trips.length &lt;= 1000</code></li>\n\t<li><code>trips[i].length == 3</code></li>\n\t<li><code>1 &lt;= trips[i][0] &lt;= 100</code></li>\n\t<li><code>0 &lt;= trips[i][1] &lt; trips[i][2] &lt;= 1000</code></li>\n\t<li><code>1 &lt;=&nbsp;capacity &lt;= 100000</code></li>\n</ol>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\n    enum\n    {\n        NUM_PASS,\n        START,\n        END\n    };\n\npublic:\n    bool carPooling(vector<vector<int>> trips, int capacity)\n    {\n        //sort by starting point\n        std::sort(begin(trips), end(trips),\n                 [](auto a, auto b)\n                 {\n                     return a[START] < b[START];\n                 });\n        \n        \n        list<vector<int>*> bus;\n        size_t passenger_num = 0;\n        for(auto &trip : trips)\n        {\n            for(auto *&passenger : bus)\n            {\n                if(!passenger)\n                    continue;\n\n                //get off the bus unneeded passengers\n                if((*passenger)[END] <= trip[START])\n                {\n                    passenger_num -= (*passenger)[NUM_PASS];\n                    passenger = nullptr;\n                }\n            }\n            \n            if(passenger_num + trip[NUM_PASS] <= capacity)\n            {\n                bus.push_back(&trip);\n                passenger_num += trip[NUM_PASS];\n            }\n            else\n                return false;\n        }\n        \n        return true;   \n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "car-pooling",
+                        "submissions": {
+                            "cpp": "398873183"
+                        }
+                    }
+                },
+                {
+                    "name": "Combination Sum III",
+                    "link": "https://leetcode.com/problems/combination-sum-iii",
+                    "description": "<p>Find all valid combinations of <code>k</code> numbers that sum up to <code>n</code> such that the following conditions are true:</p>\n\n<ul>\n\t<li>Only numbers <code>1</code> through <code>9</code> are used.</li>\n\t<li>Each number is used <strong>at most once</strong>.</li>\n</ul>\n\n<p>Return <em>a list of all possible valid combinations</em>. The list must not contain the same combination twice, and the combinations may be returned in any order.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> k = 3, n = 7\n<strong>Output:</strong> [[1,2,4]]\n<strong>Explanation:</strong>\n1 + 2 + 4 = 7\nThere are no other valid combinations.</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> k = 3, n = 9\n<strong>Output:</strong> [[1,2,6],[1,3,5],[2,3,4]]\n<strong>Explanation:</strong>\n1 + 2 + 6 = 9\n1 + 3 + 5 = 9\n2 + 3 + 4 = 9\nThere are no other valid combinations.\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> k = 4, n = 1\n<strong>Output:</strong> []\n<strong>Explanation:</strong> There are no valid combinations. [1,2,1] is not valid because 1 is used twice.\n</pre>\n\n<p><strong>Example 4:</strong></p>\n\n<pre>\n<strong>Input:</strong> k = 3, n = 2\n<strong>Output:</strong> []\n<strong>Explanation:</strong> There are no valid combinations.\n</pre>\n\n<p><strong>Example 5:</strong></p>\n\n<pre>\n<strong>Input:</strong> k = 9, n = 45\n<strong>Output:</strong> [[1,2,3,4,5,6,7,8,9]]\n<strong>Explanation:</strong>\n1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45\n\u200b\u200b\u200b\u200b\u200b\u200b\u200bThere are no other valid combinations.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= k &lt;= 9</code></li>\n\t<li><code>1 &lt;= n &lt;= 60</code></li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\n    \n    //size_t pick_next_free_position(char &bitmask, current)\npublic:\n    vector<vector<int>> combinationSum3(int k, int n)\n    {\n        //input validation\n        if(k > n)\n            return {};\n        \n        vector<vector<int>> res;\n        set<vector<int>> res_set;\n        vector<int> holder(k, 1);\n        //to mark current selected numbers\n        \n        size_t iter_max = std::min(9, (n > 3 ? n-k+1 : n));\n\n        function<void(size_t, vector<int>)> increment_holder;\n        //add vector of num to ignore to ignore\n        increment_holder = [&](size_t pos, vector<int> to_ignore)\n        {\n            for(int i = 0; i <= iter_max; )\n            {\n                if(i == iter_max)\n                {\n                    holder[pos] = 1;\n                    break;\n                }\n\n                if(pos==k-1)\n                {\n                    const int sum = std::accumulate(holder.begin(), holder.end(),0);\n                    if(sum == n)\n                    {\n                        auto holder_copy = holder;\n                        std::sort(holder_copy.begin(), holder_copy.end());\n                        auto uq_end = std::unique(begin(holder_copy), end(holder_copy));\n                        if(uq_end == end(holder_copy))\n                            res_set.insert(std::move(holder_copy));\n                    }\n                    if(sum > n)\n                    {\n                        holder[pos] = 1;\n                        break;\n                    }\n                }\n                else\n                {\n                    to_ignore.push_back(holder[pos]);\n                    increment_holder(pos+1, to_ignore);\n                }\n                do\n                {\n                    ++i, ++holder[pos];\n                } while(std::count(begin(to_ignore), end(to_ignore),holder[pos]));\n                \n                if(i == iter_max)\n                {\n                    holder[pos] = 1;\n                    break;\n                }\n                \n                     \n            }\n        };\n        \n        increment_holder(0, {});\n\n        std::copy(res_set.begin(), res_set.end(), back_inserter(res));\n        \n        return res;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "combination-sum-iii",
+                        "submissions": {
+                            "cpp": "394739401"
+                        }
+                    }
+                },
+                {
                     "name": "Compare Version Numbers",
                     "link": "https://leetcode.com/problems/compare-version-numbers",
-                    "description": "<p>Compare two version numbers <em>version1</em> and <em>version2</em>.<br />\r\nIf <code><em>version1</em> &gt; <em>version2</em></code> return <code>1;</code>&nbsp;if <code><em>version1</em> &lt; <em>version2</em></code> return <code>-1;</code>otherwise return <code>0</code>.</p>\r\n\r\n<p>You may assume that the version strings are non-empty and contain only digits and the <code>.</code> character.</p>\r\n<p>The <code>.</code> character does not represent a decimal point and is used to separate number sequences.</p>\r\n<p>For instance, <code>2.5</code> is not &quot;two and a half&quot; or &quot;half way to version three&quot;, it is the fifth second-level revision of the second first-level revision.</p>\r\n<p>You may assume the default revision number for each level of a version number to be <code>0</code>. For example, version number <code>3.4</code> has a revision number of <code>3</code> and <code>4</code> for its first and second level revision number. Its third and fourth level revision number are both <code>0</code>.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n<pre>\r\n<strong>Input:</strong> <code><em>version1</em></code> = &quot;0.1&quot;, <code><em>version2</em></code> = &quot;1.1&quot;\r\n<strong>Output:</strong> -1</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n<pre>\r\n<strong>Input: </strong><code><em>version1</em></code> = &quot;1.0.1&quot;, <code><em>version2</em></code> = &quot;1&quot;\r\n<strong>Output:</strong> 1</pre>\r\n\r\n<p><strong>Example 3:</strong></p>\r\n<pre>\r\n<strong>Input:</strong> <code><em>version1</em></code> = &quot;7.5.2.4&quot;, <code><em>version2</em></code> = &quot;7.5.3&quot;\r\n<strong>Output:</strong> -1</pre>\r\n\r\n<p><strong>Example 4:</strong></p>\r\n<pre>\r\n<strong>Input:</strong> <code><em>version1</em></code> = &quot;1.01&quot;, <code><em>version2</em></code> = &quot;1.001&quot;\r\n<strong>Output:</strong> 0\r\n<strong>Explanation:</strong> Ignoring leading zeroes, both \u201c01\u201d and \u201c001\" represent the same number \u201c1\u201d</pre>\r\n\r\n<p><strong>Example 5:</strong></p>\r\n<pre>\r\n<strong>Input:</strong> <code><em>version1</em></code> = &quot;1.0&quot;, <code><em>version2</em></code> = &quot;1.0.0&quot;\r\n<strong>Output:</strong> 0\r\n<strong>Explanation:</strong> The first version number does not have a third level revision number, which means its third level revision number is default to \"0\"</pre>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Note:</strong></p>\r\n<ol>\r\n<li>Version strings are composed of numeric strings separated by dots <code>.</code> and this numeric strings <strong>may</strong> have leading zeroes. </li>\r\n<li>Version strings do not start or end with dots, and they will not be two consecutive dots.</li>\r\n</ol>",
+                    "description": "<p>Given two version numbers,&nbsp;<code>version1</code> and <code>version2</code>, compare them.</p>\n\n<ul>\n</ul>\n\n<p>Version numbers consist of <strong>one or more revisions</strong> joined by a dot&nbsp;<code>&#39;.&#39;</code>. Each revision&nbsp;consists of <strong>digits</strong>&nbsp;and may contain leading <strong>zeros</strong>. Every revision contains <strong>at least one character</strong>. Revisions are <strong>0-indexed from left to right</strong>, with the leftmost revision being revision 0, the next revision being revision 1, and so on. For example&nbsp;<code>2.5.33</code>&nbsp;and&nbsp;<code>0.1</code>&nbsp;are valid version numbers.</p>\n\n<p>To compare version numbers, compare their revisions in <strong>left-to-right order</strong>. Revisions are compared using their&nbsp;<strong>integer value ignoring any leading zeros</strong>. This means that revisions&nbsp;<code>1</code>&nbsp;and&nbsp;<code>001</code>&nbsp;are considered&nbsp;<strong>equal</strong>. If a version number does not specify a revision at an index, then&nbsp;<strong>treat the revision as&nbsp;<code>0</code></strong>. For example, version&nbsp;<code>1.0</code> is less than version&nbsp;<code>1.1</code>&nbsp;because their revision 0s are the same, but their revision 1s are&nbsp;<code>0</code>&nbsp;and&nbsp;<code>1</code>&nbsp;respectively, and&nbsp;<code>0 &lt; 1</code>.</p>\n\n<p><em>Return the following:</em></p>\n\n<ul>\n\t<li>If <code>version1 &lt; version2</code>, return <code>-1</code>.</li>\n\t<li>If <code>version1 &gt; version2</code>, return <code>1</code>.</li>\n\t<li>Otherwise, return <code>0</code>.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> version1 = &quot;1.01&quot;, version2 = &quot;1.001&quot;\n<strong>Output:</strong> 0\n<strong>Explanation:</strong> Ignoring leading zeroes, both &quot;01&quot; and &quot;001&quot; represent the same integer &quot;1&quot;.\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> version1 = &quot;1.0&quot;, version2 = &quot;1.0.0&quot;\n<strong>Output:</strong> 0\n<strong>Explanation:</strong> version1 does not specify revision 2, which means it is treated as &quot;0&quot;.\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> version1 = &quot;0.1&quot;, version2 = &quot;1.1&quot;\n<strong>Output:</strong> -1\n<strong>Explanation:</strong>&nbsp;version1&#39;s revision 0 is &quot;0&quot;, while version2&#39;s revision 0 is &quot;1&quot;. 0 &lt; 1, so version1 &lt; version2.\n</pre>\n\n<p><strong>Example 4:</strong></p>\n\n<pre>\n<strong>Input:</strong> version1 = &quot;1.0.1&quot;, version2 = &quot;1&quot;\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong>Example 5:</strong></p>\n\n<pre>\n<strong>Input:</strong> version1 = &quot;7.5.2.4&quot;, version2 = &quot;7.5.3&quot;\n<strong>Output:</strong> -1\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= version1.length, version2.length &lt;= 500</code></li>\n\t<li><code>version1</code> and <code>version2</code>&nbsp;only contain digits and <code>&#39;.&#39;</code>.</li>\n\t<li><code>version1</code> and <code>version2</code>&nbsp;<strong>are valid version numbers</strong>.</li>\n\t<li>All the given revisions in&nbsp;<code>version1</code> and <code>version2</code>&nbsp;can be stored in&nbsp;a&nbsp;<strong>32-bit integer</strong>.</li>\n</ul>\n",
                     "solutions": {
                         "python": [
                             {
@@ -922,9 +1214,28 @@
                     }
                 },
                 {
+                    "name": "Gas Station",
+                    "link": "https://leetcode.com/problems/gas-station",
+                    "description": "<p>There are <em>N</em> gas stations along a circular route, where the amount of gas at station <em>i</em> is <code>gas[i]</code>.</p>\r\n\r\n<p>You have a car with an unlimited gas tank and it costs <code>cost[i]</code> of gas to travel from station <em>i</em> to its next station (<em>i</em>+1). You begin the journey with an empty tank at one of the gas stations.</p>\r\n\r\n<p>Return the starting gas station&#39;s index if you can travel around the circuit once in the clockwise direction, otherwise return -1.</p>\r\n\r\n<p><strong>Note:</strong></p>\r\n\r\n<ul>\r\n\t<li>If there exists a&nbsp;solution, it is guaranteed to be unique.</li>\r\n\t<li>Both input arrays are non-empty and have the same length.</li>\r\n\t<li>Each element in the input arrays is a non-negative integer.</li>\r\n</ul>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> \r\ngas  = [1,2,3,4,5]\r\ncost = [3,4,5,1,2]\r\n\r\n<strong>Output:</strong> 3\r\n\r\n<strong>Explanation:\r\n</strong>Start at station 3 (index 3) and fill up with 4 unit of gas. Your tank = 0 + 4 = 4\r\nTravel to station 4. Your tank = 4 - 1 + 5 = 8\r\nTravel to station 0. Your tank = 8 - 2 + 1 = 7\r\nTravel to station 1. Your tank = 7 - 3 + 2 = 6\r\nTravel to station 2. Your tank = 6 - 4 + 3 = 5\r\nTravel to station 3. The cost is 5. Your gas is just enough to travel back to station 3.\r\nTherefore, return 3 as the starting index.\r\n</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> \r\ngas  = [2,3,4]\r\ncost = [3,4,3]\r\n\r\n<strong>Output:</strong> -1\r\n\r\n<strong>Explanation:\r\n</strong>You can&#39;t start at station 0 or 1, as there is not enough gas to travel to the next station.\r\nLet&#39;s start at station 2 and fill up with 4 unit of gas. Your tank = 0 + 4 = 4\r\nTravel to station 0. Your tank = 4 - 3 + 2 = 3\r\nTravel to station 1. Your tank = 3 - 3 + 3 = 3\r\nYou cannot travel back to station 2, as it requires 4 unit of gas but you only have 3.\r\nTherefore, you can&#39;t travel around the circuit once no matter where you start.\r\n</pre>\r\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution {\npublic:\n    int canCompleteCircuit(vector<int>& gas, vector<int>& cost)\n    {\n        const size_t gas_num = gas.size();\n        \n        //O(N^2) solution\n        for(int max_index = 0; max_index < gas_num; max_index++)\n        for(int i = 0, gas_tank = 0; i < gas_num; i++)\n        {\n            const size_t index = (max_index + i) % gas_num;\n            gas_tank += gas[index];\n            //if we unable to get to the next station\n            if(gas_tank < cost[index])\n                break;\n            else\n                gas_tank -= cost[index];\n            \n            if(i + 1 == gas_num)\n                return max_index;\n        }\n        return -1;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "gas-station",
+                        "submissions": {
+                            "cpp": "399620164"
+                        }
+                    }
+                },
+                {
                     "name": "Image Overlap",
                     "link": "https://leetcode.com/problems/image-overlap",
-                    "description": "<p>You are given two images <code>img1</code> and <code>img2</code>&nbsp;both of size <code>n x n</code>, represented as&nbsp;binary, square matrices of the same size. (A binary matrix has only 0s and 1s as values.)</p>\n\n<p>We translate one image however we choose (sliding it left, right, up, or down any number of units), and place it on top of the other image.&nbsp; After, the <em>overlap</em> of this translation is the number of positions that have a 1 in both images.</p>\n\n<p>(Note also that a translation does <strong>not</strong> include any kind of rotation.)</p>\n\n<p>What is the largest possible overlap?</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/09/overlap1.jpg\" style=\"width: 450px; height: 231px;\" />\n<pre>\n<strong>Input:</strong> img1 = [[1,1,0],[0,1,0],[0,1,0]], img2 = [[0,0,0],[0,1,1],[0,0,1]]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> We slide img1 to right by 1 unit and down by 1 unit.\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/09/overlap_step1.jpg\" style=\"width: 450px; height: 105px;\" />\nThe number of positions that have a 1 in both images is 3. (Shown in red)\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/09/overlap_step2.jpg\" style=\"width: 450px; height: 231px;\" />\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> img1 = [[1]], img2 = [[1]]\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> img1 = [[0]], img2 = [[0]]\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == a.length</code></li>\n\t<li><code>n == a[i].length</code></li>\n\t<li><code>n == b.length </code></li>\n\t<li><code>n == b[i].length</code></li>\n\t<li><code>1 &lt;= n &lt;= 30</code></li>\n\t<li><code>a[i][j]</code> is <code>0</code> or <code>1</code>.</li>\n\t<li><code>b[i][j]</code> is <code>0</code> or <code>1</code>.</li>\n</ul>\n",
+                    "description": "<p>You are given two images <code>img1</code> and <code>img2</code>&nbsp;both of size <code>n x n</code>, represented as&nbsp;binary, square matrices of the same size. (A binary matrix has only 0s and 1s as values.)</p>\n\n<p>We translate one image however we choose (sliding it left, right, up, or down any number of units), and place it on top of the other image.&nbsp; After, the <em>overlap</em> of this translation is the number of positions that have a 1 in both images.</p>\n\n<p>(Note also that a translation does <strong>not</strong> include any kind of rotation.)</p>\n\n<p>What is the largest possible overlap?</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/09/overlap1.jpg\" style=\"width: 450px; height: 231px;\" />\n<pre>\n<strong>Input:</strong> img1 = [[1,1,0],[0,1,0],[0,1,0]], img2 = [[0,0,0],[0,1,1],[0,0,1]]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> We slide img1 to right by 1 unit and down by 1 unit.\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/09/overlap_step1.jpg\" style=\"width: 450px; height: 105px;\" />\nThe number of positions that have a 1 in both images is 3. (Shown in red)\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/09/overlap_step2.jpg\" style=\"width: 450px; height: 231px;\" />\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> img1 = [[1]], img2 = [[1]]\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> img1 = [[0]], img2 = [[0]]\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == img1.length</code></li>\n\t<li><code>n == img1[i].length</code></li>\n\t<li><code>n == img2.length </code></li>\n\t<li><code>n == img2[i].length</code></li>\n\t<li><code>1 &lt;= n &lt;= 30</code></li>\n\t<li><code>img1[i][j]</code> is <code>0</code> or <code>1</code>.</li>\n\t<li><code>img2[i][j]</code> is <code>0</code> or <code>1</code>.</li>\n</ul>\n",
                     "solutions": {
                         "cpp": [
                             {
@@ -937,6 +1248,25 @@
                         "slug": "image-overlap",
                         "submissions": {
                             "cpp": "391828850"
+                        }
+                    }
+                },
+                {
+                    "name": "Insert Interval",
+                    "link": "https://leetcode.com/problems/insert-interval",
+                    "description": "<p>Given a set of <em>non-overlapping</em> intervals, insert a new interval into the intervals (merge if necessary).</p>\n\n<p>You may assume that the intervals were initially sorted according to their start times.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> intervals = [[1,3],[6,9]], newInterval = [2,5]\n<strong>Output:</strong> [[1,5],[6,9]]\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]\n<strong>Output:</strong> [[1,2],[3,10],[12,16]]\n<strong>Explanation:</strong> Because the new interval <code>[4,8]</code> overlaps with <code>[3,5],[6,7],[8,10]</code>.</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> intervals = [], newInterval = [5,7]\n<strong>Output:</strong> [[5,7]]\n</pre>\n\n<p><strong>Example 4:</strong></p>\n\n<pre>\n<strong>Input:</strong> intervals = [[1,5]], newInterval = [2,3]\n<strong>Output:</strong> [[1,5]]\n</pre>\n\n<p><strong>Example 5:</strong></p>\n\n<pre>\n<strong>Input:</strong> intervals = [[1,5]], newInterval = [2,7]\n<strong>Output:</strong> [[1,7]]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>0 &lt;= intervals.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>intervals[i].length == 2</code></li>\n\t<li><code>0 &lt;=&nbsp;intervals[i][0] &lt;=&nbsp;intervals[i][1] &lt;= 10<sup>5</sup></code></li>\n\t<li><code>intervals</code>&nbsp;is sorted by <code>intervals[i][0]</code> in <strong>ascending</strong>&nbsp;order.</li>\n\t<li><code>newInterval.length == 2</code></li>\n\t<li><code>0 &lt;=&nbsp;newInterval[0] &lt;=&nbsp;newInterval[1] &lt;= 10<sup>5</sup></code></li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval)\n    {\n        //input check\n        if(intervals.empty())\n            return {newInterval};\n\n        vector<vector<int>> res;\n        res.reserve(intervals.size() + 1);\n        int a = newInterval[0], b = newInterval[1]; \n        \n        //find interval that could be altered to contain newInterval\n        auto iter = begin(intervals),\n                    iter_end = end(intervals);\n        for(;iter < iter_end; ++iter)\n        {\n            int &x1 = iter->at(0), &x2 = iter->at(1);\n            \n            //booster to find correct element\n            if(a > x1 && a > x2 && next(iter) != iter_end)\n            {\n                res.emplace_back(*iter);\n                continue;\n            }\n            break;\n        }\n        \n        //return {*iter};\n        //alter this interval or insert new before interval it\n        {\n            int &x1 = iter->at(0), &x2 = iter->at(1);\n            \n            //(x1,a,b,x2) fully included\n            if( x1 <= a && b <= x2 )\n                return intervals;\n            //(a,x1,x2,b) fully included\n            if( a <= x1 && x2 <= b )\n            {\n                *iter = newInterval;\n            }\n            else if( a == x2 )\n            {\n                x2 = b;\n            }\n            //(a,x1,b,x2)\n            else if( a < x1  && x1 <= b )\n            {\n                x1 = a;\n            }\n            //(x1,a,x2,b)\n            else if( a <= x2 && x2 < b)\n            {\n                x2 = b;\n            }\n            //(a,b,x1,x2) //we can insert a new interval right before iter\n            else if(x1 >= b)\n            {\n                iter = intervals.insert(iter, newInterval);//insert whole interval at prev pos\n            }\n            else if(next(iter) == iter_end)\n            {\n                if(a <= x2)\n                    x2 = b;\n                else\n                {\n                    res.emplace_back(*iter);\n                    iter = intervals.insert(iter_end, newInterval);\n                }\n            }\n\n        }\n\n        //return {*iter};\n\n\n        //check that intervals after modified/inserted one are not overlaping\n        a = iter->at(0), b = iter->at(1);\n        iter_end = end(intervals);\n        auto finish_iter = next(iter);\n        \n        if(finish_iter != iter_end)\n        for(;next(finish_iter) != iter_end; finish_iter++)\n        {\n            int &x1 = finish_iter->at(0), &x2 = finish_iter->at(1);\n            if(b == x1 ||  b <= x2)\n            {\n                break;\n            }\n            if( b < next(finish_iter)->at(0))   \n            {\n                break;\n            }\n        }\n\n        //take right valur from last overlapping\n        if(finish_iter != iter_end)\n        {\n            int &x1 = finish_iter->at(0), &x2 = finish_iter->at(1);\n            if(b >= x1)\n            {\n                if(x2 > b)\n                    iter->at(1) = x2;\n                finish_iter++;\n            }\n        }\n\n        //at this point we finished with our interval,\n        //all other intervals after it is not overlapping\n        res.emplace_back(*iter);\n        for(;finish_iter != iter_end; finish_iter++)\n            res.emplace_back(*finish_iter);\n        \n        \n        return res;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "insert-interval",
+                        "submissions": {
+                            "cpp": "395997637"
                         }
                     }
                 },
@@ -994,6 +1324,44 @@
                         "slug": "lowest-common-ancestor-of-a-binary-tree",
                         "submissions": {
                             "cpp": "304530638"
+                        }
+                    }
+                },
+                {
+                    "name": "Majority Element II",
+                    "link": "https://leetcode.com/problems/majority-element-ii",
+                    "description": "<p>Given an integer array of size <i>n</i>, find all elements that appear more than <code>&lfloor; n/3 &rfloor;</code> times.</p>\r\n\r\n<p><strong>Note: </strong>The algorithm should run in linear time and in O(1) space.</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> [3,2,3]\r\n<strong>Output:</strong> [3]</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> [1,1,1,3,3,2,2,2]\r\n<strong>Output:</strong> [1,2]</pre>\r\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    vector<int> majorityElement(vector<int>& nums)\n    {\n        std::map<int, size_t> marks;\n        \n        for(auto &num : nums)\n            marks[num]++;\n        \n        const int limit = nums.size() / 3;\n        vector<int> res;\n        \n        for(auto &mark : marks)\n            if(mark.second > limit)\n                res.push_back(mark.first);\n        \n        return res;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "majority-element-ii",
+                        "submissions": {
+                            "cpp": "399126393"
+                        }
+                    }
+                },
+                {
+                    "name": "Maximum Product Subarray",
+                    "link": "https://leetcode.com/problems/maximum-product-subarray",
+                    "description": "<p>Given an integer array&nbsp;<code>nums</code>, find the contiguous subarray within an array (containing at least one number) which has the largest product.</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> [2,3,-2,4]\r\n<strong>Output:</strong> <code>6</code>\r\n<strong>Explanation:</strong>&nbsp;[2,3] has the largest product 6.\r\n</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> [-2,0,-1]\r\n<strong>Output:</strong> 0\r\n<strong>Explanation:</strong>&nbsp;The result cannot be 2, because [-2,-1] is not a subarray.</pre>\r\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "#include <functional>\nclass Solution\n{\npublic:\n    int maxProduct(vector<int>& nums)\n    {\n        //case for 1 number\n        if(nums.size() == 1)\n            return nums[0];\n\n        //erase consecutive 1 an -1\n        bool removed_ones = true;\n        if(nums.size() > 50)\n        while(removed_ones)\n        {\n            removed_ones = false;\n            for(auto iter = nums.begin()++; iter != nums.end()-2;)\n            {\n                int val = *iter;\n                if(\n                    (val == 1 || val == -1) &&\n                        val == *next(iter)  ||\n                    (val == 1 || val == -1) && \n                        (*next(iter) == val*-1 && *prev(iter) ==  val*-1 ) )             \n                {\n                    iter = nums.erase(iter);\n                    removed_ones = true;\n                }\n                else\n                   ++iter;\n\n            }\n        }\n\n        int max = 0;\n        for(auto begin_iter = nums.begin(); begin_iter < nums.end(); ++begin_iter)\n        {\n            int product = *begin_iter,\n                new_product = *begin_iter;\n           \n            for(auto current_iter = next(begin_iter);\n                current_iter < nums.end();\n                current_iter++)\n            {\n                new_product *= *current_iter;\n                if(new_product > product)\n                    product = new_product;\n            }\n            \n            if(product > max) max = product;\n        }\n        \n        return max;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "maximum-product-subarray",
+                        "submissions": {
+                            "cpp": "394510521"
                         }
                     }
                 },

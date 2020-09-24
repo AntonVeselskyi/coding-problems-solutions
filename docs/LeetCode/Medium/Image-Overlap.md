@@ -38,13 +38,13 @@ The number of positions that have a 1 in both images is 3. (Shown in red)
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>n == a.length</code></li>
-	<li><code>n == a[i].length</code></li>
-	<li><code>n == b.length </code></li>
-	<li><code>n == b[i].length</code></li>
+	<li><code>n == img1.length</code></li>
+	<li><code>n == img1[i].length</code></li>
+	<li><code>n == img2.length </code></li>
+	<li><code>n == img2[i].length</code></li>
 	<li><code>1 &lt;= n &lt;= 30</code></li>
-	<li><code>a[i][j]</code> is <code>0</code> or <code>1</code>.</li>
-	<li><code>b[i][j]</code> is <code>0</code> or <code>1</code>.</li>
+	<li><code>img1[i][j]</code> is <code>0</code> or <code>1</code>.</li>
+	<li><code>img2[i][j]</code> is <code>0</code> or <code>1</code>.</li>
 </ul>
 
 

@@ -17,6 +17,13 @@
 
 
 ## Solutions
+#### 🐍 Python
+```python
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        return len(s.rsplit(maxsplit=1)[-1]) if len(s.strip()) else 0
+        
+```
 #### 🧠 Cpp
 ```cpp
 class Solution {
