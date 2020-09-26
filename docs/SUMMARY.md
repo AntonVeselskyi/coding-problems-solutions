@@ -1,6 +1,6 @@
 # 🍀 Codding Problems Solutions 🍀
 
-## CodeWars ✨
+## CodeWars ⚔️
 * [🌝 Beta](/CodeWars/Beta)
     * [Count vowels](/CodeWars/Beta/Count-vowels.md)
     * [Who am I?](/CodeWars/Beta/Who-am-I.md)
@@ -69,6 +69,7 @@
 * [💍 4 Kyu](/CodeWars/4-Kyu)
     * [Matrix Determinant](/CodeWars/4-Kyu/Matrix-Determinant.md)
     * [Range Extraction](/CodeWars/4-Kyu/Range-Extraction.md)
+    * [Roman Numerals Helper](/CodeWars/4-Kyu/Roman-Numerals-Helper.md)
     * [Simple Fun #159: Middle Permutation](/CodeWars/4-Kyu/Simple-Fun-159-Middle-Permutation.md)
     * [Strip Comments](/CodeWars/4-Kyu/Strip-Comments.md)
     * [Sum of Intervals](/CodeWars/4-Kyu/Sum-of-Intervals.md)
@@ -128,6 +129,7 @@
     * [Two Sum](/LeetCode/Easy/Two-Sum.md)
     * [Valid Anagram](/LeetCode/Easy/Valid-Anagram.md)
     * [Valid Mountain Array](/LeetCode/Easy/Valid-Mountain-Array.md)
+    * [Valid Parentheses](/LeetCode/Easy/Valid-Parentheses.md)
     * [Word Pattern](/LeetCode/Easy/Word-Pattern.md)
     * [XOR Operation in an Array](/LeetCode/Easy/XOR-Operation-in-an-Array.md)
 * [👊 Medium](/LeetCode/Medium)
@@ -153,6 +155,7 @@
     * [Rotate Image](/LeetCode/Medium/Rotate-Image.md)
     * [Rotting Oranges](/LeetCode/Medium/Rotting-Oranges.md)
     * [String to Integer (atoi)](/LeetCode/Medium/String-to-Integer-atoi.md)
+    * [Teemo Attacking](/LeetCode/Medium/Teemo-Attacking.md)
     * [Top K Frequent Elements](/LeetCode/Medium/Top-K-Frequent-Elements.md)
     * [Valid Sudoku](/LeetCode/Medium/Valid-Sudoku.md)
 * [💪 Hard](/LeetCode/Hard)
