@@ -24,6 +24,25 @@
                     }
                 },
                 {
+                    "name": "Binary Search",
+                    "link": "https://leetcode.com/problems/binary-search",
+                    "description": "<p>Given a <strong>sorted</strong> (in ascending order) integer array <code>nums</code> of <code>n</code> elements and a <code>target</code> value, write a function to search <code>target</code> in <code>nums</code>. If <code>target</code> exists, then return its index, otherwise return <code>-1</code>.</p>\r\n\r\n<p><br />\r\n<strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> <code>nums</code> = [-1,0,3,5,9,12], <code>target</code> = 9\r\n<strong>Output:</strong> 4\r\n<strong>Explanation:</strong> 9 exists in <code>nums</code> and its index is 4\r\n\r\n</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> <code>nums</code> = [-1,0,3,5,9,12], <code>target</code> = 2\r\n<strong>Output:</strong> -1\r\n<strong>Explanation:</strong> 2 does not exist in <code>nums</code> so return -1\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Note:</strong></p>\r\n\r\n<ol>\r\n\t<li>You may assume that all elements in <code>nums</code> are unique.</li>\r\n\t<li><code>n</code> will be in the range <code>[1, 10000]</code>.</li>\r\n\t<li>The value of each element in <code>nums</code> will be in the range <code>[-9999, 9999]</code>.</li>\r\n</ol>\r\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    //classic O(log n) dolution\n    int search(vector<int>& nums, int target)\n    {\n        if(nums.empty())\n            return -1;\n        //starting index is in the middle of the array\n        //step is the first step that will be applied\n        //step should be at least 1\n        for(size_t step = nums.size()/2, index = step;\n            nums.size() > index  && index >= 0;\n            )\n        {\n            //return index;\n            const int num = nums[index];\n            if(num == target)\n                return index;\n            \n            if(!step)\n                break;\n            step = (step+1) / 2;\n            if(num < target)\n                index += step;\n            else\n                index -= step;\n            if(step == 1)\n                step = 0;\n        }   \n        \n        return -1;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "binary-search",
+                        "submissions": {
+                            "cpp": "406294895"
+                        }
+                    }
+                },
+                {
                     "name": "Check If N and Its Double Exist",
                     "link": "https://leetcode.com/problems/check-if-n-and-its-double-exist",
                     "description": "<p>Given an array <code>arr</code> of integers, check if there exists two integers <code>N</code> and <code>M</code> such that <code>N</code> is the double of <code>M</code> ( i.e. <code>N = 2 * M</code>).</p>\n\n<p>More formally check if there exists&nbsp;two indices <code>i</code> and <code>j</code> such that :</p>\n\n<ul>\n\t<li><code>i != j</code></li>\n\t<li><code>0 &lt;= i, j &lt; arr.length</code></li>\n\t<li><code>arr[i] == 2 * arr[j]</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [10,2,5,3]\n<strong>Output:</strong> true\n<strong>Explanation:</strong> N<code> = 10</code> is the double of M<code> = 5</code>,that is, <code>10 = 2 * 5</code>.\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [7,1,14,11]\n<strong>Output:</strong> true\n<strong>Explanation:</strong> N<code> = 14</code> is the double of M<code> = 7</code>,that is, <code>14 = 2 * 7</code>.\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [3,1,7,11]\n<strong>Output:</strong> false\n<strong>Explanation:</strong> In this case does not exist N and M, such that N = 2 * M.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= arr.length &lt;= 500</code></li>\n\t<li><code>-10^3 &lt;= arr[i] &lt;= 10^3</code></li>\n</ul>\n",
@@ -39,6 +58,25 @@
                         "slug": "check-if-n-and-its-double-exist",
                         "submissions": {
                             "cpp": "399691070"
+                        }
+                    }
+                },
+                {
+                    "name": "Complement of Base 10 Integer",
+                    "link": "https://leetcode.com/problems/complement-of-base-10-integer",
+                    "description": "<p>Every non-negative integer <code>N</code>&nbsp;has a binary representation.&nbsp; For example,&nbsp;<code>5</code> can be represented as <code>&quot;101&quot;</code>&nbsp;in binary, <code>11</code> as <code>&quot;1011&quot;</code>&nbsp;in binary, and so on.&nbsp; Note that except for <code>N = 0</code>, there are no leading zeroes in any&nbsp;binary representation.</p>\n\n<p>The <em>complement</em>&nbsp;of a binary representation&nbsp;is the number in binary you get when changing every <code>1</code> to a <code>0</code> and <code>0</code> to a <code>1</code>.&nbsp; For example, the complement of <code>&quot;101&quot;</code> in binary is <code>&quot;010&quot;</code> in binary.</p>\n\n<p>For a given number <code>N</code> in base-10, return the complement of it&#39;s binary representation as a&nbsp;base-10 integer.</p>\n\n<p>&nbsp;</p>\n\n<ol>\n</ol>\n\n<div>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input: </strong><span id=\"example-input-1-1\">5</span>\n<strong>Output: </strong><span id=\"example-output-1\">2</span>\n<strong>Explanation: </strong>5 is &quot;101&quot; in binary, with complement &quot;010&quot; in binary, which is 2 in base-10.\n</pre>\n\n<div>\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input: </strong><span id=\"example-input-2-1\">7</span>\n<strong>Output: </strong><span id=\"example-output-2\">0</span>\n<span id=\"example-output-1\"><strong>Explanation: </strong>7 is &quot;111&quot; in binary, with complement &quot;000&quot; in binary, which is 0 in base-10.\n</span></pre>\n\n<div>\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input: </strong><span id=\"example-input-3-1\">10</span>\n<strong>Output: </strong><span id=\"example-output-3\">5</span>\n<strong>Explanation: </strong>10 is &quot;1010&quot; in binary, with complement &quot;0101&quot; in binary, which is 5 in base-10.\n</pre>\n\n<p>&nbsp;</p>\n\n<p><strong>Note:</strong></p>\n\n<ol>\n\t<li><code>0 &lt;= N &lt; 10^9</code></li>\n\t<li>This question is the same as 476:&nbsp;<a href=\"https://leetcode.com/problems/number-complement/\">https://leetcode.com/problems/number-complement/</a></li>\n</ol>\n</div>\n</div>\n</div>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    //O(1) solution\n    int bitwiseComplement(int N)\n    {\n        if(N == 0)\n            return 1;\n        //leading_zeros\n        const size_t LZ =  __builtin_clz(N); \n        return (~(N << LZ)) >> LZ;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "complement-of-base-10-integer",
+                        "submissions": {
+                            "cpp": "404751365"
                         }
                     }
                 },
@@ -487,6 +525,25 @@
                     }
                 },
                 {
+                    "name": "Number of 1 Bits",
+                    "link": "https://leetcode.com/problems/number-of-1-bits",
+                    "description": "<p>Write a function that takes an unsigned integer and returns&nbsp;the number of &#39;1&#39;&nbsp;bits it has (also known as the <a href=\"http://en.wikipedia.org/wiki/Hamming_weight\" target=\"_blank\">Hamming weight</a>).</p>\n\n<p><strong>Note:</strong></p>\n\n<ul>\n\t<li>Note that in some languages such as Java, there is no unsigned integer type. In this case, the input will be given as a signed integer type. It should not affect your implementation, as the integer&#39;s internal binary representation is the same, whether it is signed or unsigned.</li>\n\t<li>In Java,&nbsp;the compiler represents the signed integers using <a href=\"https://en.wikipedia.org/wiki/Two%27s_complement\" target=\"_blank\">2&#39;s complement notation</a>. Therefore, in <strong>Example 3</strong>&nbsp;above, the input represents the signed integer.&nbsp;<code>-3</code>.</li>\n</ul>\n\n<p><b>Follow up</b>: If this function is called many times, how would you optimize it?</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 00000000000000000000000000001011\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> The input binary string <strong>00000000000000000000000000001011</strong> has a total of three &#39;1&#39; bits.\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 00000000000000000000000010000000\n<strong>Output:</strong> 1\n<strong>Explanation:</strong> The input binary string <strong>00000000000000000000000010000000</strong> has a total of one &#39;1&#39; bit.\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 11111111111111111111111111111101\n<strong>Output:</strong> 31\n<strong>Explanation:</strong> The input binary string <strong>11111111111111111111111111111101</strong> has a total of thirty one &#39;1&#39; bits.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The input must be a <strong>binary string</strong> of length <code>32</code></li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    int hammingWeight(uint32_t n)\n    {\n        return __builtin_popcount(n);\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "number-of-1-bits",
+                        "submissions": {
+                            "cpp": "405198655"
+                        }
+                    }
+                },
+                {
                     "name": "Number of Good Pairs",
                     "link": "https://leetcode.com/problems/number-of-good-pairs",
                     "description": "<p>Given an array of integers&nbsp;<code>nums</code>.</p>\r\n\r\n<p>A pair&nbsp;<code>(i,j)</code>&nbsp;is called <em>good</em> if&nbsp;<code>nums[i]</code> == <code>nums[j]</code> and <code>i</code> &lt; <code>j</code>.</p>\r\n\r\n<p>Return the number of <em>good</em> pairs.</p>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> nums = [1,2,3,1,1,3]\r\n<strong>Output:</strong> 4\r\n<strong>Explanation: </strong>There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.\r\n</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> nums = [1,1,1,1]\r\n<strong>Output:</strong> 6\r\n<strong>Explanation: </strong>Each pair in the array are <em>good</em>.\r\n</pre>\r\n\r\n<p><strong>Example 3:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> nums = [1,2,3]\r\n<strong>Output:</strong> 0\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong>Constraints:</strong></p>\r\n\r\n<ul>\r\n\t<li><code>1 &lt;= nums.length &lt;= 100</code></li>\r\n\t<li><code>1 &lt;= nums[i] &lt;= 100</code></li>\r\n</ul>",
@@ -620,6 +677,25 @@
                     }
                 },
                 {
+                    "name": "Power of Two",
+                    "link": "https://leetcode.com/problems/power-of-two",
+                    "description": "<p>Given an integer <code>n</code>, write a function to determine if it is a power of two.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 1\n<strong>Output:</strong> true\n<strong>Explanation: </strong>2<sup>0</sup> = 1\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 16\n<strong>Output:</strong> true\n<strong>Explanation: </strong>2<sup>4</sup> = 16\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 3\n<strong>Output:</strong> false\n</pre>\n\n<p><strong>Example 4:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 4\n<strong>Output:</strong> true\n</pre>\n\n<p><strong>Example 5:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 5\n<strong>Output:</strong> false\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>-2<sup>31</sup> &lt;= n &lt;= 2<sup>31</sup> - 1</code></li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    bool isPowerOfTwo(int n)\n    {\n              return (__builtin_popcount(n) == 1) && (n & 0x7FFFFFFF);\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "power-of-two",
+                        "submissions": {
+                            "cpp": "405256850"
+                        }
+                    }
+                },
+                {
                     "name": "Remove Duplicates from Sorted Array",
                     "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-array",
                     "description": "<p>Given a sorted array <em>nums</em>, remove the duplicates <a href=\"https://en.wikipedia.org/wiki/In-place_algorithm\" target=\"_blank\"><strong>in-place</strong></a> such that each element appears only <em>once</em> and returns the new length.</p>\n\n<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href=\"https://en.wikipedia.org/wiki/In-place_algorithm\" target=\"_blank\">in-place</a></strong> with O(1) extra memory.</p>\n\n<p><strong>Example 1:</strong></p>\n\n<pre>\nGiven <em>nums</em> = <strong>[1,1,2]</strong>,\n\nYour function should return length = <strong><code>2</code></strong>, with the first two elements of <em><code>nums</code></em> being <strong><code>1</code></strong> and <strong><code>2</code></strong> respectively.\n\nIt doesn&#39;t matter what you leave beyond the returned length.</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\nGiven <em>nums</em> = <strong>[0,0,1,1,1,2,2,3,3,4]</strong>,\n\nYour function should return length = <strong><code>5</code></strong>, with the first five elements of <em><code>nums</code></em> being modified to&nbsp;<strong><code>0</code></strong>, <strong><code>1</code></strong>, <strong><code>2</code></strong>, <strong><code>3</code></strong>, and&nbsp;<strong><code>4</code></strong> respectively.\n\nIt doesn&#39;t matter what values are set beyond&nbsp;the returned length.\n</pre>\n\n<p><strong>Clarification:</strong></p>\n\n<p>Confused why the returned value is an integer but your answer is an array?</p>\n\n<p>Note that the input array is passed in by <strong>reference</strong>, which means a modification to the input array will be known to the caller as well.</p>\n\n<p>Internally you can think of this:</p>\n\n<pre>\n// <strong>nums</strong> is passed in by reference. (i.e., without making a copy)\nint len = removeDuplicates(nums);\n\n// any modification to <strong>nums</strong> in your function would be known by the caller.\n// using the length returned by your function, it prints the first <strong>len</strong> elements.\nfor (int i = 0; i &lt; len; i++) {\n&nbsp; &nbsp; print(nums[i]);\n}</pre>\n",
@@ -749,25 +825,6 @@
                         "slug": "roman-to-integer",
                         "submissions": {
                             "cpp": "356520255"
-                        }
-                    }
-                },
-                {
-                    "name": "Rotate Array",
-                    "link": "https://leetcode.com/problems/rotate-array",
-                    "description": "<p>Given an array, rotate the array to the right by <em>k</em> steps, where&nbsp;<em>k</em>&nbsp;is non-negative.</p>\n\n<p><strong>Follow up:</strong></p>\n\n<ul>\n\t<li>Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.</li>\n\t<li>Could you do it in-place with O(1) extra space?</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3,4,5,6,7], k = 3\n<strong>Output:</strong> [5,6,7,1,2,3,4]\n<strong>Explanation:</strong>\nrotate 1 steps to the right: [7,1,2,3,4,5,6]\nrotate 2 steps to the right: [6,7,1,2,3,4,5]\nrotate 3 steps to the right: [5,6,7,1,2,3,4]\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [-1,-100,3,99], k = 2\n<strong>Output:</strong> [3,99,-1,-100]\n<strong>Explanation:</strong> \nrotate 1 steps to the right: [99,-1,-100,3]\nrotate 2 steps to the right: [3,99,-1,-100]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 2 * 10^4</code></li>\n\t<li>It&#39;s guaranteed that <code>nums[i]</code> fits in a 32 bit-signed integer.</li>\n\t<li><code>k &gt;= 0</code></li>\n</ul>\n",
-                    "solutions": {
-                        "cpp": [
-                            {
-                                "language": "cpp",
-                                "code": "#include <iterator>\n#include <utility>\n#define mmi std::make_move_iterator\n\nclass Solution {\npublic:\n    void rotate(vector<int>& nums, int k)\n    {\n        if(nums.size() <= 1)\n            return;\n        if(k > nums.size())\n            k -= nums.size();\n        \n        vector<int> right_chunk(nums.end()-k, nums.end());\n        //mmi is hack after using mmi nums is not valid\n        right_chunk.insert(right_chunk.end(), mmi(nums.begin()), mmi(nums.end()-k));\n        nums = std::move(right_chunk);\n    }\n};"
-                            }
-                        ]
-                    },
-                    "metadata": {
-                        "slug": "rotate-array",
-                        "submissions": {
-                            "cpp": "302356085"
                         }
                     }
                 },
@@ -1290,6 +1347,25 @@
                     }
                 },
                 {
+                    "name": "Counting Bits",
+                    "link": "https://leetcode.com/problems/counting-bits",
+                    "description": "<p>Given a non negative integer number <b>num</b>. For every numbers <b>i</b> in the range <b>0 &le; i &le; num</b> calculate the number of 1&#39;s in their binary representation and return them as an array.</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-1-1\">2</span>\r\n<strong>Output: </strong><span id=\"example-output-1\">[0,1,1]</span></pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-1-1\">5</span>\r\n<strong>Output: </strong><code>[0,1,1,2,1,2]</code>\r\n</pre>\r\n\r\n<p><b>Follow up:</b></p>\r\n\r\n<ul>\r\n\t<li>It is very easy to come up with a solution with run time <b>O(n*sizeof(integer))</b>. But can you do it in linear time <b>O(n)</b> /possibly in a single pass?</li>\r\n\t<li>Space complexity should be <b>O(n)</b>.</li>\r\n\t<li>Can you do it like a boss? Do it without using any builtin function like <b>__builtin_popcount</b> in c++ or in any other language.</li>\r\n</ul>",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\npublic:\n    vector<int> countBits(int num)\n    {\n        vector<int> res(num+1);\n        \n        for(int i = 0; i <= num; ++i)\n            res[i] = __builtin_popcount(i);\n        \n        return res;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "counting-bits",
+                        "submissions": {
+                            "cpp": "405199505"
+                        }
+                    }
+                },
+                {
                     "name": "Course Schedule II",
                     "link": "https://leetcode.com/problems/course-schedule-ii",
                     "description": "<p>There are a total of <code>n</code> courses you have to take labelled from <code>0</code> to <code>n - 1</code>.</p>\n\n<p>Some courses may have <code>prerequisites</code>, for example, if&nbsp;<code>prerequisites[i] = [a<sub>i</sub>, b<sub>i</sub>]</code>&nbsp;this means you must take the course <code>b<sub>i</sub></code> before the course <code>a<sub>i</sub></code>.</p>\n\n<p>Given the total number of courses&nbsp;<code>numCourses</code> and a list of the <code>prerequisite</code> pairs, return the ordering of courses you should take to finish all courses.</p>\n\n<p>If there are many valid answers, return <strong>any</strong> of them.&nbsp;If it is impossible to finish all courses, return <strong>an empty array</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> numCourses = 2, prerequisites = [[1,0]]\n<strong>Output:</strong> [0,1]\n<strong>Explanation:</strong> There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1].\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]\n<strong>Output:</strong> [0,2,1,3]\n<strong>Explanation:</strong> There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0.\nSo one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3].\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> numCourses = 1, prerequisites = []\n<strong>Output:</strong> [0]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= numCourses &lt;= 2000</code></li>\n\t<li><code>0 &lt;=&nbsp;prerequisites.length &lt;= numCourses * (numCourses - 1)</code></li>\n\t<li><code>prerequisites[i].length == 2</code></li>\n\t<li><code>0 &lt;= a<sub>i</sub>, b<sub>i</sub> &lt;&nbsp;numCourses</code></li>\n\t<li><code>a<sub>i</sub>&nbsp;!=&nbsp;b<sub>i</sub></code></li>\n\t<li>All the pairs <code>[a<sub>i</sub>, b<sub>i</sub>]</code> are <strong>distinct</strong>.</li>\n</ul>\n",
@@ -1381,6 +1457,25 @@
                         "slug": "insert-interval",
                         "submissions": {
                             "cpp": "395997637"
+                        }
+                    }
+                },
+                {
+                    "name": "Insert into a Binary Search Tree",
+                    "link": "https://leetcode.com/problems/insert-into-a-binary-search-tree",
+                    "description": "<p>You are given the <code>root</code> node of a binary search tree (BST) and a <code>value</code> to insert into the tree. Return <em>the root node of the BST after the insertion</em>. It is <strong>guaranteed</strong> that the new value does not exist in the original BST.</p>\n\n<p><strong>Notice</strong>&nbsp;that there may exist&nbsp;multiple valid ways for the&nbsp;insertion, as long as the tree remains a BST after insertion. You can return <strong>any of them</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/05/insertbst.jpg\" style=\"width: 752px; height: 221px;\" />\n<pre>\n<strong>Input:</strong> root = [4,2,7,1,3], val = 5\n<strong>Output:</strong> [4,2,7,1,3,5]\n<strong>Explanation:</strong> Another accepted tree is:\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/05/bst.jpg\" style=\"width: 352px; height: 301px;\" />\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [40,20,60,10,30,50,70], val = 25\n<strong>Output:</strong> [40,20,60,10,30,50,70,null,null,25]\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [4,2,7,1,3,null,null,null,null,null,null], val = 5\n<strong>Output:</strong> [4,2,7,1,3,5]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in&nbsp;the tree will be in the range <code>[0,&nbsp;10<sup>4</sup>]</code>.</li>\n\t<li><code>-10<sup>8</sup> &lt;= Node.val &lt;= 10<sup>8</sup></code></li>\n\t<li>All the values <code>Node.val</code> are <strong>unique</strong>.</li>\n\t<li><code>-10<sup>8</sup> &lt;= val &lt;= 10<sup>8</sup></code></li>\n\t<li>It&#39;s <strong>guaranteed</strong> that <code>val</code> does not exist in the original BST.</li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode() : val(0), left(nullptr), right(nullptr) {}\n *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}\n *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}\n * };\n */\nclass Solution\n{\npublic:\n    TreeNode* insertIntoBST(TreeNode *root, int val)\n    {\n        TreeNode *new_node = new TreeNode(val);\n\n        if(!root)\n            return new_node;\n        \n        TreeNode *&child_node = val < root->val ? root->left : root->right;\n\n        if(child_node)\n            insertIntoBST(child_node, val);\n        else\n            child_node = new_node;\n        \n        return root;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "insert-into-a-binary-search-tree",
+                        "submissions": {
+                            "cpp": "405182072"
                         }
                     }
                 },
@@ -1499,6 +1594,25 @@
                     }
                 },
                 {
+                    "name": "Minimum Number of Arrows to Burst Balloons",
+                    "link": "https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons",
+                    "description": "<p>There are some spherical balloons spread in two-dimensional space. For each balloon, provided input is the start and end coordinates of the horizontal diameter. Since it&#39;s horizontal, y-coordinates don&#39;t matter, and hence the x-coordinates of start and end of the diameter suffice. The start is always smaller than the end.</p>\r\n\r\n<p>An arrow can be shot up exactly vertically from different points along the x-axis. A balloon with <code>x<sub>start</sub></code> and <code>x<sub>end</sub></code> bursts by an arrow shot at <code>x</code> if <code>x<sub>start</sub> &le; x &le; x<sub>end</sub></code>. There is no limit to the number of arrows that can be shot. An arrow once shot keeps traveling up infinitely.</p>\r\n\r\n<p>Given an array <code>points</code> where <code>points[i] = [x<sub>start</sub>, x<sub>end</sub>]</code>, return&nbsp;<em>the minimum number of arrows that must be shot to burst all balloons</em>.</p>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> points = [[10,16],[2,8],[1,6],[7,12]]\r\n<strong>Output:</strong> 2\r\n<strong>Explanation:</strong> One way is to shoot one arrow for example at x = 6 (bursting the balloons [2,8] and [1,6]) and another arrow at x = 11 (bursting the other two balloons).\r\n</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> points = [[1,2],[3,4],[5,6],[7,8]]\r\n<strong>Output:</strong> 4\r\n</pre>\r\n\r\n<p><strong>Example 3:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> points = [[1,2],[2,3],[3,4],[4,5]]\r\n<strong>Output:</strong> 2\r\n</pre>\r\n\r\n<p><strong>Example 4:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> points = [[1,2]]\r\n<strong>Output:</strong> 1\r\n</pre>\r\n\r\n<p><strong>Example 5:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> points = [[2,3],[2,3]]\r\n<strong>Output:</strong> 1\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong>Constraints:</strong></p>\r\n\r\n<ul>\r\n\t<li><code>0 &lt;= points.length &lt;= 10<sup>4</sup></code></li>\r\n\t<li><code>points.length == 2</code></li>\r\n\t<li><code>-2<sup>31</sup> &lt;= x<sub>start</sub> &lt;&nbsp;x<sub>end</sub> &lt;= 2<sup>31</sup> - 1</code></li>\r\n</ul>",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\n    enum {START, END};\n\npublic:\n    //O(n log n) solution, because of sorting\n    //sort intervals by END, (wider first if ENDs are the same)\n    //and check for overlaps with current->at(END) < next_iter->at(START)\n    int findMinArrowShots(vector<vector<int>>& points)\n    {\n        //sort by END value, if equal: put wider intervals first\n        std::sort(begin(points), end(points),\n                  [](auto a, auto b)\n                  {\n                      return a[END] == b[END] ? \n                      a[START] > b[START] :\n                      a[END] < b[END];\n                  });\n        \n        int arrow_num = 0;\n        for(auto current = begin(points); current != end(points);)\n        {\n            //count all intervals that overlaps with current\n            //still O(n) because we moving forward in vector\n            for(auto next_iter = next(current); ; ++next_iter)\n            {\n                if(next_iter == end(points) || \n                   current->at(END) < next_iter->at(START))\n                {\n                    arrow_num++;\n                    current = next_iter;\n                    break;\n                }\n                //else there is overlap with current\n            }\n        }\n        \n        return arrow_num;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "minimum-number-of-arrows-to-burst-balloons",
+                        "submissions": {
+                            "cpp": "407056650"
+                        }
+                    }
+                },
+                {
                     "name": "Random Point in Non-overlapping Rectangles",
                     "link": "https://leetcode.com/problems/random-point-in-non-overlapping-rectangles",
                     "description": "<p>Given a list of <strong>non-overlapping</strong>&nbsp;axis-aligned rectangles <code>rects</code>, write a function <code>pick</code> which randomly and uniformily picks an <strong>integer point</strong> in the space&nbsp;covered by the rectangles.</p>\r\n\r\n<p>Note:</p>\r\n\r\n<ol>\r\n\t<li>An <strong>integer point</strong>&nbsp;is a point that has integer coordinates.&nbsp;</li>\r\n\t<li>A point&nbsp;on the perimeter&nbsp;of a rectangle is&nbsp;<strong>included</strong> in the space covered by the rectangles.&nbsp;</li>\r\n\t<li><code>i</code>th rectangle = <code>rects[i]</code> =&nbsp;<code>[x1,y1,x2,y2]</code>, where <code>[x1, y1]</code>&nbsp;are the integer coordinates of the bottom-left corner, and <code>[x2, y2]</code>&nbsp;are the integer coordinates of the top-right corner.</li>\r\n\t<li>length and width of each rectangle does not exceed <code>2000</code>.</li>\r\n\t<li><code>1 &lt;= rects.length&nbsp;&lt;= 100</code></li>\r\n\t<li><code>pick</code> return a point as an array of integer coordinates&nbsp;<code>[p_x, p_y]</code></li>\r\n\t<li><code>pick</code> is called at most <code>10000</code>&nbsp;times.</li>\r\n</ol>\r\n\r\n<div>\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: \r\n</strong><span id=\"example-input-1-1\">[&quot;Solution&quot;,&quot;pick&quot;,&quot;pick&quot;,&quot;pick&quot;]\r\n</span><span id=\"example-input-1-2\">[[[[1,1,5,5]]],[],[],[]]</span>\r\n<strong>Output: \r\n</strong><span id=\"example-output-1\">[null,[4,1],[4,1],[3,3]]</span>\r\n</pre>\r\n\r\n<div>\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: \r\n</strong><span id=\"example-input-2-1\">[&quot;Solution&quot;,&quot;pick&quot;,&quot;pick&quot;,&quot;pick&quot;,&quot;pick&quot;,&quot;pick&quot;]\r\n</span><span id=\"example-input-2-2\">[[[[-2,-2,-1,-1],[1,0,3,0]]],[],[],[],[],[]]</span>\r\n<strong>Output: \r\n</strong><span id=\"example-output-2\">[null,[-1,-2],[2,0],[-2,-1],[3,0],[-2,-2]]</span></pre>\r\n</div>\r\n\r\n<div>\r\n<p><strong>Explanation of Input Syntax:</strong></p>\r\n\r\n<p>The input is two lists:&nbsp;the subroutines called&nbsp;and their&nbsp;arguments.&nbsp;<code>Solution</code>&#39;s&nbsp;constructor has one argument, the array of rectangles <code>rects</code>. <code>pick</code>&nbsp;has no arguments.&nbsp;Arguments&nbsp;are&nbsp;always wrapped with a list, even if there aren&#39;t any.</p>\r\n</div>\r\n</div>\r\n\r\n<div>\r\n<div>&nbsp;</div>\r\n</div>\r\n",
@@ -1537,6 +1651,25 @@
                     }
                 },
                 {
+                    "name": "Rotate Array",
+                    "link": "https://leetcode.com/problems/rotate-array",
+                    "description": "<p>Given an array, rotate the array to the right by <em>k</em> steps, where&nbsp;<em>k</em>&nbsp;is non-negative.</p>\n\n<p><strong>Follow up:</strong></p>\n\n<ul>\n\t<li>Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.</li>\n\t<li>Could you do it in-place with O(1) extra space?</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3,4,5,6,7], k = 3\n<strong>Output:</strong> [5,6,7,1,2,3,4]\n<strong>Explanation:</strong>\nrotate 1 steps to the right: [7,1,2,3,4,5,6]\nrotate 2 steps to the right: [6,7,1,2,3,4,5]\nrotate 3 steps to the right: [5,6,7,1,2,3,4]\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [-1,-100,3,99], k = 2\n<strong>Output:</strong> [3,99,-1,-100]\n<strong>Explanation:</strong> \nrotate 1 steps to the right: [99,-1,-100,3]\nrotate 2 steps to the right: [3,99,-1,-100]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 2 * 10^4</code></li>\n\t<li>It&#39;s guaranteed that <code>nums[i]</code> fits in a 32 bit-signed integer.</li>\n\t<li><code>k &gt;= 0</code></li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "#include <iterator>\n#include <utility>\n#define mmi std::make_move_iterator\n\nclass Solution {\npublic:\n    void rotate(vector<int>& nums, int k)\n    {\n        if(nums.size() <= 1)\n            return;\n        if(k > nums.size())\n            k -= nums.size();\n        \n        vector<int> right_chunk(nums.end()-k, nums.end());\n        //mmi is hack after using mmi nums is not valid\n        right_chunk.insert(right_chunk.end(), mmi(nums.begin()), mmi(nums.end()-k));\n        nums = std::move(right_chunk);\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "rotate-array",
+                        "submissions": {
+                            "cpp": "302356085"
+                        }
+                    }
+                },
+                {
                     "name": "Rotate Image",
                     "link": "https://leetcode.com/problems/rotate-image",
                     "description": "<p>You are given an <em>n</em> x <em>n</em> 2D <code>matrix</code> representing an image, rotate the image by 90 degrees (clockwise).</p>\n\n<p>You have to rotate the image <a href=\"https://en.wikipedia.org/wiki/In-place_algorithm\" target=\"_blank\"><strong>in-place</strong></a>, which means you have to modify the input 2D matrix directly. <strong>DO NOT</strong> allocate another 2D matrix and do the rotation.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg\" style=\"width: 642px; height: 242px;\" />\n<pre>\n<strong>Input:</strong> matrix = [[1,2,3],[4,5,6],[7,8,9]]\n<strong>Output:</strong> [[7,4,1],[8,5,2],[9,6,3]]\n</pre>\n\n<p><strong>Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/08/28/mat2.jpg\" style=\"width: 800px; height: 321px;\" />\n<pre>\n<strong>Input:</strong> matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]\n<strong>Output:</strong> [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> matrix = [[1]]\n<strong>Output:</strong> [[1]]\n</pre>\n\n<p><strong>Example 4:</strong></p>\n\n<pre>\n<strong>Input:</strong> matrix = [[1,2],[3,4]]\n<strong>Output:</strong> [[3,1],[4,2]]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>matrix.length == n</code></li>\n\t<li><code>matrix[i].length == n</code></li>\n\t<li><code>1 &lt;= n &lt;= 20</code></li>\n\t<li><code>-1000 &lt;= matrix[i][j] &lt;= 1000</code></li>\n</ul>\n",
@@ -1556,6 +1689,25 @@
                     }
                 },
                 {
+                    "name": "Rotate List",
+                    "link": "https://leetcode.com/problems/rotate-list",
+                    "description": "<p>Given a linked&nbsp;list, rotate the list to the right by <em>k</em> places, where <em>k</em> is non-negative.</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2\r\n<strong>Output:</strong> 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL\r\n<strong>Explanation:</strong>\r\nrotate 1 steps to the right: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL\r\nrotate 2 steps to the right: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL\r\n</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> 0-&gt;1-&gt;2-&gt;NULL, k = 4\r\n<strong>Output:</strong> <code>2-&gt;0-&gt;1-&gt;NULL</code>\r\n<strong>Explanation:</strong>\r\nrotate 1 steps to the right: 2-&gt;0-&gt;1-&gt;NULL\r\nrotate 2 steps to the right: 1-&gt;2-&gt;0-&gt;NULL\r\nrotate 3 steps to the right:&nbsp;<code>0-&gt;1-&gt;2-&gt;NULL</code>\r\nrotate 4 steps to the right:&nbsp;<code>2-&gt;0-&gt;1-&gt;NULL</code></pre>\r\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode() : val(0), next(nullptr) {}\n *     ListNode(int x) : val(x), next(nullptr) {}\n *     ListNode(int x, ListNode *next) : val(x), next(next) {}\n * };\n */\nclass Solution\n{\npublic:\n    //O(n)solution with circular list\n    ListNode* rotateRight(ListNode* head, int k)\n    {\n        if(!head)\n            return head;\n        \n        //find list length and save tail\n        size_t length = 0;\n        ListNode *tail = nullptr;\n        for(ListNode *counter = head; counter; ++length, counter = counter->next)\n            if(!counter->next)\n                tail = counter;\n        \n        //make list circular\n        tail->next = head;\n        \n        //module k\n        k = k % length;\n        \n        //we will move k last element to front\n        //length - k element will be a new tail\n        //length - k + 1 element will be a new head\n        \n        //find new tail:\n        tail = head;\n        for(int i = 0; i < length - k - 1; ++i, tail = tail->next);\n        \n        head = tail->next;\n        tail->next = nullptr;\n        \n        return head;\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "rotate-list",
+                        "submissions": {
+                            "cpp": "405650257"
+                        }
+                    }
+                },
+                {
                     "name": "Rotting Oranges",
                     "link": "https://leetcode.com/problems/rotting-oranges",
                     "description": "<p>In a given grid, each cell can have one of three&nbsp;values:</p>\r\n\r\n<ul>\r\n\t<li>the value <code>0</code> representing an empty cell;</li>\r\n\t<li>the value <code>1</code> representing a fresh orange;</li>\r\n\t<li>the value <code>2</code> representing a rotten orange.</li>\r\n</ul>\r\n\r\n<p>Every minute, any fresh orange that is adjacent (4-directionally) to a rotten orange becomes rotten.</p>\r\n\r\n<p>Return the minimum number of minutes that must elapse until no cell has a fresh orange.&nbsp; If this is impossible, return <code>-1</code> instead.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<div>\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<p><strong><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/02/16/oranges.png\" style=\"width: 712px; height: 150px;\" /></strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-1-1\">[[2,1,1],[1,1,0],[0,1,1]]</span>\r\n<strong>Output: </strong><span id=\"example-output-1\">4</span>\r\n</pre>\r\n\r\n<div>\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-2-1\">[[2,1,1],[0,1,1],[1,0,1]]</span>\r\n<strong>Output: </strong><span id=\"example-output-2\">-1</span>\r\n<strong>Explanation: </strong> The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally.\r\n</pre>\r\n\r\n<div>\r\n<p><strong>Example 3:</strong></p>\r\n\r\n<pre>\r\n<strong>Input: </strong><span id=\"example-input-3-1\">[[0,2]]</span>\r\n<strong>Output: </strong><span id=\"example-output-3\">0</span>\r\n<strong>Explanation: </strong> Since there are already no fresh oranges at minute 0, the answer is just 0.\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Note:</strong></p>\r\n\r\n<ol>\r\n\t<li><code>1 &lt;= grid.length &lt;= 10</code></li>\r\n\t<li><code>1 &lt;= grid[0].length &lt;= 10</code></li>\r\n\t<li><code>grid[i][j]</code> is only <code>0</code>, <code>1</code>, or <code>2</code>.</li>\r\n</ol>\r\n</div>\r\n</div>\r\n</div>\r\n",
@@ -1571,6 +1723,25 @@
                         "slug": "rotting-oranges",
                         "submissions": {
                             "cpp": "378494170"
+                        }
+                    }
+                },
+                {
+                    "name": "Serialize and Deserialize BST",
+                    "link": "https://leetcode.com/problems/serialize-and-deserialize-bst",
+                    "description": "<p>Serialization is converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.</p>\n\n<p>Design an algorithm to serialize and deserialize a <b>binary search tree</b>. There is no restriction on how your serialization/deserialization algorithm should work. You need to ensure that a binary search tree can be serialized to a string, and this string can be deserialized to the original tree structure.</p>\n\n<p><b>The encoded string should be as compact as possible.</b></p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n<pre><strong>Input:</strong> root = [2,1,3]\n<strong>Output:</strong> [2,1,3]\n</pre><p><strong>Example 2:</strong></p>\n<pre><strong>Input:</strong> root = []\n<strong>Output:</strong> []\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 10<sup>4</sup>]</code>.</li>\n\t<li><code>0 &lt;= Node.val &lt;= 10<sup>4</sup></code></li>\n\t<li>The input tree is <strong>guaranteed</strong> to be a binary search tree.</li>\n</ul>\n",
+                    "solutions": {
+                        "python": [
+                            {
+                                "language": "python",
+                                "code": "# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, x):\n#         self.val = x\n#         self.left = None\n#         self.right = None\n\n# O(N) Solution with pre-order traversal\n# first element is the root,\n# all elements that are less than root are left part of tree\n# bigger is right, process left and right recursively\nclass Codec:\n\n    def serialize(self, root: TreeNode) -> str:\n        \"\"\"Encodes a tree to a single string.\n        \"\"\"\n        if root is None:\n            return \"\"\n        else:\n            return str(root.val) + \";\" + self.serialize(root.left) + self.serialize(root.right)\n        \n\n    def deserialize(self, data: str) -> TreeNode:\n        \"\"\"Decodes your encoded data to tree.\n        \"\"\"\n        if data == \"\":\n            return None\n\n        nodes = data.split(';')\n        root = TreeNode(int(nodes[0]))\n        root.left = \\\n            self.deserialize(';'.join([n for n in nodes[1:] if len(n) and int(n) < root.val]))\n        root.right = \\\n            self.deserialize(';'.join([n for n in nodes[1:] if len(n) and int(n) >= root.val]))\n        \n        return root\n            \n        \n\n# Your Codec object will be instantiated and called as such:\n# Your Codec object will be instantiated and called as such:\n# ser = Codec()\n# deser = Codec()\n# tree = ser.serialize(root)\n# ans = deser.deserialize(tree)\n# return ans"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "serialize-and-deserialize-bst",
+                        "submissions": {
+                            "python": "406690728"
                         }
                     }
                 },
