@@ -7,9 +7,10 @@
 <ul>
 	<li><code>0 &lt;= i, j &lt; nums.length</code></li>
 	<li><code>i != j</code></li>
-	<li><code>a &lt;= b</code></li>
-	<li><code>b - a == k</code></li>
+	<li><code>|nums[i] - nums[j]| == k</code></li>
 </ul>
+
+<p><strong>Notice</strong>&nbsp;that <code>|val|</code> denotes the absolute value of <code>val</code>.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
