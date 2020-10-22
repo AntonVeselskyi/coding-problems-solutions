@@ -69,14 +69,14 @@
                         "cpp": [
                             {
                                 "language": "cpp",
-                                "code": "class Solution\n{\n    //max stairs num is 45\n    array<int, 46> _storage = {0,1,2};\npublic:\n    int climbStairs(int n)\n    {\n        if(!_storage[n])\n            _storage[n] = climbStairs(n-1) + climbStairs(n-2);\n        \n        return _storage[n];\n    }\n};"
+                                "code": "class Solution\n{\n    //max stairs num is 45\n    array<int, 46> _storage = {0,1,2};\npublic:\n    //DP solution, O(n)\n    constexpr int climbStairs(int n)\n    {\n        if(!_storage[n])\n            _storage[n] = climbStairs(n-1) + climbStairs(n-2);\n        \n        return _storage[n];\n    }\n};"
                             }
                         ]
                     },
                     "metadata": {
                         "slug": "climbing-stairs",
                         "submissions": {
-                            "cpp": "410586503"
+                            "cpp": "410605782"
                         }
                     }
                 },
@@ -210,6 +210,25 @@
                         "slug": "excel-sheet-column-number",
                         "submissions": {
                             "cpp": "378803388"
+                        }
+                    }
+                },
+                {
+                    "name": "Fibonacci Number",
+                    "link": "https://leetcode.com/problems/fibonacci-number",
+                    "description": "<p>The&nbsp;<b>Fibonacci numbers</b>, commonly denoted&nbsp;<code>F(n)</code>&nbsp;form a sequence, called the&nbsp;<b>Fibonacci sequence</b>, such that each number is the sum of the two preceding ones, starting from <code>0</code> and <code>1</code>. That is,</p>\r\n\r\n<pre>\r\nF(0) = 0,&nbsp; &nbsp;F(1)&nbsp;= 1\r\nF(N) = F(N - 1) + F(N - 2), for N &gt; 1.\r\n</pre>\r\n\r\n<p>Given <code>N</code>, calculate <code>F(N)</code>.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> 2\r\n<strong>Output:</strong> 1\r\n<strong>Explanation:</strong> F(2) = F(1) + F(0) = 1 + 0 = 1.\r\n</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> 3\r\n<strong>Output:</strong> 2\r\n<strong>Explanation:</strong> F(3) = F(2) + F(1) = 1 + 1 = 2.\r\n</pre>\r\n\r\n<p><strong>Example 3:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> 4\r\n<strong>Output:</strong> 3\r\n<strong>Explanation:</strong> F(4) = F(3) + F(2) = 2 + 1 = 3.\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Note:</strong></p>\r\n\r\n<p>0 &le; <code>N</code> &le; 30.</p>\r\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\n    //max n == 30\n     array<int, 31> _storage = {0,1};\npublic:\n    constexpr int fib(int n)\n    {\n        if(n && !_storage[n])\n            _storage[n] = fib(n-1) + fib(n-2);\n        \n        return _storage[n];\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "fibonacci-number",
+                        "submissions": {
+                            "cpp": "410606904"
                         }
                     }
                 },
@@ -449,6 +468,25 @@
                     }
                 },
                 {
+                    "name": "Longest Word in Dictionary",
+                    "link": "https://leetcode.com/problems/longest-word-in-dictionary",
+                    "description": "<p>Given a list of strings <code>words</code> representing an English Dictionary, find the longest word in <code>words</code> that can be built one character at a time by other words in <code>words</code>.  If there is more than one possible answer, return the longest word with the smallest lexicographical order.</p>  If there is no answer, return the empty string.\r\n\r\n<p><b>Example 1:</b><br />\r\n<pre>\r\n<b>Input:</b> \r\nwords = [\"w\",\"wo\",\"wor\",\"worl\", \"world\"]\r\n<b>Output:</b> \"world\"\r\n<b>Explanation:</b> \r\nThe word \"world\" can be built one character at a time by \"w\", \"wo\", \"wor\", and \"worl\".\r\n</pre>\r\n</p>\r\n\r\n<p><b>Example 2:</b><br />\r\n<pre>\r\n<b>Input:</b> \r\nwords = [\"a\", \"banana\", \"app\", \"appl\", \"ap\", \"apply\", \"apple\"]\r\n<b>Output:</b> \"apple\"\r\n<b>Explanation:</b> \r\nBoth \"apply\" and \"apple\" can be built from other words in the dictionary. However, \"apple\" is lexicographically smaller than \"apply\".\r\n</pre>\r\n</p>\r\n\r\n<p><b>Note:</b>\r\n<li>All the strings in the input will only contain lowercase letters.</li>\r\n<li>The length of <code>words</code> will be in the range <code>[1, 1000]</code>.</li>\r\n<li>The length of <code>words[i]</code> will be in the range <code>[1, 30]</code>.</li>\r\n</p>",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "#define all(x) begin(x),end(x)\n\nclass Solution\n{\n    \n    struct TrieNode\n    {\n        char value = ' ';\n        bool is_wordend = false;\n        vector<shared_ptr<TrieNode>> nodes;\n    };\n    \n    shared_ptr<TrieNode> createTrie(const vector<string>& words)\n    {\n        auto root = make_shared<TrieNode>();\n        \n        //translate vector of strings into trie\n        for(const auto &str : words)\n        {\n            //start inserting new word from trie root\n            auto trie_pointer = root;\n            for(auto ch_iter = begin(str); ch_iter < end(str); ++ch_iter)\n            {\n                const char ch = *ch_iter;\n                const bool char_present_in_trie = std::any_of(all(trie_pointer->nodes),\n                    [&trie_pointer, ch](auto node)\n                    {\n                      bool found = node->value == ch;\n                      if (found)\n                          trie_pointer = node;\n                        return found;\n                    });\n                \n                //insert new node\n                if(!char_present_in_trie)\n                {\n                    auto node = make_shared<TrieNode>();\n                    node->value = ch;\n                    trie_pointer->nodes.push_back(node);\n                    trie_pointer = node;\n                }\n                \n                if(ch_iter == prev(end(str)))\n                    trie_pointer->is_wordend = true;\n            }\n        }\n        \n        return root;\n    }\npublic:\n    \n    vector<string> get_words_formed_by_words(const shared_ptr<TrieNode> root)\n    {\n        vector<string> res;\n        \n        for(auto &leaf : root->nodes)\n        {\n            if(leaf->is_wordend)\n            {\n                res.emplace_back(1, leaf->value);\n            \n                vector<string> subres = get_words_formed_by_words(leaf);\n                if(!subres.empty())\n                {\n                    string last_letter = res.back();\n                    for(auto &str : subres)\n                    res.push_back(last_letter + str);\n                }\n            }\n        }\n        \n        return res;\n    }\n    \n    string longestWord(vector<string>& words)\n    {\n        //O(n)\n        auto root = createTrie(words);\n        \n        //O(n)\n        vector<string> wfbw = get_words_formed_by_words(root);\n        \n        //O(n)\n        return *max_element(all(wfbw), \n                            [](auto a, auto b)\n                            {\n                                return a.size() == b.size() ?\n                                       a > b :\n                                       a.size() <  b.size();\n                            });\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "longest-word-in-dictionary",
+                        "submissions": {
+                            "cpp": "411018885"
+                        }
+                    }
+                },
+                {
                     "name": "Max Consecutive Ones",
                     "link": "https://leetcode.com/problems/max-consecutive-ones",
                     "description": "<p>Given a binary array, find the maximum number of consecutive 1s in this array.</p>\r\n\r\n<p><b>Example 1:</b><br />\r\n<pre>\r\n<b>Input:</b> [1,1,0,1,1,1]\r\n<b>Output:</b> 3\r\n<b>Explanation:</b> The first two digits or the last three digits are consecutive 1s.\r\n    The maximum number of consecutive 1s is 3.\r\n</pre>\r\n</p>\r\n\r\n<p><b>Note:</b>\r\n<ul>\r\n<li>The input array will only contain <code>0</code> and <code>1</code>.</li>\r\n<li>The length of input array is a positive integer and will not exceed 10,000</li>\r\n</ul>\r\n</p>",
@@ -544,6 +582,25 @@
                     }
                 },
                 {
+                    "name": "Minimum Depth of Binary Tree",
+                    "link": "https://leetcode.com/problems/minimum-depth-of-binary-tree",
+                    "description": "<p>Given a binary tree, find its minimum depth.</p>\n\n<p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>\n\n<p><strong>Note:</strong>&nbsp;A leaf is a node with no children.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/12/ex_depth.jpg\" style=\"width: 432px; height: 302px;\" />\n<pre>\n<strong>Input:</strong> root = [3,9,20,null,null,15,7]\n<strong>Output:</strong> 2\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [2,null,3,null,4,null,5,null,6]\n<strong>Output:</strong> 5\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 10<sup>5</sup>]</code>.</li>\n\t<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "/**\n * Definition for a binary tree node.\n * struct TreeNode\n * {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode() : val(0), left(nullptr), right(nullptr) {}\n *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}\n *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}\n * };\n */\n\nclass Solution\n{\npublic:\n    //O(2^n) solution\n    int minDepth(TreeNode* root)\n    {\n        if(!root)\n            return 0;\n        //if both leafs are null, we have the last leaf\n        else if(!root->left && !root->right)\n            return 1;\n\n        //pre-order traversal\n        return 1 + std::min(minDepth(root->left), minDepth(root->right), \n                            [](int a , int b)\n                            {\n                                if(!a) return false;\n                                if(!b) return true;\n                                return a < b;\n                            });\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "minimum-depth-of-binary-tree",
+                        "submissions": {
+                            "cpp": "411911103"
+                        }
+                    }
+                },
+                {
                     "name": "Move Zeroes",
                     "link": "https://leetcode.com/problems/move-zeroes",
                     "description": "<p>Given an array <code>nums</code>, write a function to move all <code>0</code>&#39;s to the end of it while maintaining the relative order of the non-zero elements.</p>\r\n\r\n<p><b>Example:</b></p>\r\n\r\n<pre>\r\n<b>Input:</b> <code>[0,1,0,3,12]</code>\r\n<b>Output:</b> <code>[1,3,12,0,0]</code></pre>\r\n\r\n<p><b>Note</b>:</p>\r\n\r\n<ol>\r\n\t<li>You must do this <b>in-place</b> without making a copy of the array.</li>\r\n\t<li>Minimize the total number of operations.</li>\r\n</ol>",
@@ -559,6 +616,25 @@
                         "slug": "move-zeroes",
                         "submissions": {
                             "cpp": "301715683"
+                        }
+                    }
+                },
+                {
+                    "name": "N-th Tribonacci Number",
+                    "link": "https://leetcode.com/problems/n-th-tribonacci-number",
+                    "description": "<p>The Tribonacci sequence T<sub>n</sub> is defined as follows:&nbsp;</p>\r\n\r\n<p>T<sub>0</sub> = 0, T<sub>1</sub> = 1, T<sub>2</sub> = 1, and T<sub>n+3</sub> = T<sub>n</sub> + T<sub>n+1</sub> + T<sub>n+2</sub> for n &gt;= 0.</p>\r\n\r\n<p>Given <code>n</code>, return the value of T<sub>n</sub>.</p>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong>Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> n = 4\r\n<strong>Output:</strong> 4\r\n<strong>Explanation:</strong>\r\nT_3 = 0 + 1 + 1 = 2\r\nT_4 = 1 + 1 + 2 = 4\r\n</pre>\r\n\r\n<p><strong>Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> n = 25\r\n<strong>Output:</strong> 1389537\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong>Constraints:</strong></p>\r\n\r\n<ul>\r\n\t<li><code>0 &lt;= n &lt;= 37</code></li>\r\n\t<li>The answer is guaranteed to fit within a 32-bit integer, ie. <code>answer &lt;= 2^31 - 1</code>.</li>\r\n</ul>",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{\n    //max n == 38\n     array<int, 38> _storage = {0,1,1};\npublic:\n    constexpr int tribonacci(int n)\n    {\n        if(n && !_storage[n])\n            _storage[n] = \n            tribonacci(n-1) + tribonacci(n-2) + tribonacci(n-3);\n        \n        return _storage[n];\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "n-th-tribonacci-number",
+                        "submissions": {
+                            "cpp": "410607575"
                         }
                     }
                 },
@@ -1214,6 +1290,25 @@
                     }
                 },
                 {
+                    "name": "Asteroid Collision",
+                    "link": "https://leetcode.com/problems/asteroid-collision",
+                    "description": "<p>We are given an array <code>asteroids</code> of integers representing asteroids in a row.</p>\n\n<p>For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.</p>\n\n<p>Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> asteroids = [5,10,-5]\n<strong>Output:</strong> [5,10]\n<b>Explanation:</b> The 10 and -5 collide resulting in 10.  The 5 and 10 never collide.\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> asteroids = [8,-8]\n<strong>Output:</strong> []\n<b>Explanation:</b> The 8 and -8 collide exploding each other.\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> asteroids = [10,2,-5]\n<strong>Output:</strong> [10]\n<b>Explanation:</b> The 2 and -5 collide resulting in -5. The 10 and -5 collide resulting in 10.\n</pre>\n\n<p><strong>Example 4:</strong></p>\n\n<pre>\n<strong>Input:</strong> asteroids = [-2,-1,1,2]\n<strong>Output:</strong> [-2,-1,1,2]\n<b>Explanation:</b> The -2 and -1 are moving left, while the 1 and 2 are moving right. Asteroids moving the same direction never meet, so no asteroids will meet each other.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= asteroids &lt;= 10<sup>4</sup></code></li>\n\t<li><code>-1000 &lt;= asteroids[i] &lt;= 1000</code></li>\n\t<li><code>asteroids[i] != 0</code></li>\n</ul>\n",
+                    "solutions": {
+                        "cpp": [
+                            {
+                                "language": "cpp",
+                                "code": "class Solution\n{    \npublic:\n    //O(n) solution\n    vector<int> asteroidCollision(vector<int>& A)\n    {\n        vector<int> asteroids;\n        asteroids.reserve(A.size());\n        \n        for(int aster : A)\n        {\n            asteroids.emplace_back(aster);\n            \n            //while new asteroid has collisions\n            for(size_t N = asteroids.size();\n                N > 1 &&  asteroids[N-2] > 0 && asteroids[N-1] < 0;\n                N = asteroids.size())\n            {\n                const int last_asteroid = asteroids[N-2],\n                          added_asteroid = asteroids[N-1];\n                \n                //remove two last asteroids\n                asteroids.pop_back();\n                asteroids.pop_back();\n                //two asteroids collapse\n                if(abs(last_asteroid) == abs(aster))\n                    break;\n                \n                const int surviver = std::max(last_asteroid, aster, \n                                              [](int a, int b){ return abs(a) < abs(b); });\n                asteroids.emplace_back(surviver);\n            }\n        }\n        \n        return asteroids;\n\n    }\n};"
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "asteroid-collision",
+                        "submissions": {
+                            "cpp": "411873447"
+                        }
+                    }
+                },
+                {
                     "name": "Binary Tree Inorder Traversal",
                     "link": "https://leetcode.com/problems/binary-tree-inorder-traversal",
                     "description": "<p>Given the <code>root</code> of a binary tree, return <em>the inorder traversal of its nodes&#39; values</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/15/inorder_1.jpg\" style=\"width: 202px; height: 324px;\" />\n<pre>\n<strong>Input:</strong> root = [1,null,2,3]\n<strong>Output:</strong> [1,3,2]\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = []\n<strong>Output:</strong> []\n</pre>\n\n<p><strong>Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1]\n<strong>Output:</strong> [1]\n</pre>\n\n<p><strong>Example 4:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/15/inorder_5.jpg\" style=\"width: 202px; height: 202px;\" />\n<pre>\n<strong>Input:</strong> root = [1,2]\n<strong>Output:</strong> [2,1]\n</pre>\n\n<p><strong>Example 5:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/15/inorder_4.jpg\" style=\"width: 202px; height: 202px;\" />\n<pre>\n<strong>Input:</strong> root = [1,null,2]\n<strong>Output:</strong> [1,2]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 100]</code>.</li>\n\t<li><code>-100 &lt;= Node.val &lt;= 100</code></li>\n</ul>\n\n<p>&nbsp;</p>\n\n<p><strong>Follow up:</strong></p>\n\n<p>Recursive solution is trivial, could you do it iteratively?</p>\n\n<p>&nbsp;</p>\n",
@@ -1628,6 +1723,25 @@
                         "slug": "maximum-product-subarray",
                         "submissions": {
                             "cpp": "394510521"
+                        }
+                    }
+                },
+                {
+                    "name": "Minimum Domino Rotations For Equal Row",
+                    "link": "https://leetcode.com/problems/minimum-domino-rotations-for-equal-row",
+                    "description": "<p>In a row of dominoes, <code>A[i]</code> and <code>B[i]</code> represent the top and bottom halves of the <code>i<sup>th</sup></code> domino.&nbsp; (A domino is a tile with two numbers from 1 to 6 - one on each half of the tile.)</p>\n\n<p>We may rotate the <code>i<sup>th</sup></code> domino, so that <code>A[i]</code> and <code>B[i]</code> swap values.</p>\n\n<p>Return the minimum number of rotations so that all the values in <code>A</code> are the same, or all the values in <code>B</code>&nbsp;are the same.</p>\n\n<p>If it cannot be done, return <code>-1</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong>Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/03/08/domino.png\" style=\"height: 161px; width: 200px;\" />\n<pre>\n<strong>Input:</strong> A = [2,1,2,4,2,2], B = [5,2,6,2,3,2]\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> \nThe first figure represents the dominoes as given by A and B: before we do any rotations.\nIf we rotate the second and fourth dominoes, we can make every value in the top row equal to 2, as indicated by the second figure.\n</pre>\n\n<p><strong>Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> A = [3,5,1,2,3], B = [3,6,3,3,4]\n<strong>Output:</strong> -1\n<strong>Explanation:</strong> \nIn this case, it is not possible to rotate the dominoes to make one row of values equal.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= A.length == B.length &lt;= 2 * 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= A[i], B[i] &lt;= 6</code></li>\n</ul>\n",
+                    "solutions": {
+                        "python": [
+                            {
+                                "language": "python",
+                                "code": "class Solution:\n    def minDominoRotations(self, A: List[int], B: List[int]) -> int:\n        cA, cB = Counter(A).most_common(), Counter(B).most_common()\n        \n        #find most frequent on top and bottom\n        top_frequent, bottom_frequent = [cA[0][0]], [cB[0][0]]\n        \n        #if there more then one element with top count, add them\n        top_frequent.extend([ch for ch,i in cA[1:] if i == cA[0][0]])\n        bottom_frequent.extend([ch for ch,i in cB[1:] if i == cB[0][0]])\n        \n        #find min rotation (try top then bottom)\n        min_count = -1\n        for ch in top_frequent:\n            local_counter = 0\n            for i, domino_ch in enumerate(A):\n                if domino_ch == ch:\n                    continue\n                elif B[i] == ch:\n                    local_counter+=1\n                    continue\n                else:\n                    break\n            else:\n                if min_count == -1 or local_counter < min_count:\n                    min_count = local_counter\n                    \n        for ch in bottom_frequent:\n            local_counter = 0\n            for i, domino_ch in enumerate(B):\n                if domino_ch == ch:\n                    continue\n                elif A[i] == ch:\n                    local_counter+=1\n                    continue\n                else:\n                    break\n            else:\n                if min_count == -1 or local_counter < min_count:\n                    min_count = local_counter\n        \n        return min_count\n                    \n        "
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "slug": "minimum-domino-rotations-for-equal-row",
+                        "submissions": {
+                            "python": "410722694"
                         }
                     }
                 },

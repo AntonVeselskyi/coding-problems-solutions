@@ -41,7 +41,8 @@ class Solution
     //max stairs num is 45
     array<int, 46> _storage = {0,1,2};
 public:
-    int climbStairs(int n)
+    //DP solution, O(n)
+    constexpr int climbStairs(int n)
     {
         if(!_storage[n])
             _storage[n] = climbStairs(n-1) + climbStairs(n-2);
