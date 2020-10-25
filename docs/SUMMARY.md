@@ -98,6 +98,8 @@
     * [Fizz Buzz](/LeetCode/Easy/Fizz-Buzz.md)
     * [Goat Latin](/LeetCode/Easy/Goat-Latin.md)
     * [Height Checker](/LeetCode/Easy/Height-Checker.md)
+    * [House Robber](/LeetCode/Easy/House-Robber.md)
+    * [Implement strStr()](/LeetCode/Easy/Implement-strStr.md)
     * [Intersection of Two Arrays II](/LeetCode/Easy/Intersection-of-Two-Arrays-II.md)
     * [Invert Binary Tree](/LeetCode/Easy/Invert-Binary-Tree.md)
     * [Kids With the Greatest Number of Candies](/LeetCode/Easy/Kids-With-the-Greatest-Number-of-Candies.md)
@@ -187,3 +189,4 @@
 * [💪 Hard](/LeetCode/Hard)
     * [Median of Two Sorted Arrays](/LeetCode/Hard/Median-of-Two-Sorted-Arrays.md)
     * [Parsing A Boolean Expression](/LeetCode/Hard/Parsing-A-Boolean-Expression.md)
+    * [Stone Game IV](/LeetCode/Hard/Stone-Game-IV.md)
