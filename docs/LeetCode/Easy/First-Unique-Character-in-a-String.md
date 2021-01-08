@@ -20,26 +20,39 @@ return 2.
 ## Solutions
 #### 🧠 Cpp
 ```cpp
-#include <algorithm>
-
-class Solution {
+class Solution
+{
 public:
     int firstUniqChar(string s)
     {
+//         map<char, int> counter;
+        
+//         for(char ch : s)
+//             counter[ch]++;
+        
+//         for(size_t i = 0; i < s.size(); ++i)
+//             if(counter[s[i]] == 1)
+//                 return i;
+        
+        
         int first_bitmask = 0, second_bitmask = 0;
-        for(auto iter = s.begin(); iter != s.end(); ++iter)
+        for(char ch : s)
         {
-            if(! (first_bitmask & 1 << (*iter - 'a')) )
-               first_bitmask |= 1 << *iter - 'a';
-            else if(! (second_bitmask & 1 << (*iter - 'a')) )
-               second_bitmask |= 1 << *iter - 'a';
+            const uint8_t ch_pos = ch - 'a';
+            if(! (first_bitmask & 1 << ch_pos) )
+               first_bitmask |= 1 << ch_pos;
+            else
+               second_bitmask |= 1 << ch_pos;
         }
         
         for(int i = 0; i< s.size(); ++i)
-            if( first_bitmask & 1 << (s[i] - 'a') 
-               && !(second_bitmask & 1 << (s[i] - 'a')) )
+            if(  
+               !(second_bitmask & 1 << (s[i] - 'a')) 
+               && first_bitmask & 1 << (s[i] - 'a')
+              )
                     return i;
-        return -1;
+
+         return -1;        
     }
 };
 ```

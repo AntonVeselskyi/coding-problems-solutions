@@ -26,7 +26,7 @@
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>0 &lt;=&nbsp;rowIndex &lt;= 40</code></li>
+	<li><code>0 &lt;=&nbsp;rowIndex &lt;= 33</code></li>
 </ul>
 
 

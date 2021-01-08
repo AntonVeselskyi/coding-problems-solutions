@@ -37,33 +37,24 @@
 class Solution
 {
 public:
-    //classic O(log n) dolution
+    //classic O(log n) solution
     int search(vector<int>& nums, int target)
     {
         if(nums.empty())
             return -1;
         //starting index is in the middle of the array
-        //step is the first step that will be applied
-        //step should be at least 1
-        for(size_t step = nums.size()/2, index = step;
-            nums.size() > index  && index >= 0;
-            )
+        //manipulate indexies
+        int pos_a = 0, pos_b = nums.size()-1;
+        while (pos_a <= pos_b)
         {
-            //return index;
-            const int num = nums[index];
-            if(num == target)
-                return index;
-            
-            if(!step)
-                break;
-            step = (step+1) / 2;
-            if(num < target)
-                index += step;
+            size_t mid = (pos_a+pos_b) / 2;
+            if(nums[mid] == target)
+                return mid;
+            else if(nums[mid] < target)
+                pos_a = mid + 1;
             else
-                index -= step;
-            if(step == 1)
-                step = 0;
-        }   
+                pos_b = mid - 1;
+        }
         
         return -1;
     }
